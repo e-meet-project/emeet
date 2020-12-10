@@ -1,25 +1,38 @@
 import logo from './logo.svg';
 import './App.css';
+import React, { Component } from 'react'
+import { Route , Switch } from "react-router-dom"
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import Index from './components/Index';
+import Signup from './components/auth/Signup';
+import Login from './components/auth/Login';
+import Navbar from './components/navbar/Navbar';
+import Events from './components/events/Events';
+import UserProfile from './components/user/UserProfile';
+
+class App extends Component {
+  render() {
+    return (
+      <div>
+      <Navbar />
+        <Switch>
+
+          <Route exact path = "/" component = { Index } />
+          <Route exact path = "/signup" component = { Signup } />
+          <Route exact path = "/login" component = { Login } />
+          <Route exact path = "/events" component = { Events } />
+          <Route exact path = "/profile" component = { UserProfile } />
+          {/* <Route exact path = "/beers" component = { Beers } />
+          <Route exact path = "/beers/:id" component = { BeerDetail } />
+          <Route exact path = "/random-beer" component = { Randombeer } />
+          <Route exact path = "/new-beer" component = { NewBeer } /> */}
+
+      </Switch>
+
+      </div>
+    )
+  }
 }
+
 
 export default App;
