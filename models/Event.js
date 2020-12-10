@@ -10,8 +10,8 @@ const eventSchema = new Schema({
     googleLink: String,
     attendees: [{ type: Schema.Types.ObjectId, ref: 'Event' }],
     date: Date,
-    startTime: [Number, Number],
-    endTime: [Number, Number],
+    startTime: "",
+    endTime: "",
     
 });
 
