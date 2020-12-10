@@ -17,7 +17,7 @@ app.use((err, req, res, next) => {
   // only json if the error ocurred before sending the response
   if (!res.headersSent) {
     res.status(500);
-    res.json('error');
+    res.json('500 error');
   }
 });
 

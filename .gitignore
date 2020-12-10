@@ -7,4 +7,6 @@ npm-debug.log
 # Environment Variables should NEVER be published
 .env
 
-.eslintcache 
+PORT=3000;
+
+
