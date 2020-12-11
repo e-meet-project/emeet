@@ -4,6 +4,7 @@ const userSchema = new Schema({
   username: String,
   password: String,
   profileImage: String,
+  aboutMe: String,
   eventsAttended: [ { type: Schema.Types.ObjectId, ref: 'Event' } ],
   eventsCreated: [],
   inboxNotification: [
