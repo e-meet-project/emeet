@@ -14,13 +14,13 @@ axios.get('/api/auth/loggedin')
   .then(response => {
 
     const user = response.data;
-    console.log(user)
+    console.log(`index.js`, user)
     
     ReactDOM.render(
 
       <Router>
 
-        <App user={user} />
+        <App user = {user} />
 
       </Router>,
 

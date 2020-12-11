@@ -3,12 +3,13 @@ import './App.css';
 import React, { Component } from 'react'
 import { Route , Switch , Redirect, BrowserRouter } from "react-router-dom"
 
-import Index from './components/Index';
+// import Index from './components/Index';
 import Signup from './components/auth/Signup';
 import Login from './components/auth/Login';
 import Navbar from './components/navbar/Navbar';
 import Events from './components/events/Events';
 import UserProfile from './components/user/UserProfile';
+import Homepage from './components/Homepage';
 
 class App extends Component {
 
@@ -25,21 +26,22 @@ class App extends Component {
   //=========================
 
   render() {
+    console.log(`app.js user`, this.state.user)
     return (
       <div>
         <Navbar user={this.state.user} setUser={this.setUser} />
 
           <Switch>
 
-            <Route exact path = "/" component = { Index } />
+            <Route exact path = "/" component = { Homepage } 
+              user = {this.state.user}
+            />
 
 
-            <Route exact path = "/signup" 
+            <Route exact path = "/signup" component = { Signup }
               render = { props => 
                <Signup setUser={this.setUser} {...props} />}
-               // component = { Signup }
             />
-            
             <Route exact path = "/login" 
               render={(props) => 
               <Login setUser={this.setUser} {...props}/>}

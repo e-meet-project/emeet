@@ -6,13 +6,17 @@ import { logout } from '../../services/auth';
 
 // import React from 'react'
 
-const handleLogout = props => {
-  logout().then(() => {
-    props.setUser(null);
-  });
-};
+
 
 export default function Navbar(props) {
+
+
+  const handleLogout = props => {
+    logout().then(() => {
+      props.setUser(null);
+    });
+  };
+
   return (
     <div>
       <div className="navbar">
@@ -32,7 +36,7 @@ export default function Navbar(props) {
           <Link className="navbar-link" to = "/signup">Sign Up</Link>
 
           <Link className="navbar-link" to='/' 
-              onClick={() => this.handleLogout(props)}>
+              onClick={ () => this.handleLogout(props)}>
               Logout
             </Link>
 
