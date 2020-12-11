@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
 import React, { Component } from 'react'
 import { Route , Switch , Redirect} from "react-router-dom"
@@ -37,11 +37,14 @@ class App extends Component {
               render = { props => 
                <Signup setUser={this.setUser} {...props} />}
             />
-            <Route exact path = "/login" component = { Login } />
-
-
-            <Route exact path = "/events" component = { Events } />
+            <Route exact path = "/login" 
+              render={(props) => 
+              <Login setUser={this.setUser} {...props}/>}
+                // component = { Login } /> //replaced by render
+            />
             
+            <Route exact path = "/events" component = { Events } />
+
             <Route exact path = "/profile" 
               render={props => {
                   if (this.state.user) return <UserProfile {...props}/>

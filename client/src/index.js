@@ -6,16 +6,20 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router } from 'react-router-dom';
 
 //authentication - added dec 11 @ 11
-import * as serviceWorker from './serviceWorker';
+// import * as serviceWorker from './serviceWorker';
 import axios from 'axios'
 
 axios.get('/api/auth/loggedin')
+
   .then(response => {
+
     const user = response.data;
+    console.log(user)
+    
     ReactDOM.render(
-      <BrowserRouter>
+      <Router>
         <App user={user} />
-      </BrowserRouter>,
+      </Router>,
       document.getElementById('root')
     );
   });

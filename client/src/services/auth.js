@@ -1,9 +1,9 @@
 //authentication - added dec 11 @ 11
 import axios from 'axios';
 
-const signup = (username, password) => {
+const signup = (username, password, profileImage) => {
   return axios
-    .post('/api/auth/signup', { username, password })
+    .post('/api/auth/signup', { username, password, profileImage })
     .then(response => {
       return response.data;
     })
@@ -12,9 +12,9 @@ const signup = (username, password) => {
     });
 };
 
-const login = (username, password) => {
+const login = (username, password, profileImage) => {
   return axios
-    .post('/api/auth/login', { username, password })
+    .post('/api/auth/login', { username, password, profileImage })
     .then(response => {
       return response.data;
     })

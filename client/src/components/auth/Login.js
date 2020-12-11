@@ -1,7 +1,38 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import { login } from '../../services/auth';
+
 
 export default class Login extends Component {
+
+  state = {
+    username: '',
+    password: '',
+    message: ''
+  };
+
+  handleSubmit = event => {
+    event.preventDefault();
+
+    const { username, password } = this.state;
+
+    login(username, password).then(data => {
+      if (data.message) {
+        this.setState({
+          message: data.message,
+          username: '',
+          password: ''
+        });
+      } else {
+        // successfully logged in
+        // update the state for the parent component
+        this.props.setUser(data);
+        this.props.history.push('/projects');
+      }
+    });
+  };
+
+
   render() {
     return (
       <div>
@@ -11,26 +42,29 @@ export default class Login extends Component {
 
         <form onSubmit={this.handleSubmit}>
           <p>
-            <label htmlFor="name">Username </label>
+            <label htmlFor="username">Username </label>
                 <input 
                     type = "text"
-                    name = "name"
-                    id = "name"
-                    // value = {this.state.name}
+                    name = "username"
+                    id = "username"
+                    value = {this.state.username}
                     onChange = {this.handleChange}
                 />
           </p>
 
             <p>
-          <label htmlFor="tagline">Password </label>
+          <label htmlFor="password">Password </label>
               <input 
-                  type = "text"
-                  name = "tagline"
-                  id = "tagline"
-                  // value = {this.state.tagline}
+                  type = "password"
+                  name = "password"
+                  id = "password"
+                  value = {this.state.password}
                   onChange = {this.handleChange}
               />  
           </p>
+          This state message: {this.state.message}
+          <br />
+          <button type='submit'>Login</button>
         </form>
         Need to create an account ?  <Link to = "/signup">Sign up</Link>
     

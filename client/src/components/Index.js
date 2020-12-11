@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Navbar from './navbar/Navbar'
+// import Navbar from './navbar/Navbar'
 
 export default class Index extends React.Component {
   render() {
