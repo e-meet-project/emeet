@@ -2,40 +2,20 @@ import React, { Component } from 'react'
 // import Navbar from './navbar/Navbar'
 import App from '../App'; 
 
-// export default function Homepage (props) {
 
+export default class Homepage extends React.Component {
 
-//   console.log(`props's`, props)
-//   return (
-//     <div>
-//       <div>
-
-//         index!
-//         {/* {user.username} */}
-//         {/* Hello {props} */}
-
-//       </div>
-//     </div>
-//   )
-// }
-
-export default class Index extends React.Component {
-
-  state = {
-    user : this.props
-  }
 
   render() {
-    console.log( `homepage props:`, this.state.user)
+    // console.log(this.props.username)
     return (
       <div>
-        index!
-        Hello {this.state.username}
+        index, now called homepage!
+        <p>
+          Welcome {this.props.username} !
+        </p>
 
       </div>
     )
   }
 }
-
-// import React from 'react'
-

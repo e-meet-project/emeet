@@ -12,9 +12,9 @@ const signup = (username, password, profileImage) => {
     });
 };
 
-const login = (username, password, profileImage) => {
+const login = (username, password) => {
   return axios
-    .post('/api/auth/login', { username, password, profileImage })
+    .post('/api/auth/login', { username, password })
     .then(response => {
       return response.data;
     })

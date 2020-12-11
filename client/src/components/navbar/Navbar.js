@@ -6,24 +6,25 @@ import { logout } from '../../services/auth';
 
 // import React from 'react'
 
+const handleLogout = props => {
+  console.log(props);
+  logout().then(() => {
+    props.setUser(null);
+  });
+};
 
 
 export default function Navbar(props) {
-
-
-  const handleLogout = props => {
-    logout().then(() => {
-      props.setUser(null);
-    });
-  };
-
+  
   return (
     <div>
       <div className="navbar">
 
       <Link className="navbar-link" to="/">
-        <img src={'https://res.cloudinary.com/irieljm/image/upload/c_scale,w_56/v1607633242/Emeet/Emeet_logo_desx4h.png'} 
-        alt="emmet_logo"></img>
+        <img 
+          src={'https://res.cloudinary.com/irieljm/image/upload/c_scale,w_56/v1607633242/Emeet/Emeet_logo_desx4h.png'} 
+          alt="e-meet_logo">
+        </img>
       </Link>
 
       <Link className="navbar-link" to = "/">Go to homepage</Link>
@@ -36,7 +37,7 @@ export default function Navbar(props) {
           <Link className="navbar-link" to = "/signup">Sign Up</Link>
 
           <Link className="navbar-link" to='/' 
-              onClick={ () => this.handleLogout(props)}>
+              onClick={ () => handleLogout (props) }>
               Logout
             </Link>
 

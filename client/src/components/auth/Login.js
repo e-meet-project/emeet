@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { login } from '../../services/auth';
+import './auth.css';
 
 
 export default class Login extends Component {
@@ -27,7 +28,7 @@ export default class Login extends Component {
         // successfully logged in
         // update the state for the parent component
         this.props.setUser(data);
-        this.props.history.push('/projects');
+        this.props.history.push('/');
       }
     });
   };
@@ -39,6 +40,9 @@ export default class Login extends Component {
         <button>LOGIN </button>
 
         <h1>Please log in</h1>
+        <p class="error">
+          {this.state.message}
+        </p>
 
         <form onSubmit={this.handleSubmit}>
           <p>
@@ -47,7 +51,7 @@ export default class Login extends Component {
                     type = "text"
                     name = "username"
                     id = "username"
-                    value = {this.state.username}
+                    // value = {this.state.username}
                     onChange = {this.handleChange}
                 />
           </p>
@@ -58,12 +62,10 @@ export default class Login extends Component {
                   type = "password"
                   name = "password"
                   id = "password"
-                  value = {this.state.password}
+                  // value = {this.state.password}
                   onChange = {this.handleChange}
               />  
           </p>
-          This state message: {this.state.message}
-          <br />
           <button type='submit'>Login</button>
         </form>
         Need to create an account ?  <Link to = "/signup">Sign up</Link>

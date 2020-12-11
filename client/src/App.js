@@ -33,14 +33,21 @@ class App extends Component {
 
           <Switch>
 
-            <Route exact path = "/" component = { Homepage } 
-              user = {this.state.user}
+            <Route exact path = "/" 
+              render = { props =>  
+              <Homepage 
+                // username=  {this.state.user.username} 
+                // setUser={this.setUser} {...props} 
+                />}
+              // user = {this.state.user} setUser={this.setUser}
+              //component = { Homepage }
             />
 
 
-            <Route exact path = "/signup" component = { Signup }
+            <Route exact path = "/signup" 
               render = { props => 
                <Signup setUser={this.setUser} {...props} />}
+               //component = { Signup }
             />
             <Route exact path = "/login" 
               render={(props) => 

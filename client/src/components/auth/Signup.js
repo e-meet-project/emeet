@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { signup } from '../../services/auth'
+import './auth.css';
+
 
 // client/src/services/auth.js <--- relative path
 
@@ -28,7 +30,7 @@ export default class Signup extends Component {
     const { username, password, profileImage } = this.state;
 
     signup(username, password, profileImage).then ( data => {
-      console.log(`data`, data)
+      // console.log(`data`, data)
       if (data.message) {
         this.setState({
           message: data.message,
@@ -51,6 +53,10 @@ export default class Signup extends Component {
       <div>
 
         <h1>Create your account</h1>
+
+        <p class="error">
+            {this.state.message}
+        </p>
 
         <form onSubmit={this.handleSubmit}>
           <p>
@@ -84,12 +90,7 @@ export default class Signup extends Component {
                     value = {this.state.profileImage}
                     onChange = {this.handleChange}
                 />  
-            </p>
-          
-          <p>
-            This message:  {this.state.message}
-          </p>
-          
+            </p>          
           
           <button type='submit' >
             Sign up 
