@@ -36,6 +36,9 @@ export default class Index extends React.Component {
     )
   }
 }
+<<<<<<< HEAD
 
 // import React from 'react'
 
+=======
+>>>>>>> 36f7e265a7aaf7a5e18e1edd082dffb28ccaec57
