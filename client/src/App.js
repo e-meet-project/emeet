@@ -18,9 +18,9 @@ class App extends Component {
     user: this.props.user
   }
 
-  setUser = player => {
+  setUser = user => {
     this.setState({
-      user: player
+      user: user
     })
   }
   //=========================
@@ -50,7 +50,7 @@ class App extends Component {
                //component = { Signup }
             />
             <Route exact path = "/login" 
-              render={ props => 
+              render={(props) => 
               <Login setUser={this.setUser} {...props}/>}
                 // component = { Login } /> //replaced by render
             />
