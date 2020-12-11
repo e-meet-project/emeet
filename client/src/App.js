@@ -1,7 +1,8 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
 import React, { Component } from 'react'
-import { Route , Switch } from "react-router-dom"
+import { Route , Switch , Redirect, BrowserRouter } from "react-router-dom"
+
 
 import Index from './components/Index';
 import Signup from './components/auth/Signup';
@@ -11,7 +12,15 @@ import Events from './components/events/Events';
 import UserProfile from './components/user/UserProfile';
 
 class App extends Component {
- 
+  state = {
+    user: this.props.user
+  }
+
+  setUser = user => {
+    this.setState({
+      user: user
+    })
+  }
 
   render() {
     return (
