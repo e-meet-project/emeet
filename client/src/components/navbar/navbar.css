@@ -2,7 +2,33 @@
   background: #5D576B;
   color: white;
   height: 5vh;
+  list-style: none;
+  display: flex;
+  /* justify-content: space-between; */
+  align-items: center;
+  justify-content: space-between;
+  height: 3.5rem;
+
+  
+  
   /* display:flex; */
   /* justify-content: center; */
   /* align-content: center; */
+}
+.navbar-link {
+  list-style: none;
+  flex-direction: row;
+  /* display: flex; */
+  justify-content: space-between;
+  align-items: center;
+  text-decoration: none;
+  color: white;
+  padding-right: 80px;
+
+
+}
+
+.nav-bar-ul a {
+  text-decoration: none;
+  color: black;
 }
