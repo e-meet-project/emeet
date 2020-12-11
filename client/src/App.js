@@ -11,6 +11,8 @@ import Events from './components/events/Events';
 import UserProfile from './components/user/UserProfile';
 
 class App extends Component {
+ 
+
   render() {
     return (
       <div>
@@ -22,10 +24,7 @@ class App extends Component {
           <Route exact path = "/login" component = { Login } />
           <Route exact path = "/events" component = { Events } />
           <Route exact path = "/profile" component = { UserProfile } />
-          {/* <Route exact path = "/beers" component = { Beers } />
-          <Route exact path = "/beers/:id" component = { BeerDetail } />
-          <Route exact path = "/random-beer" component = { Randombeer } />
-          <Route exact path = "/new-beer" component = { NewBeer } /> */}
+         
 
       </Switch>
 
