@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import React, { Component } from 'react'
-import { Route , Switch } from "react-router-dom"
+import { Route , Switch , Redirect} from "react-router-dom"
 
 import Index from './components/Index';
 import Signup from './components/auth/Signup';
@@ -11,23 +11,46 @@ import Events from './components/events/Events';
 import UserProfile from './components/user/UserProfile';
 
 class App extends Component {
+
+  //auth added dec 11@11AM
+  state = {
+    user: this.props.user
+  }
+
+  setUser = user => {
+    this.setState({
+      user: user
+    })
+  }
+  //=========================
+
   render() {
     return (
       <div>
-      <Navbar />
-        <Switch>
+        <Navbar user={this.state.user} setUser={this.setUser} />
+          <Switch>
 
-          <Route exact path = "/" component = { Index } />
-          <Route exact path = "/signup" component = { Signup } />
-          <Route exact path = "/login" component = { Login } />
-          <Route exact path = "/events" component = { Events } />
-          <Route exact path = "/profile" component = { UserProfile } />
-          {/* <Route exact path = "/beers" component = { Beers } />
-          <Route exact path = "/beers/:id" component = { BeerDetail } />
-          <Route exact path = "/random-beer" component = { Randombeer } />
-          <Route exact path = "/new-beer" component = { NewBeer } /> */}
+            <Route exact path = "/" component = { Index } />
 
-      </Switch>
+
+            <Route exact path = "/signup" component = { Signup }
+              render = { props => 
+               <Signup setUser={this.setUser} {...props} />}
+            />
+            <Route exact path = "/login" component = { Login } />
+
+
+            <Route exact path = "/events" component = { Events } />
+            
+            <Route exact path = "/profile" 
+              render={props => {
+                  if (this.state.user) return <UserProfile {...props}/>
+                  else return <Redirect to='/' /> 
+                  // component = { UserProfile } /> // replaced by render
+                  }}
+            />
+
+          </Switch>
 
       </div>
     )
@@ -36,3 +59,10 @@ class App extends Component {
 
 
 export default App;
+
+
+
+// <Route exact path = "/beers" component = { Beers } />
+// <Route exact path = "/beers/:id" component = { BeerDetail } />
+// <Route exact path = "/random-beer" component = { Randombeer } />
+// <Route exact path = "/new-beer" component = { NewBeer } /> 
