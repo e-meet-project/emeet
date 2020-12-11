@@ -3,12 +3,15 @@ const Schema = mongoose.Schema;
 const userSchema = new Schema({
   username: String,
   password: String,
-  profilepicture: String,
+  profileImage: String,
   eventsAttended: [ { type: Schema.Types.ObjectId, ref: 'Event' } ],
   eventsCreated: [],
-  inboxNotification: [{  type: Schema.Types.ObjectId, ref: 'User' , 
-  messageContent: String , 
-  read:Boolean }]
+  inboxNotification: [
+    {type: Schema.Types.ObjectId, ref: 'User', 
+    messageContent: String, 
+    read: Boolean}
+  ]
+    
   
 });
 
