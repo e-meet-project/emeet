@@ -1,4 +1,7 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
+
+
 
 export default class Events extends Component {
   render() {
@@ -10,6 +13,7 @@ export default class Events extends Component {
           <li>Event 2</li>
           <li>Event 3</li>
         </ul>
+        <Link to = "/createEvent">Create event</Link>
       </div>
     )
   }
