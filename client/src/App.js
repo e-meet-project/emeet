@@ -9,6 +9,7 @@ import Login from './components/auth/Login';
 import Navbar from './components/navbar/Navbar';
 import Events from './components/events/Events';
 import UserProfile from './components/user/UserProfile';
+import createEvent from './components/events/createEvent';
 
 class App extends Component {
   render() {
