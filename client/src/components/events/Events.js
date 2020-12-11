@@ -10,7 +10,9 @@ export default class Events extends Component {
           <li>Event 2</li>
           <li>Event 3</li>
         </ul>
+        <button><a href="/signup">sign up</a></button>
       </div>
     )
   }
 }
+

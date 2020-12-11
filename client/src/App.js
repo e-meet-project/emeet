@@ -1,7 +1,7 @@
 // import logo from './logo.svg';
 import './App.css';
 import React, { Component } from 'react'
-import { Route , Switch , Redirect} from "react-router-dom"
+import { Route , Switch , Redirect, BrowserRouter } from "react-router-dom"
 
 import Index from './components/Index';
 import Signup from './components/auth/Signup';
@@ -28,15 +28,18 @@ class App extends Component {
     return (
       <div>
         <Navbar user={this.state.user} setUser={this.setUser} />
+
           <Switch>
 
             <Route exact path = "/" component = { Index } />
 
 
-            <Route exact path = "/signup" component = { Signup }
+            <Route exact path = "/signup" 
               render = { props => 
                <Signup setUser={this.setUser} {...props} />}
+               // component = { Signup }
             />
+            
             <Route exact path = "/login" 
               render={(props) => 
               <Login setUser={this.setUser} {...props}/>}

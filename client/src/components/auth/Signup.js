@@ -27,7 +27,8 @@ export default class Signup extends Component {
 
     const { username, password, profileImage } = this.state;
 
-    signup(username, password, profileImage).then(data => {
+    signup(username, password, profileImage).then ( data => {
+      console.log(`data`, data)
       if (data.message) {
         this.setState({
           message: data.message,
@@ -37,14 +38,15 @@ export default class Signup extends Component {
         });
       } else {
         this.props.setUser(data);
-        this.props.history.push('/signup'); //was to projects, now to signup?
+        this.props.history.push('/'); //was to projects, now to signup?
       }
     });
   };
 
 
-
   render() {
+    console.log(this.props)
+
     return (
       <div>
 
