@@ -12,6 +12,15 @@ export default class Homepage extends React.Component {
       <div>
         index, now called homepage!
         <p>
+          <a href="/signup"> Signup</a>
+        </p>
+        
+        <p>
+          <a href="/login"> Login</a>
+        </p>
+
+
+        <p>
           Welcome {this.props.username} !
         </p>
 

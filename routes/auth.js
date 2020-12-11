@@ -49,11 +49,13 @@ router.post('/signup', (req, res) => {
 
 router.post('/login', (req, res) => {
   passport.authenticate('local', (err, user) => {
+    console.log(`server auth.js`, user)
     if (err) {
       return res.status(500).json({ message: 'Error while authenticating' });
     }
     if (!user) {
-      return res.status(400).json({ message: 'Wrong credentials' });
+      // console.log(`server auth.js`, user)
+      return res.status(400).json({ message: 'lol, Wrong credentials' });
     }
     req.login(user, err => {
       if (err) {

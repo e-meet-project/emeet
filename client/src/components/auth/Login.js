@@ -12,12 +12,22 @@ export default class Login extends Component {
     message: ''
   };
 
+  handleChange = event => {
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value
+    });
+  };
+
   handleSubmit = event => {
     event.preventDefault();
 
     const { username, password } = this.state;
 
-    login(username, password).then(data => {
+    console.log (`state before  `, this.state)
+
+    login ( username , password ).then ( data => {
+      console.log(`login data`, data)
       if (data.message) {
         this.setState({
           message: data.message,
@@ -51,7 +61,7 @@ export default class Login extends Component {
                     type = "text"
                     name = "username"
                     id = "username"
-                    // value = {this.state.username}
+                    value = {this.state.username}
                     onChange = {this.handleChange}
                 />
           </p>
@@ -62,13 +72,15 @@ export default class Login extends Component {
                   type = "password"
                   name = "password"
                   id = "password"
-                  // value = {this.state.password}
+                  value = {this.state.password}
                   onChange = {this.handleChange}
               />  
           </p>
           <button type='submit'>Login</button>
         </form>
-        Need to create an account ?  <Link to = "/signup">Sign up</Link>
+        <p>
+          Need to create an account ?  <Link to = "/signup">Sign up</Link>
+        </p>
     
       </div>
     )
