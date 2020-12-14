@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
-import axios from "axios";
+import axios from 'axios'
 
-
-
-export default class Addevent extends Component {
+export default class Editevent extends Component {
   state = {
     title: '',
     date:'',
@@ -17,55 +15,10 @@ export default class Addevent extends Component {
     googleLink:'',
   }
 
-  handleChange = (event) => {
-    const {name, value} = event.target;
-    
-    console.log(value);
-    this.setState ({
-      [name]: value
-    });
-  };
-
-
-  
-  handleSubmit = (event) => {
-    event.preventDefault ();
-   
-      
-    const { title, date, startTime,endTime, description, image, googleLink} = this.state;
-    console.log(this.state)
-  
-  
-    axios.post("/api/events", {    
-    title:title,
-    date:date,
-    startTime: startTime,
-    endTime:endTime,
-    owner: this.props.user._id,
-    description: description,
-    image:image,
-    googleLink: googleLink,}).then((event)=> {
-      console.log(event.data , "fetch event")
-    }).catch(err => {
-      console.log(err);
-    })
-
-    // this.props.history.push(`/events/${this.props.events._id}`);
-      
-    
-  }
-
-
-  
- 
-  
-
-
-
   render() {
-    console.log(this.props)
     return (
-       <div>
+      
+<div>
           <div> 
             <form onSubmit={this.handleSubmit}>
                 <label htmlFor="title"> Event title: </label>
@@ -74,8 +27,8 @@ export default class Addevent extends Component {
                 name="title" 
                 id="title" 
                 
-                value={this.state.title} 
-                onChange={this.handleChange}/>
+                 value={this.state.title} 
+                onChange={this.props.handleChange}/>
                 <br/>
                 <label htmlFor="date">Event date:</label>
                 <input 
@@ -83,7 +36,7 @@ export default class Addevent extends Component {
                 name="date" 
                 id="date" 
                 value={this.state.date}
-                onChange={this.handleChange}/>
+                onChange={this.props.handleChange}/>
                 <br/>
                 <label htmlFor="startTime "> Start time: </label>
                 <input 
@@ -91,7 +44,7 @@ export default class Addevent extends Component {
                 name="startTime" 
                 id="startTime" 
                 value={this.state.startTime}  
-                onChange={this.handleChange}/>
+                onChange={this.props.handleChange}/>
                 <br/>
                 <label htmlFor="endTime" > End time: </label>
                 <input 
@@ -99,7 +52,7 @@ export default class Addevent extends Component {
                 name="endTime"
                 id="endTime"
                 value={this.state.endTime}
-                onChange={this.handleChange}/>
+                onChange={this.props.handleChange}/>
                 <br/>
                 <label htmlFor="maxCapacity"> Maximum capacity: </label>
                 <input 
@@ -107,7 +60,7 @@ export default class Addevent extends Component {
                 name="maxCapacity" 
                 id="maxCapacity"
                 value={this.state.maxCapacity}
-                onChange={this.handleChange}/>
+                onChange={this.props.handleChange}/>
                 <br/>
                 {/* <label htmlFor="owner">Hosted by:  </label>
                 <input 
@@ -123,7 +76,7 @@ export default class Addevent extends Component {
                 name="description"
                 id="description"
                 value={this.state.description}
-                onChange={this.handleChange}
+                onChange={this.props.handleChange}
                  />
                 <br/>
                 <label htmlFor="googleLink">Add Google link: </label>
@@ -132,7 +85,7 @@ export default class Addevent extends Component {
                 name="googleLink"
                 id="googleLink"
                 value={this.state.googleLink}
-                onChange={this.handleChange} />
+                onChange={this.props.handleChange} />
                 <br/>
                 <label hmtlFor="image" >Upload an image: </label>
                 <input type= "file"
@@ -140,7 +93,7 @@ export default class Addevent extends Component {
                   id="image"
                    accept="image/*">
                     </input>
-                <button type='submit'> Add your event! </button>
+                <button type='submit'> Edit your event </button>
               
             </form>
             </div>

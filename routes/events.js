@@ -46,6 +46,7 @@ router.post('/', (req, res) => {
     endTime,
     description,
     image,
+    maxCapacity,
     googleLink } = req.body;
     console.log(req.body, "this is from backend");
   // const owner = req.user._id;
@@ -57,7 +58,8 @@ router.post('/', (req, res) => {
     endTime,
     description,
     image,
-    googleLink
+    googleLink,
+    maxCapacity
   })
     .then(events => {
       User.findByIdAndUpdate (owner, {$push:{eventsCreated:events._id}}).then (user => {
@@ -72,10 +74,10 @@ router.post('/', (req, res) => {
 
 // update a project
 router.put('/:id', (req, res, next) => {
-  const { title,date, startTime,endTime, description, image, googleLink } = req.body;
+  const { title,date, startTime,endTime, description, image, googleLink,maxCapacity } = req.body;
   Event.findByIdAndUpdate(
     req.params.id,
-    { title,date, startTime, endTime, description, image, googleLink },
+    { title,date, startTime, endTime, description, image, googleLink, maxCapacity },
     // this ensures that we are getting the updated document as a return 
     { new: true }
   )
