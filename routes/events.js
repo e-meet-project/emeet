@@ -1,17 +1,39 @@
-//authentication - added dec 11 @11am -
+const express = require ('express')
+const router = express.Router()
+const Event = require ('../models/Event')
 
-//route will need to have event create added, then 
-//need to add owner to route
+// console.log(`kevin says hi`)
 
-// router.post('/', (req, res) => {
-//   // const title = req.body.title;
-//   // const description = req.body.description;
-//   const owner = req.user._id;
-//   // const tasks = [];
+router.get('/', (req, res, next) => {
 
-//   Project.create({
-//     // title,
-//     // description,
-//     owner,
-//     // tasks,
-//   })
+  Event.find()
+  
+  .then( event => {
+      console.log(event)
+      res.status(200).json(event);
+    })
+    .catch(err => {
+      res.json(err);
+    })
+
+});
+
+// get a specfic project
+// to check if id is a valid mongo object id: mongoose.Types.ObjectId.isValid(_id)
+router.get('/:id', (req, res, next) => {
+  Event.findById(req.params.id)
+    .then( event => {
+      if ( !event ) {
+        console.log('no project');
+        res.status(404).json(event);
+      } else {
+        res.status(200).json(event);
+      }
+    })
+    .catch(err => {
+      res.json(err);
+    })
+});
+
+
+module.exports = router;
