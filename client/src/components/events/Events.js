@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import axios from 'axios'
 import EventDetail from './EventDetail'
 
@@ -48,6 +48,7 @@ export default class Events extends Component {
     // console.log(`event page`)
     // console.log(response)
     return (
+       
       <div>
         {this.state.events.map ( (event, index) => {
           return ( 
@@ -71,9 +72,13 @@ export default class Events extends Component {
           <li>Event 2</li>
           <li>Event 3</li>
         </ul>
+        <Link  to = "/Addevent">Create your own event! </Link>
+        <button><a href="/signup">sign up</a></button>
         {/* <Link to = "/createEvent">Create an event? </Link> */}
       </div>
     )
   }
-}
 
+}
+       
+     

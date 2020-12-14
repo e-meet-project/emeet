@@ -1,9 +1,14 @@
 // import logo from './logo.svg';
 import './App.css';
 import React, { Component } from 'react'
+<<<<<<< HEAD
 import { Route , Switch , Redirect } from "react-router-dom"
 
 // import Index from './components/Index';
+=======
+import { Route , Switch , Redirect, BrowserRouter } from "react-router-dom"
+import Addevent from './components/events/Addevent';
+>>>>>>> 485687659115bcda5c7216a800f988771426af96
 import Signup from './components/auth/Signup';
 import Login from './components/auth/Login';
 import Navbar from './components/navbar/Navbar';
@@ -11,6 +16,7 @@ import Events from './components/events/Events';
 import UserProfile from './components/user/UserProfile';
 import Homepage from './components/Homepage';
 import EventDetail from './components/events/EventDetail';
+
 
 class App extends Component {
 
@@ -34,6 +40,16 @@ class App extends Component {
 
           <Switch>
 
+          <Route exact path = "/" component = {Homepage } />
+          {/* <Route exact path = "/signup" component = { Signup } /> */}
+          <Route exact path = "/login" component = { Login } />
+          <Route exact path = "/events" component = { Events } />
+          <Route exact path = "/profile" component = { UserProfile } />
+          {/* <Route exact path = "/Addevent" component = {Addevent} /> */}
+          {/* <Route exact path = "/beers" component = { Beers } />
+          <Route exact path = "/beers/:id" component = { BeerDetail } />
+          <Route exact path = "/random-beer" component = { Randombeer } />
+          <Route exact path = "/new-beer" component = { NewBeer } /> */}
             <Route exact path = "/" 
               render = { props =>  
               <Homepage 
@@ -68,8 +84,14 @@ class App extends Component {
                 // user={this.state.user} 
                 {...props} 
                 />}
+      
+              // component = { EventDetail }
             />
-
+              <Route exact path = "/Addevent" 
+              render = { props => 
+               <Addevent user={this.state.user} {...props} />}
+              
+            />
 
           </Switch>
 
