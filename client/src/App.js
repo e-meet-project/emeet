@@ -1,6 +1,9 @@
 // import logo from './logo.svg';
 import './App.css';
 import React, { Component } from 'react'
+
+// import Index from './components/Index';
+
 import { Route , Switch , Redirect, BrowserRouter } from "react-router-dom"
 import Addevent from './components/events/Addevent';
 import Signup from './components/auth/Signup';
@@ -66,8 +69,8 @@ class App extends Component {
 
             <Route exact path = "/profile" 
               render={props => {
-                  if (this.state.user) return <UserProfile {...props}/>
-                  else return <Redirect to='/' /> 
+                  if (this.state.user) return <UserProfile {...props} user={this.state.user}/>
+                  else return <Redirect to='/UserProfile' /> 
                   // component = { UserProfile } /> // replaced by render
                   }}
             />

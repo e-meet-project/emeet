@@ -4,10 +4,10 @@ import './index.css';
 import App from './App';
 // import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router } from 'react-router-dom';
+import axios from 'axios';
 
 //authentication - added dec 11 @ 11
 // import * as serviceWorker from './serviceWorker'; //module isn't installed
-import axios from 'axios'
 
 axios.get('/api/auth/loggedin')
 

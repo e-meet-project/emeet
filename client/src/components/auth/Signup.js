@@ -54,7 +54,7 @@ export default class Signup extends Component {
 
         <h1>Create your account</h1>
 
-        <p class="error">
+        <p className="error">
             {this.state.message}
         </p>
 
