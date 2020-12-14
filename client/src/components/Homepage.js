@@ -4,22 +4,20 @@ import App from '../App';
 
 
 export default class Homepage extends React.Component {
-
+  
 
   render() {
-    // console.log(this.props.username)
+
     return (
       <div>
         index, now called homepage!
         <p>
-          <a href="/signup"> Signup</a>
+          <a href="/events">See all events</a>
+        </p>
+        <p>
+          <button><a href="/signup"> Signup</a></button> <button><a href="/login"> Login</a></button>
         </p>
         
-        <p>
-          <a href="/login"> Login</a>
-        </p>
-
-
         <p>
           Welcome {this.props.username} !
         </p>
