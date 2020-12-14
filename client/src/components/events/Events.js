@@ -1,13 +1,7 @@
 import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
-import Axios from 'axios'
-export default class Events extends Component {
-
-import { Link } from 'react-router-dom'
 import axios from 'axios'
 import EventDetail from './EventDetail'
-
-
 
 export default class Events extends Component {
 

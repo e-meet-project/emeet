@@ -84,8 +84,6 @@ app.use('/api/events', events);
 const auth = require('./routes/auth');
 app.use('/api/auth', auth);
 
-const events = require('./routes/events');
-app.use('/api/events', events);
 
 //=============================================
 

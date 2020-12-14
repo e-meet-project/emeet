@@ -1,6 +1,7 @@
 const express = require ('express')
 const router = express.Router()
-const Event = require ('../models/Event')
+const Event = require ('../models/Event');
+const User = require('../models/User');
 
 // console.log(`kevin says hi`)
 
@@ -40,6 +41,7 @@ router.post('/', (req, res) => {
   const {    
     title,
     date,
+    owner,
     startTime,
     endTime,
     description,
@@ -51,14 +53,17 @@ router.post('/', (req, res) => {
     title,
     date,
     startTime,
+    owner,
     endTime,
     description,
     image,
     googleLink
   })
     .then(events => {
+      User.findByIdAndUpdate (owner, {$push:{eventsCreated:events._id}}).then (user => {
       console.log(event, "this is db")
       res.status(201).json(events);
+      });
     })
     .catch(err => {
       res.json(err);

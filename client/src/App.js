@@ -35,11 +35,11 @@ class App extends Component {
           <Switch>
 
           <Route exact path = "/" component = {Homepage } />
-          <Route exact path = "/signup" component = { Signup } />
+          {/* <Route exact path = "/signup" component = { Signup } /> */}
           <Route exact path = "/login" component = { Login } />
           <Route exact path = "/events" component = { Events } />
           <Route exact path = "/profile" component = { UserProfile } />
-          <Route exact path = "/Addevent" component = {Addevent} />
+          {/* <Route exact path = "/Addevent" component = {Addevent} /> */}
           {/* <Route exact path = "/beers" component = { Beers } />
           <Route exact path = "/beers/:id" component = { BeerDetail } />
           <Route exact path = "/random-beer" component = { Randombeer } />
@@ -83,9 +83,14 @@ class App extends Component {
                 {...props} 
 
                 />}
+      
               // component = { EventDetail }
             />
-
+              <Route exact path = "/Addevent" 
+              render = { props => 
+               <Addevent user={this.state.user} {...props} />}
+              
+            />
 
           </Switch>
 

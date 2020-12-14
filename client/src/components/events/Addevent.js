@@ -40,7 +40,7 @@ export default class Addevent extends Component {
     date:date,
     startTime: startTime,
     endTime:endTime,
-    // owner: owner,
+    owner: this.props.user._id,
     description: description,
     image:image,
     googleLink: googleLink,}).then((event)=> {
