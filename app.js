@@ -55,7 +55,7 @@ const index = require('./routes/index');
 app.use('/', index);
 
 const events = require('./routes/events');
-app.use('/', events);
+app.use('/api/events', events);
 
 
 

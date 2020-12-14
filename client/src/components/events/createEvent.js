@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import axios from "axios";
 
 
 
@@ -11,14 +11,14 @@ export default class createEvent extends Component {
     maxcapacity:'',
     hostedby: '',
     description: '',
-    img:'',
-    googlelink:'',
+    image:'',
+    googleLink:'',
   }
 
   handleChange = (event) => {
     const {name, value} = event.target;
     
-    
+    console.log(value);
     this.setState ({
       [name]: value
     });
@@ -30,29 +30,27 @@ export default class createEvent extends Component {
     event.preventDefault ();
    
       
-    const { title, date, time, maxcapacity, hostedby, description, img, googlelink} = this.state;
+    const { title, date, time, maxcapacity, hostedby, description, image, googleLink} = this.state;
     console.log(this.state)
   
   
-  
-    createEvent(title, date, time, maxcapacity, hostedby, description, img, googlelink).then((data) => {
-      if (data.message) {
-        this.setState ({
-          message: data.message,
-          title: '',
-          date:'',
-          time:'',
-          maxcapacity:'',
-          hostedby:'',
-          description:'',
-          img:'',
-          googlelink:''
+    axios.post("/api/events", {    
+    title:title,
+    date:date,
+    time: time,
+    maxcapacity:maxcapacity,
+    hostedby: hostedby,
+    description: description,
+    image:image,
+    googleLink: googleLink,}).then(()=> {
+      console.log("evento creado")
+    }).catch(err => {
+      console.log(err);
+    })
 
-        });
-      } else {
-        this.props.history.push(`/events/${this.props.events._id}`);
-      }
-    });
+    // this.props.history.push(`/events/${this.props.events._id}`);
+      
+    
   }
 
 

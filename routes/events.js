@@ -32,7 +32,14 @@ router.get('/:id', (req, res, next) => {
 
 // create a project
 router.post('/', (req, res) => {
-  const { title, description } = req.body;
+  const {     title,
+    date,
+    time,
+    maxcapacity,
+    hostedby,
+    description,
+    img,
+    googlelink } = req.body;
   const owner = req.user._id;
   Event.create({
     title,
