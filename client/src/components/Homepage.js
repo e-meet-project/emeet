@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
+import React from 'react'
 // import Navbar from './navbar/Navbar'
-import App from '../App'; 
+// import App from '../App'; 
 
 // export default function Homepage (props) {
 
@@ -19,14 +19,14 @@ import App from '../App';
 //   )
 // }
 
-export default class Index extends React.Component {
+export default class Homepage extends React.Component {
 
   state = {
     user : this.props
   }
 
   render() {
-    console.log( `homepage props:`, this.state.user)
+    // console.log( `homepage props:`, this.state.user)
     return (
       <div>
         index!
@@ -36,9 +36,3 @@ export default class Index extends React.Component {
     )
   }
 }
-<<<<<<< HEAD
-
-// import React from 'react'
-
-=======
->>>>>>> 36f7e265a7aaf7a5e18e1edd082dffb28ccaec57

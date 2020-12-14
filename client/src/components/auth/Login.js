@@ -47,10 +47,10 @@ export default class Login extends Component {
   render() {
     return (
       <div>
-        <button>LOGIN </button>
+        {/* <button>LOGIN </button> */}
 
         <h1>Please log in</h1>
-        <p class="error">
+        <p className="error">
           {this.state.message}
         </p>
 
