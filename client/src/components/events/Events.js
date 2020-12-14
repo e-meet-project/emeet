@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 // import { Link } from 'react-router-dom'
 import axios from 'axios'
 
+
+
 export default class Events extends Component {
 
   state = {
@@ -12,6 +14,9 @@ export default class Events extends Component {
     axios.get('/api/events') 
       .then( response => {
         console.log( `api call`, response)
+        this.setState({
+          events: response.data
+        })
       })
   }
 
@@ -20,8 +25,19 @@ export default class Events extends Component {
     // console.log(response)
     return (
       <div>
+        {this.state.events.map ( (event, index) => {
+          return ( 
+            <div key= {event._id}>
+                <p>
+                    {event.title}
+                </p>
+            </div>
+          )
+      
+      } ) } 
+
         EVENT LIST
-        
+
         <ul>
           <li>Event 1</li>
           <li>Event 2</li>
