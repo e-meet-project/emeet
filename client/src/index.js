@@ -14,7 +14,7 @@ axios.get('/api/auth/loggedin')
   .then(response => {
 
     const user = response.data;
-    // console.log(`index.js`, user)
+    console.log(`index.js`, user)
     
     ReactDOM.render(
 

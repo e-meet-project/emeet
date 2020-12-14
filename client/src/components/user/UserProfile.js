@@ -28,10 +28,10 @@ export default class UserProfile extends Component {
 
   componentDidMount() {
     this.getUserDetails();
-    console.log(`this is the compDM ${this.state.user}`)
+    console.log(`compDM user state: ${this.state.user}`)
   }
-
-  // componentDidUpdate(prevProps) {
+ 
+  // // componentDidUpdate(prevProps) {
   //   console.log('current props:', this.props.match.params.id)
   //   console.log('previous props:', prevProps.match.params.id)
   //   if (prevProps.match.params.id !== this.props.match.params.id) {

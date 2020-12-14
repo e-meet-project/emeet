@@ -61,7 +61,7 @@ router.post('/', (req, res) => {
   })
     .then(events => {
       User.findByIdAndUpdate (owner, {$push:{eventsCreated:events._id}}).then (user => {
-      console.log(event, "this is db")
+      console.log(events, "this is db")
       res.status(201).json(events);
       });
     })
