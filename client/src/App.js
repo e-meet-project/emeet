@@ -2,14 +2,14 @@
 import './App.css';
 import React, { Component } from 'react'
 import { Route , Switch , Redirect, BrowserRouter } from "react-router-dom"
-
-// import Index from './components/Index';
+import Addevent from './components/events/Addevent';
 import Signup from './components/auth/Signup';
 import Login from './components/auth/Login';
 import Navbar from './components/navbar/Navbar';
 import Events from './components/events/Events';
 import UserProfile from './components/user/UserProfile';
 import Homepage from './components/Homepage';
+
 
 class App extends Component {
 
@@ -33,7 +33,7 @@ class App extends Component {
 
           <Switch>
 
-          <Route exact path = "/" component = { Index } />
+          <Route exact path = "/" component = {Homepage } />
           <Route exact path = "/signup" component = { Signup } />
           <Route exact path = "/login" component = { Login } />
           <Route exact path = "/events" component = { Events } />
