@@ -1,14 +1,11 @@
 // import logo from './logo.svg';
 import './App.css';
 import React, { Component } from 'react'
-<<<<<<< HEAD
-import { Route , Switch , Redirect } from "react-router-dom"
 
 // import Index from './components/Index';
-=======
+
 import { Route , Switch , Redirect, BrowserRouter } from "react-router-dom"
 import Addevent from './components/events/Addevent';
->>>>>>> 485687659115bcda5c7216a800f988771426af96
 import Signup from './components/auth/Signup';
 import Login from './components/auth/Login';
 import Navbar from './components/navbar/Navbar';
