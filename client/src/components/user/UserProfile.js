@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './UserProfile.css';
 // import { userProfileData } from '../';
-import Events from '../events/Events';
+import EventDetail from '../events/EventDetail';
 import axios from 'axios';
 
 
@@ -102,15 +102,15 @@ export default class UserProfile extends Component {
                 <div className="event-list-small">
                 
                   <div className="event-info">
-                    <img src="{eventAttended.image}" alt="image2"></img>
+                    <img src={eventAttended.image} alt="image2"></img>
                     
                   </div>
                   <div className="event-description">
                     <h4 className="event-title">
-                      <a className="link-to-event" href="{event._id}">{eventAttended.title}</a>
+                      <a className="link-to-event" href={`/events/${eventAttended._id}`}>{eventAttended.title}</a>
                     </h4>
                     <h4 className="description">{eventAttended.description}</h4>
-                      <h4 className="date-time">{eventAttended.date}</h4>
+                      <h4 className="date-time">{eventAttended.date.slice}</h4>
                   </div>
               </div>
                 </div>
