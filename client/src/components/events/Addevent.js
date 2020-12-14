@@ -3,7 +3,7 @@ import axios from "axios";
 
 
 
-export default class createEvent extends Component {
+export default class Addevent extends Component {
   state = {
     title: '',
     date:'',
@@ -42,8 +42,8 @@ export default class createEvent extends Component {
     hostedby: hostedby,
     description: description,
     image:image,
-    googleLink: googleLink,}).then(()=> {
-      console.log("evento creado")
+    googleLink: googleLink,}).then((event)=> {
+      console.log(event.data , "fetch event")
     }).catch(err => {
       console.log(err);
     })
@@ -87,7 +87,7 @@ export default class createEvent extends Component {
                 value={this.state.time}  
                 onChange={this.handleChange}/>
                 <br/>
-                <label htmlfor="maxcapacity"> Maximum capacity: </label>
+                <label htmlFor="maxcapacity"> Maximum capacity: </label>
                 <input type="number" name="maxcapacity" id="maxcapacity"/>
                 <br/>
                 <label htmlFor="hostedby">Hosted by: </label>

@@ -32,14 +32,16 @@ router.get('/:id', (req, res, next) => {
 
 // create a project
 router.post('/', (req, res) => {
-  const {     title,
+  const {    
+    title,
     date,
     time,
     maxcapacity,
     hostedby,
     description,
-    img,
-    googlelink } = req.body;
+    image,
+    googleLink } = req.body;
+    console.log(req.body, "this is from backend");
   const owner = req.user._id;
   Event.create({
     title,
@@ -48,10 +50,11 @@ router.post('/', (req, res) => {
     maxcapacity,
     hostedby,
     description,
-    img,
-    googlelink
+    image,
+    googleLink
   })
     .then(event => {
+      console.log(event, "this is db")
       res.status(201).json(event);
     })
     .catch(err => {
