@@ -6,7 +6,7 @@ const userSchema = new Schema({
   password: String,
   profileImage: String,
   eventsAttended: [ { type: Schema.Types.ObjectId, ref: 'Event'  } ],
-  eventsCreated: [],
+  eventsCreated: [{ type: Schema.Types.ObjectId, ref: 'Event'  }],
   inboxNotification: 
     [
       {

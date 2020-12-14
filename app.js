@@ -75,15 +75,23 @@ app.locals.title = 'Express - Generated with IronGenerator';
 const index = require('./routes/index');
 app.use('/', index);
 
+const events = require('./routes/events');
+app.use('/api/events', events);
+
+
+
 //auth - added dec11 at 11am
 const auth = require('./routes/auth');
 app.use('/api/auth', auth);
 
+<<<<<<< HEAD
 const user = require('./routes/user');
 app.use('/api/user', user);
 
 const events = require('./routes/events');
 app.use('/api/events', events);
+=======
+>>>>>>> a63fed3a363b91408756ab92e2fa7be1ac02b9a3
 
 //=============================================
 
