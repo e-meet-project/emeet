@@ -13,6 +13,7 @@ import Events from './components/events/Events';
 import UserProfile from './components/user/UserProfile';
 import Homepage from './components/Homepage';
 import EventDetail from './components/events/EventDetail';
+import Editevent from './components/events/Editevent';
 
 
 class App extends Component {
@@ -42,6 +43,7 @@ class App extends Component {
           {/* <Route exact path = "/login" component = { Login } /> */}
           {/* <Route exact path = "/events" component = { Events } />
           <Route exact path = "/profile" component = { UserProfile } /> */} 
+          <Route exact path = "/editevent" component = { Editevent }/>
           {/* <Route exact path = "/Addevent" component = {Addevent} /> */}
           {/* <Route exact path = "/beers" component = { Beers } />
           <Route exact path = "/beers/:id" component = { BeerDetail } />

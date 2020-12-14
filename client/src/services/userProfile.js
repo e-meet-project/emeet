@@ -14,4 +14,4 @@ const userProfileData = (event ) => {
 
 export { userProfileData };
 
-//on the component - import { userProfileData } from '../../services/userProfile' 
+//on the component - import { userProfileData } from '../../services/userProfile'

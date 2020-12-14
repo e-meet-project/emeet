@@ -12,6 +12,7 @@ const eventSchema = new Schema({
     date: Date,
     startTime: "",
     endTime: "",
+    maxCapacity: Number
     
 });
 
