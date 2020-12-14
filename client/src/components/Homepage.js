@@ -29,8 +29,17 @@ export default class Homepage extends React.Component {
     // console.log( `homepage props:`, this.state.user)
     return (
       <div>
-        index!
-        Hello {this.state.username}
+        index, now called homepage!
+        <p>
+          <a href="/events">See all events</a>
+        </p>
+        <p>
+          <button><a href="/signup"> Signup</a></button> <button><a href="/login"> Login</a></button>
+        </p>
+        
+        <p>
+          Welcome {this.props.username} !
+        </p>
 
       </div>
     )

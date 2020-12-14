@@ -1,6 +1,30 @@
 import React, { Component } from 'react'
-// import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import axios from 'axios'
+import EventDetail from './EventDetail'
+
+
+// export default function Events(props) {
+//   return (
+//     <div>
+//         {props.events.map ( (event ) => {
+//           return ( 
+//             <div key= {event._id}>
+//                 <p>
+//                     {event.title}
+//                 </p>
+//                 <Link to = {`/events/${event._id}`}  > See More Information </Link>
+                
+//             {/* <EventDetail / */}
+//             {/* <Link to exact path = "/event/:id" component = { EventDetail } */}
+//             </div>
+//           )
+      
+//       } ) } 
+//     </div>
+//   )
+// }
+
 
 
 
@@ -21,7 +45,7 @@ export default class Events extends Component {
   }
 
   render() {
-    console.log(`event page`)
+    // console.log(`event page`)
     // console.log(response)
     return (
       <div>
@@ -31,6 +55,10 @@ export default class Events extends Component {
                 <p>
                     {event.title}
                 </p>
+                <Link to = {`/events/${event._id}`}  > See More Information </Link>
+                
+            {/* <EventDetail / */}
+            {/* <Link to exact path = "/event/:id" component = { EventDetail } */}
             </div>
           )
       
