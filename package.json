@@ -8,11 +8,8 @@
     "dev-windows": "nodemon ./bin/www"
   },
   "dependencies": {
-<<<<<<< HEAD
     "bcrypt": "^5.0.0",
-=======
     "axios": "^0.21.0",
->>>>>>> main
     "body-parser": "^1.18.3",
     "connect-mongo": "^3.2.0",
     "cookie-parser": "^1.4.3",
