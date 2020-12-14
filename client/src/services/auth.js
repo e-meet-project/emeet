@@ -12,6 +12,7 @@ const signup = (username, password, profileImage) => {
     });
 };
 
+
 const login = (username, password) => {
   return axios
     .post('/api/auth/login', { username, password })
