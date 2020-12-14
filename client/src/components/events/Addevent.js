@@ -7,9 +7,10 @@ export default class Addevent extends Component {
   state = {
     title: '',
     date:'',
-    time: '',
-    maxcapacity:'',
-    hostedby: '',
+    startTime: '',
+    endTime: '',
+    // attendees: '',
+    // owner: '',
     description: '',
     image:'',
     googleLink:'',
@@ -30,16 +31,16 @@ export default class Addevent extends Component {
     event.preventDefault ();
    
       
-    const { title, date, time, maxcapacity, hostedby, description, image, googleLink} = this.state;
+    const { title, date, startTime,endTime, description, image, googleLink} = this.state;
     console.log(this.state)
   
   
     axios.post("/api/events", {    
     title:title,
     date:date,
-    time: time,
-    maxcapacity:maxcapacity,
-    hostedby: hostedby,
+    startTime: startTime,
+    endTime:endTime,
+    // owner: owner,
     description: description,
     image:image,
     googleLink: googleLink,}).then((event)=> {
@@ -62,11 +63,12 @@ export default class Addevent extends Component {
 
   render() {
     return (
-        <div>
+       <div>
           <div> 
             <form onSubmit={this.handleSubmit}>
                 <label htmlFor="title"> Event title: </label>
-                <input type="text" 
+                <input 
+                type="text" 
                 name="title" 
                 id="title" 
                 
@@ -74,42 +76,78 @@ export default class Addevent extends Component {
                 onChange={this.handleChange}/>
                 <br/>
                 <label htmlFor="date">Event date:</label>
-                <input type="date" 
+                <input 
+                type="date" 
                 name="date" 
                 id="date" 
                 value={this.state.date}
-                 onChange={this.handleChange}/>
-                <br/>
-                <label htmlFor="time">Event time: </label>
-                <input type= "time" 
-                name="time" 
-                id="time" 
-                value={this.state.time}  
                 onChange={this.handleChange}/>
                 <br/>
-                <label htmlFor="maxcapacity"> Maximum capacity: </label>
-                <input type="number" name="maxcapacity" id="maxcapacity"/>
+                <label htmlFor="startTime "> Start time: </label>
+                <input 
+                type= "time" 
+                name="startTime" 
+                id="startTime" 
+                value={this.state.startTime}  
+                onChange={this.handleChange}/>
                 <br/>
-                <label htmlFor="hostedby">Hosted by: </label>
-                <input type="text" name="hostedby" id="hostedby"/>
+                <label htmlFor="endTime" > End time: </label>
+                <input 
+                type="time"
+                name="endTime"
+                id="endTime"
+                value={this.state.endTime}
+                onChange={this.handleChange}/>
                 <br/>
+                <label htmlFor="attendees"> Maximum capacity: </label>
+                <input 
+                type="number"
+                name="attendees" 
+                id="attendees"
+                value={this.state.attendees}
+                onChange={this.handleChange}/>
+                <br/>
+                {/* <label htmlFor="owner">Hosted by:  </label>
+                <input 
+                type="text" 
+                name="owner" 
+                id="owner"
+                value={this.state.owner}
+                onChange={this.handleChange}/>
+                <br/> */}
                 <label htmlFor="description">Description: </label>
-                <input type="text" name="description" id="description"/>
+                <input 
+                type="text"
+                name="description"
+                id="description"
+                value={this.state.description}
+                onChange={this.handleChange}
+                 />
                 <br/>
                 <label htmlFor="googlelink">Add Google link: </label>
-                <input type="link" name="googlelink" id="googlelink"/>
+                <input 
+                type="link"
+                name="googlelink"
+                id="googlelink"
+                value={this.state.googleLink}
+                onChange={this.handleChange} />
                 <br/>
-                <label hmtlFor="img" >Upload an image: </label>
-                <input type= "file" name="img" id="img" accept="image/*"></input>
+                <label hmtlFor="image" >Upload an image: </label>
+                <input type= "file"
+                 name="image"
+                  id="image"
+                   accept="image/*">
+                    </input>
                 <button type='submit'> Add your event! </button>
               
             </form>
-        </div>
+            </div>
         </div>
     );
-    
   }
 }
+    
+  
 
 
 

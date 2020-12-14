@@ -5,6 +5,7 @@ const Event = require ('../models/Event')
 router.get('/', (req, res, next) => {
   Event.find()
     .then(events => {
+      console.log(events)
       res.status(200).json(events);
     })
     .catch(err => {
@@ -35,27 +36,25 @@ router.post('/', (req, res) => {
   const {    
     title,
     date,
-    time,
-    maxcapacity,
-    hostedby,
+    startTime,
+    endTime,
     description,
     image,
     googleLink } = req.body;
     console.log(req.body, "this is from backend");
-  const owner = req.user._id;
+  // const owner = req.user._id;
   Event.create({
     title,
     date,
-    time,
-    maxcapacity,
-    hostedby,
+    startTime,
+    endTime,
     description,
     image,
     googleLink
   })
-    .then(event => {
+    .then(events => {
       console.log(event, "this is db")
-      res.status(201).json(event);
+      res.status(201).json(events);
     })
     .catch(err => {
       res.json(err);
@@ -64,16 +63,16 @@ router.post('/', (req, res) => {
 
 // update a project
 router.put('/:id', (req, res, next) => {
-  const { title,date, time, maxcapacity, hostedby, description, img, googlelink } = req.body;
+  const { title,date, startTime,endTime, description, image, googleLink } = req.body;
   Event.findByIdAndUpdate(
     req.params.id,
-    { title,date, time, maxcapacity, hostedby, description, img, googlelink },
+    { title,date, startTime, endTime, description, image, googleLink },
     // this ensures that we are getting the updated document as a return 
     { new: true }
   )
-    .then(event => {
-      console.log(event);
-      res.status(200).json(event);
+    .then(events => {
+      console.log(events);
+      res.status(200).json(events);
     })
     .catch(err => {
 
@@ -82,7 +81,7 @@ router.put('/:id', (req, res, next) => {
 
 router.delete('/:id', (req, res, next) => {
   Event.findByIdAndDelete(req.params.id)
-    .then(event => {
+    .then(events => {
       res.status(200).json({ message: 'ok' })
     })
     .catch(err => {
