@@ -4,8 +4,8 @@ const Event = require ('../models/Event')
 
 router.get('/', (req, res, next) => {
   Event.find()
-    .then(projects => {
-      res.status(200).json(projects);
+    .then(events => {
+      res.status(200).json(events);
     })
     .catch(err => {
       res.json(err);
@@ -20,9 +20,9 @@ router.get('/:id', (req, res, next) => {
     .then(event => {
       if (!event) {
         console.log('no project');
-        res.status(404).json(project);
+        res.status(404).json(events);
       } else {
-        res.status(200).json(project);
+        res.status(200).json(events);
       }
     })
     .catch(err => {
