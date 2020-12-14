@@ -6,7 +6,7 @@ mongoose.connect(process.env.MONGODB_URI ||'mongodb://localhost/emeet', {
   useNewUrlParser: true
 });
 
-const events = [
+const event = [
   {
     title: "learning JS",
     description: "an event to learn together the basic of",
@@ -83,11 +83,9 @@ const events = [
 ]
  
 
-Event.insertMany(events).then(data => {
-
-
+Event.insertMany(event).then(data => {
   console.log("successfully inserted");
   mongoose.connection.close();
-}).catch(err => {
-  console.log(err);
+  }).catch(err => {
+    console.log(err);
 })
