@@ -16,8 +16,11 @@ export default class Events extends Component {
           <li>Event 3</li>
         </ul>
         <Link  to = "/Addevent">Create your own event! </Link>
+        <button><a href="/signup">sign up</a></button>
       </div>
     )
   }
 
 }
+       
+     

@@ -9,6 +9,12 @@ const mongoose     = require('mongoose');
 const logger       = require('morgan');
 const path         = require('path');
 
+//for authentication- - added dec11 at 11am
+const session = require('express-session')
+const passport = require('passport')
+
+require ('./configs/passport')
+//===============================================
 
 mongoose
   .connect('mongodb://localhost/emeet', {useNewUrlParser: true})
@@ -45,6 +51,21 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 
 
+//auth express session config - added dec11 at 11am
+const MongoStore = require('connect-mongo')(session);
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    store: new MongoStore({ mongooseConnection: mongoose.connection })
+  })
+);
+app.use(passport.initialize());
+app.use(passport.session());
+
+//===============================================
+
 
 // default value for title local
 app.locals.title = 'Express - Generated with IronGenerator';
@@ -59,5 +80,9 @@ app.use('/api/events', events);
 
 
 
+//auth - added dec11 at 11am
+const auth = require('./routes/auth');
+app.use('/api/auth', auth);
+//=============================================
 
 module.exports = app;
