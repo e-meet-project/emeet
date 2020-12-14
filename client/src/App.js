@@ -37,11 +37,7 @@ class App extends Component {
             <Route exact path = "/" 
               render = { props =>  
               <Homepage 
-                // username=  {this.state.user.username} 
-                // setUser={this.setUser} {...props} 
                 />}
-              // user = {this.state.user} setUser={this.setUser}
-              //component = { Homepage }
             />
 
 
@@ -71,9 +67,7 @@ class App extends Component {
                 <EventDetail
                 // user={this.state.user} 
                 {...props} 
-
                 />}
-              // component = { EventDetail }
             />
 
 

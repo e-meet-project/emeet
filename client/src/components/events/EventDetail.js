@@ -4,27 +4,53 @@ import axios from 'axios'
 export default class EventDetail extends Component {
 
   state = {
-    event: null
+    error: null,
+    event: null,
+    title: '',
+    description: '',
+    // owner: { type: Schema.Types.ObjectId, ref: 'User'},
+    image: '',
+    googleLink: '',
+    // attendees: [{ type: Schema.Types.ObjectId, ref: 'Event' }],
+    date: '',
+    startTime: "",
+    endTime: "",
+    
   };
 
   getEventDetails = () => {
-    console.log(this.props)
+    // console.log(`getEventDetails:`, this.props)
     const eventId = this.props.match.params.id
 
     axios.get(`/api/events/${eventId}`)
         .then(response => {
             const event = response.data;
-            // console.log(country);
+            console.log(`axios call:`, event)
             this.setState({
-              event: event
+              event : event,
+              title: response.data.title,
+              description: response.data.description,
+              image: response.data.image,
+              googleLink: response.data.googleLink,
+              date: response.data.date,
+              startTime: response.data.startTime,
+              endTime: response.data.endTime,
             })
           })
-          console.log(`inside getBeerDetails: ${this.state.event}`)
-      }
+          .catch(err => {
+            console.log(err.response)
+            // if (err.response.status === 404) {
+            //   this.setState({
+            //     error: 'Sorry - Project Not found 🤷‍♀️ 🤷‍♂️'
+            //   })
+            // }
+          })
+          // console.log(`inside getBeerDetails: ${this.state.event}`)
+  }
 
   componentDidMount() {
     this.getEventDetails();
-    console.log(`compDM ${this.state.beer}`)
+  //   console.log(`compDM ${this.state.beer}`)
   }
 
   componentDidUpdate(prevProps) {
@@ -37,12 +63,20 @@ export default class EventDetail extends Component {
   }
 
   render() {
-    console.log(`event details!`)
-    this.getEventDetails();
+  //   if (this.state.error) return <h1>{this.state.error}</h1>
+    if (!this.state.event) return <h1>Loading...</h1>
+    // console.log(`event details!`)
+    // this.getEventDetails();
+    console.log(this.state)
+
     return (
       <div>
       test!
-        {/* {this.props.title} */}
+      test!
+        <h1>{this.state.event.title}</h1>
+        <p>{this.state.event.description}</p>
+        <p>Start {this.state.event.startTime+'0'}  End {this.state.event.endTime+'0'}</p>
+        <p>Date: {this.state.event.date.slice(0,10)}</p>
       </div>
     )
   }
