@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import editEvent from './Editevent';
+import Editevent from './Editevent';
 
 export default class EventDetail extends Component {
 
@@ -16,6 +17,7 @@ export default class EventDetail extends Component {
     date: '',
     startTime: "",
     endTime: "",
+    maxCapacity:""
     
   };
 
@@ -36,6 +38,7 @@ export default class EventDetail extends Component {
               date: response.data.date,
               startTime: response.data.startTime,
               endTime: response.data.endTime,
+              editForm: false
             })
           })
           .catch(err => {
@@ -79,7 +82,14 @@ export default class EventDetail extends Component {
         <p>Start {this.state.event.startTime+'0'}  End {this.state.event.endTime+'0'}</p>
         <p>Date: {this.state.event.date.slice(0,10)}</p>
         <p>{this.state.event.attendees}</p>
-        <p><button><a href="/Editevent">Edit this event</a></button></p>
+        <p><button><a href="/Editevent">Show Edit Form</a></button></p>
+        {this.state.editForm && (
+          <Editevent
+            {...this.state}
+            handleChange={this.handleChange}
+            handleSubmit={this.handleSubmit}
+          />
+        )}
       </div>
     )
   }
