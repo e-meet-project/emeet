@@ -1,7 +1,7 @@
 // import logo from './logo.svg';
 import './App.css';
 import React, { Component } from 'react'
-import { Route , Switch , Redirect, BrowserRouter } from "react-router-dom"
+import { Route , Switch , Redirect } from "react-router-dom"
 
 // import Index from './components/Index';
 import Signup from './components/auth/Signup';
@@ -34,12 +34,6 @@ class App extends Component {
 
           <Switch>
 
-          {/* <Route exact path = "/" component = { Index } /> */}
-          {/* <Route exact path = "/signup" component = { Signup } /> */}
-          {/* <Route exact path = "/login" component = { Login } /> */}
-          {/* <Route exact path = "/events" component = { Events } />
-          <Route exact path = "/profile" component = { UserProfile } />
-          */}
             <Route exact path = "/" 
               render = { props =>  
               <Homepage 
@@ -62,8 +56,8 @@ class App extends Component {
 
             <Route exact path = "/profile" 
               render={props => {
-                  if (this.state.user) return <UserProfile {...props}/>
-                  else return <Redirect to='/' /> 
+                  if (this.state.user) return <UserProfile {...props} user={this.state.user}/>
+                  else return <Redirect to='/UserProfile' /> 
                   // component = { UserProfile } /> // replaced by render
                   }}
             />
