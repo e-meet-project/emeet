@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-// import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import axios from 'axios'
+import EventDetail from './EventDetail'
 
 
 
@@ -31,6 +32,10 @@ export default class Events extends Component {
                 <p>
                     {event.title}
                 </p>
+                <Link to = {event._id}  > See More Information </Link>
+                
+            {/* <EventDetail / */}
+            {/* <Link to exact path = "/event/:id" component = { EventDetail } */}
             </div>
           )
       

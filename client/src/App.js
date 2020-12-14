@@ -10,6 +10,7 @@ import Navbar from './components/navbar/Navbar';
 import Events from './components/events/Events';
 import UserProfile from './components/user/UserProfile';
 import Homepage from './components/Homepage';
+import EventDetail from './components/events/EventDetail';
 
 class App extends Component {
 
@@ -65,6 +66,17 @@ class App extends Component {
                   }}
             />
 
+            <Route exact path = "/events/:id" 
+              render = { props => 
+                <EventDetail
+                // user={this.state.user} 
+                {...props} 
+
+                />}
+              // component = { EventDetail }
+            />
+
+
           </Switch>
 
       </div>
@@ -76,6 +88,13 @@ class App extends Component {
 export default App;
 
 
+
+        // <Route?
+        //   exact
+        //   path='/projects/:id'
+        //   render={ props => 
+        //     <ProjectDetails user={this.state.user} {...props} />}
+        // />
 
 // <Route exact path = "/beers" component = { Beers } />
 // <Route exact path = "/beers/:id" component = { BeerDetail } />
