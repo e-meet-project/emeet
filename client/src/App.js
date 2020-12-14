@@ -60,7 +60,7 @@ class App extends Component {
             <Route exact path = "/profile" 
               render={props => {
                   if (this.state.user) return <UserProfile {...props} user={this.state.user}/>
-                  else return <Redirect to='/' /> 
+                  else return <Redirect to='/UserProfile' /> 
                   // component = { UserProfile } /> // replaced by render
                   }}
             />

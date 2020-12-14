@@ -9,16 +9,16 @@ import axios from 'axios';
 export default class UserProfile extends Component {
 
   state = {
-    user: this.props.user
+    user: null
   };
 
 
   getUserDetails = () => {
     console.log(this.props)
   
-    const id = this.props.match.params.id;
-      axios.get(`/api/user/${id}`)
+      axios.get(`/api/user/${this.props.user._id}`)
         .then(response => {
+          console.log(response)
           this.setState({
           user: response.data
         })
@@ -31,14 +31,14 @@ export default class UserProfile extends Component {
     console.log(`this is the compDM ${this.state.user}`)
   }
 
-  componentDidUpdate(prevProps) {
-    console.log('current props:', this.props.match.params.id)
-    console.log('previous props:', prevProps.match.params.id)
-    if (prevProps.match.params.id !== this.props.match.params.id) {
-      this.getUserDetails();
-      console.log(`compDU ${this.state.user}`)
-    }
-  }
+  // componentDidUpdate(prevProps) {
+  //   console.log('current props:', this.props.match.params.id)
+  //   console.log('previous props:', prevProps.match.params.id)
+  //   if (prevProps.match.params.id !== this.props.match.params.id) {
+  //     this.getUserDetails();
+  //     console.log(`compDU ${this.state.user}`)
+  //   }
+  // }
 
 
   render() {
@@ -46,13 +46,27 @@ export default class UserProfile extends Component {
     console.log(`this is the render declared user = ${user} `)
   
 
-    // if (!user) return <> Loading... </>;
+    if (!user) return <> Loading... </>;
 
     return (
         <>
           <div className="profile-container-top">
             
-            <div >
+            <div>
+            {this.state.user.eventsAttended.map ((eventAttended, index) => {
+
+              return ( 
+                  <div key= {eventAttended._id}>
+                    <p>
+                      {/* {eventAttended.title} */}
+                    </p>
+                  </div>
+                )
+                }
+            )
+            } 
+
+
               <h1 className="profile-name">{this.state.user.username}</h1>
               <p className="aboutMe"> here is a small description about me</p>
             </div>
@@ -80,20 +94,40 @@ export default class UserProfile extends Component {
 
           <div className="profile-myEventList">
 								
-              {/* <div className="event-list-small">
+          {this.state.user.eventsAttended.map ((eventAttended, index) => {
+
+            return ( 
+                <div key= {eventAttended._id}>
+                 
+                <div className="event-list-small">
                 
                   <div className="event-info">
-                    <a className="" title="event._id" href="/"><img src="{event._id.image}" alt="image2"></img></a>
+                    <img src="{eventAttended.image}" alt="image2"></img>
+                    
                   </div>
-                  <div className="event-description margin-bottom">
+                  <div className="event-description">
                     <h4 className="event-title">
-                      <a className="link-to-event" href="{event._id}"> show me</a>
+                      <a className="link-to-event" href="{event._id}">{eventAttended.title}</a>
                     </h4>
-                      <h4 className="date-time">show me the date & time</h4>
+                    <h4 className="description">{eventAttended.description}</h4>
+                      <h4 className="date-time">{eventAttended.date}</h4>
                   </div>
-              </div> */}
+              </div>
+                </div>
+              )
+              }
+            )
+            }
+
+
+
+
+
+
+
+
             
-              <div className="event-list-small" >
+              {/* <div className="event-list-small" >
                 
                 <div className="event-info">
                   <a className="" title="event._id" href="/"><img src="" alt="image2"></img></a>
@@ -105,8 +139,9 @@ export default class UserProfile extends Component {
                   </h4>
                     <h4 className="date-time">show the date and time of event</h4>
                 </div>
-            </div>
+            </div> */}
 
+{/* 
             <div className="event-list-small" >
                 
                   <div className="event-info">
@@ -148,7 +183,7 @@ export default class UserProfile extends Component {
                 </div>
               </div>
             
-  
+   */}
           </div>
 
 
