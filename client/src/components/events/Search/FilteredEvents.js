@@ -2,55 +2,98 @@ import React, { Component } from 'react'
 import EventList from './EventList';
 import EventRow from './EventRow';
 import Searchbar from './Searchbar';
+import axios from 'axios'
 
 export default class FilteredEvents extends Component {
    
   state = {
     upcomingEvents: this.props.events,
-    filteredEvents: this.props.events, //tbd
+    filteredEvents: [], //tbd
     search: '',
+    x:false
   }
-  
-  // setSearch = search => {
-  //   // console.log('did it change?')
-  //   this.setState ( {
-  //       search: search
+
+  // componentDidMount() {
+  //   axios.get('/api/events') 
+  //     .then( response => {
+  //       const event = response.data;
+  //       console.log( `api call`, response)
+  //       this.setState({
+  //         upcomingEvents: event
+  //         // events : event,
+  //         // title: response.data.title,
+  //         // description: response.data.description,
+  //         // image: response.data.image,
+  //       })
+  //     })
+  // }
+
+  // componentDidMount() {
+  //   this.setState({
+  //     x:true
   //   })
   // }
 
+//if props is filtered, then events display based off search results 
   filterEvents = event => {
-    this.setState ({ search:event.target.value}, () => {
-      const filtered = this.state.upcomingEvents.filter ( p => 
+    this.setState ( { search:event.target.value}, () => {
+
+      const filtered = this.props.events.filter ( p => 
         p.description.toLowerCase().includes(this.state.search.toLowerCase() ) 
         || p.title.toLowerCase().includes(this.state.search.toLowerCase() ) 
         //check data? 
       );
+
       this.setState({
         filteredEvents: filtered
-      })
+      })  
     })
-    // console.log(`events from FE`, this.state.upcomingEvents)
   }
-  
-  render() {
-    return (
-      <div>
-        <h2>FilteredEvents</h2>
-        <p>text text text</p>
-        <div>
-          <Searchbar 
-            filter = {this.filterEvents}
-            search = {this.state.search}
-          />
-        </div>
 
-        <p>
-          <EventList 
-            eventList = {this.state.filteredEvents}
-          />
-        </p>
-      </div>
-    )
+
+  render() {
+    console.log(`props`, this.props)
+    console.log(`at render`, this.state.upcomingEvents)
+    const events = this.state.upcomingEvents
+
+    if ( this.state.search === '' )  {
+      console.log (`does it work?`) 
+      return (
+          <> 
+           <div>
+              <Searchbar 
+                filter = {this.filterEvents}
+                search = {this.state.search}
+              />
+            </div>
+            <p>
+              <EventList 
+                eventList = {this.props.events} 
+              />
+          </p>
+          </>
+      )
+      } else {
+
+        return (
+          <div>
+            <h2>FilteredEvents</h2>
+            <p>text text text THIS NOW F </p>
+            <div>
+              <Searchbar 
+                filter = {this.filterEvents}
+                search = {this.state.search}
+              />
+            </div>
+
+            <p>
+              <EventList 
+                eventList = {this.state.filteredEvents} 
+              />
+            </p>
+          </div>
+        )
+    } //else statements 
   }
 }
 
