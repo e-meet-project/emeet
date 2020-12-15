@@ -9,6 +9,7 @@ export default class Addevent extends Component {
     date:'',
     startTime: '',
     endTime: '',
+    maxCapacity:'',
     // attendees: '',
     // owner: '',
     description: '',
@@ -100,12 +101,12 @@ export default class Addevent extends Component {
                 value={this.state.endTime}
                 onChange={this.handleChange}/>
                 <br/>
-                <label htmlFor="attendees"> Maximum capacity: </label>
+                <label htmlFor="maxCapacity"> Maximum capacity: </label>
                 <input 
                 type="number"
-                name="attendees" 
-                id="attendees"
-                value={this.state.attendees}
+                name="maxCapacity" 
+                id="maxCapacity"
+                value={this.state.maxCapacity}
                 onChange={this.handleChange}/>
                 <br/>
                 {/* <label htmlFor="owner">Hosted by:  </label>
@@ -125,11 +126,11 @@ export default class Addevent extends Component {
                 onChange={this.handleChange}
                  />
                 <br/>
-                <label htmlFor="googlelink">Add Google link: </label>
+                <label htmlFor="googleLink">Add Google link: </label>
                 <input 
                 type="link"
-                name="googlelink"
-                id="googlelink"
+                name="googleLink"
+                id="googleLink"
                 value={this.state.googleLink}
                 onChange={this.handleChange} />
                 <br/>

@@ -11,6 +11,7 @@ import Events from './components/events/Events';
 import UserProfile from './components/user/UserProfile';
 import Homepage from './components/Homepage';
 import EventDetail from './components/events/EventDetail';
+import Editevent from './components/events/Editevent';
 
 class App extends Component {
 
@@ -35,6 +36,15 @@ class App extends Component {
 
           <Switch>
 
+          <Route exact path = "/" component = {Homepage } />
+          {/* <Route exact path = "/signup" component = { Signup } /> */}
+          <Route exact path = "/login" component = { Login } />
+          {/* <Route exact path = "/events" component = { Events } /> */}
+          {/* <Route exact path = "/profile" component = { UserProfile } /> */}
+          <Route exact path = "/editevent" component = { Editevent }/>
+          {/* <Route exact path = "/Addevent" component = {Addevent} /> */}
+         
+          
             <Route exact path = "/" 
               render= { props => {
                   if (this.state.user) {
@@ -62,8 +72,13 @@ class App extends Component {
                 // component = { Login } /> //replaced by render
                 // render={props => <Login setUser={this.setUser} {...props} />}
             />
+            <Route exact path = "/events" 
+              render={(props) => 
+              <Events setUser={this.setUser} {...props}/>}
+                // component = { Login } /> //replaced by render
+            />
             
-            <Route exact path = "/events" component = { Events } />
+            {/* <Route exact path = "/events" component = { Events } /> */}
 
             <Route exact path = "/profile" 
               render= { props => {
@@ -124,3 +139,4 @@ export default App;
             //       return <Homepage /> 
             //       }
             //   }
+  
