@@ -168,7 +168,7 @@ export default class EventDetail extends Component {
 
   render() {
     console.log( `render` , this.state.attending)
-    console.log( `user?`, this.props.user._id)
+    // console.log( `user?`, this.props.user._id)
   //   if (this.state.error) return <h1>{this.state.error}</h1>
      if (this.state.error) return <h1>{this.state.error}</h1>
     if (!this.state.event) return <h1>Loading...</h1>

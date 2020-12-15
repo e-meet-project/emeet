@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import axios from "axios";
+import { userProfileData } from '../../services/userProfile';
 
 
-
+// userProfileData
 export default class Addevent extends Component {
   state = {
     title: '',
@@ -15,6 +16,7 @@ export default class Addevent extends Component {
     description: '',
     image:'',
     googleLink:'',
+    message: ''
   }
 
   handleChange = (event) => {
@@ -30,11 +32,24 @@ export default class Addevent extends Component {
   
   handleSubmit = (event) => {
     event.preventDefault ();
-   
       
     const { title, date, startTime,endTime, description, image, googleLink} = this.state;
+    
     console.log(this.state)
   
+    // userProfileData(event).then (data => {
+    //   if (data.message) {
+    //     this.setState({
+    //       message: data.message,
+    //     })
+    //   }
+    // });
+
+    if (title.length <5 ) {
+        this.setState ({ 
+        message: 'Please enter a longer title'
+      })
+    }
   
     axios.post("/api/events", {    
       title:title,
@@ -44,18 +59,26 @@ export default class Addevent extends Component {
       owner: this.props.user._id,
       description: description,
       image:image,
-      googleLink: googleLink,}).then((event)=> {
-      console.log(event.data , "fetch event")
-    }).catch(err => {
-      console.log(err);
-    })
+      googleLink: googleLink,}).then( (event) => {
+        console.log(event.data , "fetch event")
+        this.setState({
+          message:`Event created!`
+        })
+      }).catch( err => {
+        console.log(err);
+     })
 
     // this.props.history.push(`/events/${this.props.events._id}`);
       
     
-  }
+  
+  }//handleSubmit end
 
-
+  // userProfileData (something).then (data => {
+  //   if (data.message) {
+  //     this.setState({
+  //       message: data.message,
+  //     });
   
  
   
@@ -64,34 +87,47 @@ export default class Addevent extends Component {
 
   render() {
     console.log(this.props)
+    console.log(`message`, this.state.message)
     return (
        <div>
+            
+            <p className="error">
+              Message: {this.state.message}
+            </p>
+
           <div> 
             <form onSubmit={this.handleSubmit}>
                 <label htmlFor="title"> Event title: </label>
                 <input 
-                type="text" 
-                name="title" 
-                id="title" 
-                
-                value={this.state.title} 
-                onChange={this.handleChange}/>
+                  type="text" 
+                  name="title" 
+                  id="title" 
+                  
+                  value={this.state.title} 
+                  onChange={this.handleChange}/>
+
                 <br/>
+
                 <label htmlFor="date">Event date:</label>
-                <input 
-                type="date" 
-                name="date" 
-                id="date" 
-                value={this.state.date}
-                onChange={this.handleChange}/>
+                  <input 
+                      type="date" 
+                      name="date" 
+                      id="date" 
+                      value={this.state.date}
+                      onChange={this.handleChange}
+                        
+                    />
                 <br/>
+
                 <label htmlFor="startTime "> Start time: </label>
-                <input 
-                type= "time" 
-                name="startTime" 
-                id="startTime" 
-                value={this.state.startTime}  
-                onChange={this.handleChange}/>
+                  <input 
+                    type= "time" 
+                    name="startTime" 
+                    id="startTime" 
+                    value={this.state.startTime}  
+                    onChange={this.handleChange}
+
+                  />
                 <br/>
                 <label htmlFor="endTime" > End time: </label>
                 <input 
@@ -143,13 +179,14 @@ export default class Addevent extends Component {
                 <button type='submit'> Add your event! </button>
               
             </form>
-            </div>
-        </div>
+          </div>
+      </div>
     );
   }
 }
     
   
+
 
 
 

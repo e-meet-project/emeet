@@ -12,6 +12,7 @@ export default class EventList extends Component {
                     idKey = {event.idKey}
                     description = {event.description}
                     id = {event._id}
+                    date = {event.date}
                 />
               )
           })

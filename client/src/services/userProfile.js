@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const userProfileData = (event ) => {
   return axios
-    .get('/api/user', { event})
+    .get('/api/user', { event } )
     .then(response => {
       return response.data;
     })
@@ -12,6 +12,6 @@ const userProfileData = (event ) => {
     });
 };
 
-// export { userProfileData };
+export { userProfileData };
 
 //on the component - import { userProfileData } from '../../services/userProfile'
