@@ -12,7 +12,8 @@ export default class UserProfile extends Component {
   state = {
     user: null,
     // username: this.props.user.username,
-    events: this.props.user.eventsAttended
+    events: this.props.user.eventsAttended,
+    eventDetailsfromDB: ''
   };
 
 
@@ -44,11 +45,26 @@ export default class UserProfile extends Component {
   // }
 
 
+
+  componentDidMount() {
+    console.log('hello')
+    axios.get('/api/events') 
+      .then( response => {
+        console.log( `api DB`, response)
+        this.setState({
+          eventDetailsfromDB: response.data
+        })
+      })
+  }
+  // above = filter events looking for id in attendees
+
   render() {
     const user = this.props.user;
     // console.log(`this is the render declared user = ${user} `)
-    console.log(`userProfile props user`, user)
-    console.log(`userevents`, this.state.events)
+    // console.log(`userProfile props user`, user)
+    // console.log(`userevents`, this.state.events)
+    // console.log(`eventattended`, user.eventsAttended)
+    console.log(`eventsDB`, this.state.eventDetailsfromDB)
   
 
     // if (!user) {
@@ -64,16 +80,38 @@ export default class UserProfile extends Component {
           <h1>Past History Test</h1>
           <h2>Hello {user.username}</h2>
 
+          <div>
+            {/* const events = await Event
+            find() */}
+          </div>
+          <div>
+            <h3>version 2- searching for id in event collection</h3>
+            
+            {this.state.eventDetailsfromDB.map (event => {
+              return (
+                <div key = {user._id}>
+                  
+                  <p>
+                    {event.title}
+                  </p>
+
+                </div>
+              )
+            })}
+          </div>
+          
           <p> 
           Events:
-            {user.eventsAttended.map( event => {
+            {this.state.events.map( event => {
               return (
-                <EventRow 
-                  title = {this.state.events.title}
-                  idKey = {event.idKey}
-                  description = {event.description}
-                  id = {event._id}
-                />
+
+                <div key = {event._id}>
+                  <p>
+                  events!!
+                    {event}
+                  </p>
+
+                </div>
               )
             })}
             {/* End */}

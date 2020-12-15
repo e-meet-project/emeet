@@ -81,7 +81,7 @@ class App extends Component {
             <Route exact path = "/events/:id" 
               render = { props => 
                 <EventDetail
-                // user={this.state.user} 
+                user = {this.state.user} 
                 {...props} 
                 />}
             />

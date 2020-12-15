@@ -16,3 +16,4 @@
 // export { userProfileData };
 
 //on the component - import { userProfileData } from '../../services/userProfile' 
+
