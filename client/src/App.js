@@ -36,13 +36,7 @@ class App extends Component {
 
           <Switch>
 
-          <Route exact path = "/" component = {Homepage } />
-          {/* <Route exact path = "/signup" component = { Signup } /> */}
-          <Route exact path = "/login" component = { Login } />
-          {/* <Route exact path = "/events" component = { Events } /> */}
-          {/* <Route exact path = "/profile" component = { UserProfile } /> */}
           <Route exact path = "/editevent" component = { Editevent }/>
-          {/* <Route exact path = "/Addevent" component = {Addevent} /> */}
          
           
             <Route exact path = "/" 
@@ -59,7 +53,7 @@ class App extends Component {
                   // component = { UserProfile } /> // replaced by render
                   }}
             />
-
+            
 
 
             <Route exact path = "/signup" 
