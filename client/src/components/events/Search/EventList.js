@@ -3,26 +3,12 @@ import EventRow from './EventRow'
 
 export default class EventList extends Component {
   
-  displayRows = () => {
-    return (
-        this.props.eventList.map(event => {
-            return (
-                <EventRow 
-                    title = {event.title}
-                    idKey = {event.idKey}
-                    description = {event.description}
-                    id = {event._id}
-                />
-              )
-          })
-      )
-  }
-
   render() {
     return (
-      <div>
-        {/* its the list! more list! */}
-        { this.displayRows() }
+      <div className="container">
+        <div className="row">
+          {this.props.eventList.map(event => <EventRow key={event._id} event={event} />)}
+        </div>
       </div>
     )
   }

@@ -7,16 +7,17 @@ router.get('/:id', (req, res, next) => {
   
     User.findById(req.params.id)
     .populate('eventsAttended')
+    .populate('eventsCreated')
       .then( user => {
         if ( !user ) {
-          console.log('no project');
-          res.status(404).json(user);
+          console.log('no user');
+          return res.status(404);
         } else {
-          res.status(200).json(user);
+          return res.status(200).json(user);
         }
       })
       .catch(err => {
-        res.json(err);
+        return res.status(500).json(err);
       })
   });
 

@@ -3,19 +3,16 @@ import {Link} from 'react-router-dom'
 
 export default class EventRow extends Component {
   render() {
-    // console.log(this.props.)
+    console.log(this.props);
+    const {event} = this.props;
     return (
-      <div>
-      this is a row!
-        <p key= {this.props.idKey} >
-               <h3>
-                 Event Title : {this.props.title}
-               </h3>
-               <b>What it's about :</b> {this.props.description}
-                {/* {this.props.category} */}
-                <Link to = {`/events/${this.props.id}`}  > See More Information </Link>
-                
-        </p>
+      <div className="card col-md-4 col-sm-3">
+        {event.image && <img src={event.image} className="card-img-top" alt={event.title}/>}
+        <div className="card-body">
+          <h5 className="card-title">{event.title}</h5>
+          <p className="card-text">{event.description}</p>
+          <Link to={`/events/${this.props.id}`} className="btn btn-primary">More Information</Link>
+        </div>
       </div>
     )
   }
