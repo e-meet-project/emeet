@@ -11,8 +11,6 @@ export default class UserProfile extends Component {
 
   state = {
     user: this.state,
-
-    
   };
 
 
@@ -23,7 +21,7 @@ export default class UserProfile extends Component {
         .then(response => {
           console.log(response)
           this.setState({
-          user: response.data
+            user: response.data
         })
       })
       // console.log(`inside getUserDetails: ${this.state.user}`)
@@ -72,10 +70,10 @@ export default class UserProfile extends Component {
   //   }
   
 
-      componentDidMount() {
-        this.getUserDetails();
-        console.log(`this is the compDM ${this.state.user}`)
-      }
+  componentDidMount() {
+    this.getUserDetails();
+    console.log(`this is the compDM ${this.state.user}`)
+  }
 
 
   render() {
@@ -89,20 +87,17 @@ export default class UserProfile extends Component {
         <>
           <div className="profile-container-top">
             
-         
-
-
               <h1 className="profile-name" >{this.state.user.username}</h1>
               <p className="aboutMe">{this.state.user.aboutMe}</p>
-              <img className="ProfilePhoto" alt="" 
-              style={{maxWidth:" 120px", borderRadius: "50%"}} 
-                  src={this.state.user.profileImage}></img>
-            
-		
-	        </div>
+              <img className="ProfilePhoto"
+                alt="" 
+                style=  {{maxWidth:" 120px", borderRadius: "50%"} } 
+                src={this.state.user.profileImage}> 
+              </img>
+	        </div> 
 
 
-            <button className="btn-add-your-event" 
+          <button className="btn-add-your-event" 
           // style={{backgroundColor: "#99e1d9", width: "80vw", marginLeft: "5vw", padding: "5px 10px"}}
           >
            <a href="/Addevent">Add your own event</a></button>
@@ -127,28 +122,31 @@ export default class UserProfile extends Component {
 
             </div>
 
-          {this.state.user.eventsAttended.map ((eventAttended, index) => {
+          {this.state.user.eventsAttended.map ( (eventAttended, index) => {
             return ( 
                 <div key= {eventAttended._id}>
                 
                 <div className="event-list-small">
                 
-                  <div className="event-description">
-                    <h4 className="event-title">
-                      <a className="link-to-event" href={`/events/${eventAttended._id}`}>{eventAttended.title}</a>
-                    </h4>
-                      <div className="event-info">
-                        <img src={eventAttended.image} alt="image2"></img>
-                      </div>
-                    <h4 className="description">{eventAttended.description}</h4>
+                    <div className="event-description">
+                      <h4 className="event-title">
+                      <a className="link-to-event" href={`/events/${eventAttended._id}`}>
+                        {eventAttended.title}
+                      </a>
+                      </h4> 
+
+                        <div className="event-info">
+                          <img src={eventAttended.image} alt="image2"></img>
+                        </div>
+
+                      <h4 className="description">{eventAttended.description}</h4>
                       <h4 className="date-time">{eventAttended.date.slice(0, 10)}</h4>
+                    </div>
                   </div>
-              </div>
                 </div>
               )
-              }
-            )
-            }
+          })} 
+
 
       
              
@@ -156,58 +154,16 @@ export default class UserProfile extends Component {
           
           <div className="profile-myEventList">
 								
-
-
-              
           </div>
 
+        </> // component main "div" ends
+    ) //return ends 
+  } //render ends
+  
+} //class ends
 
 
-
-
-
-
-        </>
-}
-
-state = {
-  user: null,
-  // username: this.props.user.username,
-  events: this.props.user.eventsAttended,
-  eventDetailsfromDB: ''
-};
-
-
-// getUserDetails = () => {
-//   console.log(this.props)
-
-//     axios.get(`/api/user/${this.props.user._id}`)
-//       .then(response => {
-//         console.log(`axios get`, response)
-//         this.setState({
-//         user: response.data
-//       })
-//     })
-//     console.log(`inside getUserDetails: ${this.state.user}`)
-// }
-
-// componentDidMount() {
-//   this.getUserDetails();
-//   console.log(`this is the compDM ${this.state.user}`)
-// }
-
-// componentDidUpdate(prevProps) {
-//   console.log('current props:', this.props.match.params.id)
-//   console.log('previous props:', prevProps.match.params.id)
-//   if (prevProps.match.params.id !== this.props.match.params.id) {
-//     this.getUserDetails();
-//     console.log(`compDU ${this.state.user}`)
-//   }
-// }
-
-
-
-//alternative user profile =======================================================================
+// alternative user profile =======================================================================
 
 // import React, { Component } from 'react';
 // import './UserProfile.css';
