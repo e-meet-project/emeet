@@ -1,0 +1,40 @@
+/* homepage.js */
+.homepage {
+  margin: 2vw;
+  /* background: #99E1D9; */
+  border: 2px black solid;
+  color: ##18191a;
+}
+
+.searchFullContainer {
+  border: 1px solid green;
+  background: #99E1D9;
+}
+
+/* FilteredEvents.js */
+.searchBar {
+  /* backgrounrgb(0, 0, 0)een; */
+  height: 20vh;
+}
+
+.searchResults {
+  border: 2px solid red;
+  background: purple;
+}
+
+/* Searchbar.js */
+.searchbar {
+  display: flex;
+  flex-direction: row;
+  /* justify-content: center; */
+  width: 100%;
+  /* background: blue; */
+  height: 50%;
+}
+
+.searchbar input {
+  margin: 1vw;
+  height: 30px;
+  width: 92vw;
+}
+

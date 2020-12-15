@@ -11,6 +11,7 @@ export default class EventList extends Component {
                     title = {event.title}
                     idKey = {event.idKey}
                     description = {event.description}
+                    id = {event._id}
                 />
               )
           })
@@ -20,7 +21,7 @@ export default class EventList extends Component {
   render() {
     return (
       <div>
-        its the list! more list!
+        {/* its the list! more list! */}
         { this.displayRows() }
       </div>
     )

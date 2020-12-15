@@ -6,6 +6,7 @@ import Searchbar from './events/Search/Searchbar'
 // import Navbar from './navbar/Navbar'
 // import App from '../App'; 
 import axios from 'axios'
+import '../components/events/Search/search.css'
 
 
 export default class Homepage extends React.Component {
@@ -27,6 +28,7 @@ export default class Homepage extends React.Component {
         console.log( `api call`, response)
         this.setState({
           events : event,
+          //below is from an outdated version of search, can be ignored
           title: response.data.title,
           description: response.data.description,
           image: response.data.image,
@@ -35,61 +37,54 @@ export default class Homepage extends React.Component {
   }
 
   render() {
-//working, but removed for simplification of search
-    // const user = this.state.user;
-    // console.log(`this is the render declared user = ${user} `)
+// working, but removed for simplification of search
+    const user = this.state.user;
+    console.log(`this is the render declared user = ${user} `)
   
 
-    // if (!user) return ( 
-    //   <> 
-    //     index, now called homepage!
-    //     <p>
-    //       Welcome!
-    //     </p>
-
-    //     <p>
-    //       <a href="/events">See all events</a>
-    //     </p>
-    //     <p>
-    //     {/* <p>
-    //       <Searchbar />
-    //     </p> */}
-    //     {/* <Events /> */}
-    //     <p>
-    //         These events:
-    //         {this.state.events.map ( (event, index) => {
-    //         return ( 
-    //           <div key= {event._id}>
-    //               <p>
-    //                   {event.title}
-    //               </p>
-    //               <Link to = {`/events/${event._id}`}  > See More Information </Link>
-                  
-    //           </div>
-    //           )})}
-    //     </p>
-
-    //       {/* <button><a href="/signup"> Signup</a></button> <button><a href="/login"> Login</a></button> */}
-    //     </p>
-         
-    //   </>
-    // )
-
-   
-    return (
-      <div>
+    if (!user) return ( 
+      <div class="homepage"> 
         index, now called homepage!
         <p>
-          {/* Welcome {this.state.user.username} ! */}
+          Welcome!
         </p>
-        
-        <div>
+
+        <p>
+          <a href="/events">See all events</a>
+        </p>
+        <p>
+
+        <div class="searchFullContainer">
           <h1>search implementation</h1>
           <p>
             <FilteredEvents
               events = {this.state.events}
             />
           </p>
+        </div>
+
+          {/* <button><a href="/signup"> Signup</a></button> <button><a href="/login"> Login</a></button> */}
+        </p>
+         
+      </div>
+    )
+
+   
+    return (
+      <div class="homepage"> 
+        index, now called homepage!
+        <p>
+          Welcome {this.state.user.username} !
+        </p>
+        
+        <div class="searchFullContainer">
+          <h1>search implementation</h1>
+          <div class="searchResults">
+
+            <FilteredEvents
+              events = {this.state.events}
+            />
+          </div>
         </div>
 
 

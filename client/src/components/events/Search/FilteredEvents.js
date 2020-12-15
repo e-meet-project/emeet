@@ -3,6 +3,7 @@ import EventList from './EventList';
 import EventRow from './EventRow';
 import Searchbar from './Searchbar';
 import axios from 'axios'
+import '../../events/Search/search.css'
 
 export default class FilteredEvents extends Component {
    
@@ -10,29 +11,7 @@ export default class FilteredEvents extends Component {
     upcomingEvents: this.props.events,
     filteredEvents: [], //tbd
     search: '',
-    x:false
   }
-
-  // componentDidMount() {
-  //   axios.get('/api/events') 
-  //     .then( response => {
-  //       const event = response.data;
-  //       console.log( `api call`, response)
-  //       this.setState({
-  //         upcomingEvents: event
-  //         // events : event,
-  //         // title: response.data.title,
-  //         // description: response.data.description,
-  //         // image: response.data.image,
-  //       })
-  //     })
-  // }
-
-  // componentDidMount() {
-  //   this.setState({
-  //     x:true
-  //   })
-  // }
 
 //if props is filtered, then events display based off search results 
   filterEvents = event => {
@@ -52,39 +31,45 @@ export default class FilteredEvents extends Component {
 
 
   render() {
-    console.log(`props`, this.props)
-    console.log(`at render`, this.state.upcomingEvents)
-    const events = this.state.upcomingEvents
+    // console.log(`props`, this.props)
+    // console.log(`at render`, this.state.upcomingEvents)
+    // const events = this.state.upcomingEvents
 
     if ( this.state.search === '' )  {
-      console.log (`does it work?`) 
+      // console.log (`does it work?`) 
       return (
           <> 
-           <div>
+           <div class="searchBar">
               <Searchbar 
                 filter = {this.filterEvents}
                 search = {this.state.search}
               />
             </div>
-            <p>
-              <EventList 
-                eventList = {this.props.events} 
-              />
-          </p>
+            <div class="searchResults">
+              <p>
+                <EventList 
+                  eventList = {this.props.events} 
+                />
+            </p>
+            </div>
           </>
       )
       } else {
 
         return (
           <div>
-            <h2>FilteredEvents</h2>
-            <p>text text text THIS NOW F </p>
-            <div>
+          
+            <div class="searchBar">
               <Searchbar 
                 filter = {this.filterEvents}
                 search = {this.state.search}
               />
             </div>
+
+            {/* <div>
+              <h2>FilteredEvents</h2>
+              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugiat, culpa debitis officiis dignissimos commodi assumenda exercitationem totam! Accusamus repellat sed animi, deserunt veniam est cum, voluptas sint ex a dolorem.</p>
+            </div> */}
 
             <p>
               <EventList 
@@ -96,99 +81,3 @@ export default class FilteredEvents extends Component {
     } //else statements 
   }
 }
-
-
-// import React, { Component } from 'react'
-// import { events } from '../../../../models/User'
-// import EventDetail from '../EventDetail'
-// import Events from '../Events'
-// import Searchbar from './Searchbar'
-// import {Link} from 'react-router-dom'
-
-// export default class FilteredEvents extends Component {
-
-//   state = {
-//     upcomingEvents: this.props.events,
-//     filteredEvents: this.props.events, //tbd
-//     search: '',
-//   }
-
-//   // setSearch = search => {
-//   //   // console.log('did it change?')
-//   //   this.setState ( {
-//   //       search: search
-//   //   })
-//   // }
-
-// //   filterProducts = event => {
-// //     this.setState({ 
-// //         search: event.target.value}, () => {
-// //           const filtered = this.state.upcomingEvents.filter(p => 
-// //               p.name.toLowerCase().includes( this.state.search.toLowerCase() ) 
-// //               );
-              
-// //               this.setState({
-// //                 filteredEvents: filtered
-// //                 }, 
-// //               console.log(this.state.upcomingEvents) 
-// //               )
-// //         }
-// //     })
-// // }
-// filterEvents = event => {
-//   this.setState ({ search:event.target.value}, () => {
-//     const filtered = this.state.upcomingEvents.filter ( p => 
-//       p.name.toLowerCase().includes(this.state.search.toLowerCase() )
-//     );
-//     this.setState({
-//       filteredEvents: filtered
-//     })
-//     // console.log(this.state.upcomingEvents)
-//   })
-// }
-
-
-//   render() {
-//     // console.log(this.props)
-//     console.log(`fEvents`, this.props)
-//     return (
-//       <div>
-//       {/* from fitleredEvents.js!:
-//         <Searchbar
-//         filter={this.filterProducts} //search's OnChange
-//         search= {this.state.search} //search value
-//         /> */}
-
-//         events!
-//         {/* <EventDetail /> */}
-//         <Events/>
-//         <Events />
-//           <div>
-//           {this.props.events.map ( (event, index) => {
-//             return (
-//                <div key= {event._id}>
-//                   <p>
-//                       {event.title}
-//                   </p>
-//                   <Link to = {`/events/${event._id}`}  > See More Information </Link>
-//                 </div>
-//             )
-//           })}
-
-//       </div>
-//       </div>
-//     )
-//   }
-// }
-
-
-            /* {this.props.events.map ( (event, index) => {
-            return ( 
-              <div key= {event._id}>
-                  <p>
-                      {event.title}
-                  </p>
-                  <Link to = {`/events/${event._id}`}  > See More Information </Link>
-              </div>
-          </div> 
-              ) } ) */

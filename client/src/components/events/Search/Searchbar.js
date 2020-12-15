@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
+import '../../events/Search/search.css'
 
 export default class Searchbar extends Component {
   render() {
     return (
-      <div>
+      <div class="searchbar">
         <label htmlFor="search">
         <input 
             type ="text" 
