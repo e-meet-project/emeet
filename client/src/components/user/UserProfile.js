@@ -28,10 +28,10 @@ export default class UserProfile extends Component {
 
   componentDidMount() {
     this.getUserDetails();
-    console.log(`compDM user state: ${this.state.user}`)
+    console.log(`this is the compDM ${this.state.user}`)
   }
- 
-  // // componentDidUpdate(prevProps) {
+
+  // componentDidUpdate(prevProps) {
   //   console.log('current props:', this.props.match.params.id)
   //   console.log('previous props:', prevProps.match.params.id)
   //   if (prevProps.match.params.id !== this.props.match.params.id) {
@@ -135,7 +135,6 @@ export default class UserProfile extends Component {
                 <div className="event-description margin-bottom">
                   <h4 className="event-title">
                     <a className="link-to-event" href="/"> </a>
-
                   </h4>
                     <h4 className="date-time">show the date and time of event</h4>
                 </div>
@@ -154,7 +153,6 @@ export default class UserProfile extends Component {
                       <h4 className="date-time">show the date and time of event</h4>
                   </div>
               </div>
-
               <div className="event-list-small" >
                 
                   <div className="event-info">
@@ -179,7 +177,6 @@ export default class UserProfile extends Component {
                        Ironhack Berlin</a>
                   </h4>
                   <h4 className="date-time">show the date and time of event</h4>
-
                 </div>
               </div>
             
