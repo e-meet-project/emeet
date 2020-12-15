@@ -109,48 +109,49 @@ export default class UserProfile extends Component {
 
 
 
-          <nav className="nav-events">Events</nav>          
+          <nav className="nav-events">Events</nav>    
+
+          <div className="navbar-eventsLInks">
+
+            <ul>
+            <ul>past events</ul>
+            <ul>upcoming</ul>
+            <ul>Events you own</ul>
             
-              <div className="navbar-eventsLInks">
-
-              <ul>
-                  <ul>past events</ul>
-                  <ul>upcoming</ul>
-                  <ul>Events you own</ul>
-                  
-                    {/* <a href="#pastEvents">Past Events</a>
-                  
-                  <a href="#upcoming">Upcoming</a>
-                  <a href="#eventsYouOwn">Events you own</a> */}
-                </ul>
+              {/* <a href="#pastEvents">Past Events</a>
+            
+            <a href="#upcoming">Upcoming</a>
+            <a href="#eventsYouOwn">Events you own</a> */}
+            </ul>
 
 
+            </div>
 
-                {this.state.user.eventsAttended.map ((eventAttended, index) => {
-
-                  return ( 
-                      <div key= {eventAttended._id}>
-                      
-                      <div className="event-list-small">
-                      
-                        <div className="event-description">
-                          <h4 className="event-title">
-                            <a className="link-to-event" href={`/events/${eventAttended._id}`}>{eventAttended.title}</a>
-                          </h4>
-                          <div className="event-info">
-                            <img src={eventAttended.image} alt="image2"></img>
-                          </div>
-                          <h4 className="description">{eventAttended.description}</h4>
-                            <h4 className="date-time">{eventAttended.date.slice(0, 10)}</h4>
-                        </div>
-                    </div>
+          {this.state.user.eventsAttended.map ((eventAttended, index) => {
+            return ( 
+                <div key= {eventAttended._id}>
+                
+                <div className="event-list-small">
+                
+                  <div className="event-description">
+                    <h4 className="event-title">
+                      <a className="link-to-event" href={`/events/${eventAttended._id}`}>{eventAttended.title}</a>
+                    </h4>
+                      <div className="event-info">
+                        <img src={eventAttended.image} alt="image2"></img>
                       </div>
-                    )
-                    }
-                  )
-                  }
-               
+                    <h4 className="description">{eventAttended.description}</h4>
+                      <h4 className="date-time">{eventAttended.date.slice(0, 10)}</h4>
+                  </div>
               </div>
+                </div>
+              )
+              }
+            )
+            }
+
+      
+             
             
           
           <div className="profile-myEventList">
