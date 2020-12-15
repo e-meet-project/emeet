@@ -6,6 +6,7 @@ export default class EventRow extends Component {
     // console.log(this.props.)
     return (
       <div>
+      this is a row!
         <p key= {this.props.idKey} >
                <h3>
                  Event Title : {this.props.title}
