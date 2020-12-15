@@ -41,14 +41,12 @@ class App extends Component {
           <Route exact path = "/" component = {Homepage } />
           {/* <Route exact path = "/signup" component = { Signup } /> */}
           <Route exact path = "/login" component = { Login } />
-          <Route exact path = "/events" component = { Events } />
-          <Route exact path = "/profile" component = { UserProfile } />
+          {/* <Route exact path = "/events" component = { Events } /> */}
+          {/* <Route exact path = "/profile" component = { UserProfile } /> */}
           <Route exact path = "/editevent" component = { Editevent }/>
           {/* <Route exact path = "/Addevent" component = {Addevent} /> */}
-          {/* <Route exact path = "/beers" component = { Beers } />
-          <Route exact path = "/beers/:id" component = { BeerDetail } />
-          <Route exact path = "/random-beer" component = { Randombeer } />
-          <Route exact path = "/new-beer" component = { NewBeer } /> */}
+         
+          
             <Route exact path = "/" 
               render = { props =>  
               <Homepage 
@@ -66,8 +64,13 @@ class App extends Component {
               <Login setUser={this.setUser} {...props}/>}
                 // component = { Login } /> //replaced by render
             />
+            <Route exact path = "/events" 
+              render={(props) => 
+              <Events setUser={this.setUser} {...props}/>}
+                // component = { Login } /> //replaced by render
+            />
             
-            <Route exact path = "/events" component = { Events } />
+            {/* <Route exact path = "/events" component = { Events } /> */}
 
             <Route exact path = "/profile" 
               render={props => {
@@ -104,14 +107,4 @@ export default App;
 
 
 
-        // <Route?
-        //   exact
-        //   path='/projects/:id'
-        //   render={ props => 
-        //     <ProjectDetails user={this.state.user} {...props} />}
-        // />
-
-// <Route exact path = "/beers" component = { Beers } />
-// <Route exact path = "/beers/:id" component = { BeerDetail } />
-// <Route exact path = "/random-beer" component = { Randombeer } />
-// <Route exact path = "/new-beer" component = { NewBeer } /> 
+  
