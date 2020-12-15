@@ -4,21 +4,29 @@ import 'bootstrap/dist/css/bootstrap.css';
 // import { userProfileData } from '../';
 import EventDetail from '../events/EventDetail';
 import axios from 'axios';
+import EventRow from '../events/Search/EventRow';
 
 
 
 export default class UserProfile extends Component {
 
   state = {
+<<<<<<< HEAD
     user: this.state,
 
     
+=======
+    user: null,
+    // username: this.props.user.username,
+    events: this.props.user.eventsAttended
+>>>>>>> b434de753560e4601f1ed1c8e8fa41314df4606c
   };
 
 
-  getUserDetails = () => {
-    console.log(this.props)
+  // getUserDetails = () => {
+  //   console.log(this.props)
   
+<<<<<<< HEAD
       axios.get(`/api/user/${this.props.user._id}`)
         .then(response => {
           console.log(response)
@@ -30,6 +38,22 @@ export default class UserProfile extends Component {
   }
 
   
+=======
+  //     axios.get(`/api/user/${this.props.user._id}`)
+  //       .then(response => {
+  //         console.log(`axios get`, response)
+  //         this.setState({
+  //         user: response.data
+  //       })
+  //     })
+  //     console.log(`inside getUserDetails: ${this.state.user}`)
+  // }
+
+  // componentDidMount() {
+  //   this.getUserDetails();
+  //   console.log(`this is the compDM ${this.state.user}`)
+  // }
+>>>>>>> b434de753560e4601f1ed1c8e8fa41314df4606c
 
   // componentDidUpdate(prevProps) {
   //   console.log('current props:', this.props.match.params.id)
@@ -79,8 +103,10 @@ export default class UserProfile extends Component {
 
 
   render() {
-    const user = this.state.user;
-    console.log(`this is the render declared user = ${user} `)
+    const user = this.props.user;
+    // console.log(`this is the render declared user = ${user} `)
+    console.log(`userProfile props user`, user)
+    console.log(`userevents`, this.state.events)
   
     
     if (!user) return <> Loading... </>;
@@ -167,10 +193,10 @@ export default class UserProfile extends Component {
 
 
 
-        </>
+//         </>
 
       
-    )
-  }
+//     )
+//   }
 
-}
+// }
