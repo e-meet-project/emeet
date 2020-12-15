@@ -1,13 +1,13 @@
 .navbar {
   background: #5D576B;
   color: white;
-  height: 5vh;
+  height: 4vh, 2.5rem;
   list-style: none;
   display: flex;
   /* justify-content: space-between; */
   align-items: center;
   justify-content: space-between;
-  height: 3.5rem;
+  /* height: 3.5rem; */
 
   
   

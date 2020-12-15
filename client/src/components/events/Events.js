@@ -65,14 +65,14 @@ export default class Events extends Component {
       
       } ) } 
 
-        EVENT LIST
+        {/* EVENT LIST
 
         <ul>
           <li>Event 1</li>
           <li>Event 2</li>
           <li>Event 3</li>
-        </ul>
-        <Link  to = "/Addevent">Create your own event! </Link>
+        </ul> */}
+        <Link  to = "/Addevent">Create your own event!  YESS</Link>
         <button><a href="/signup">sign up</a></button>
         {/* <Link to = "/createEvent">Create an event? </Link> */}
       </div>

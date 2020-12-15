@@ -24,20 +24,25 @@ export default class Login extends Component {
 
     const { username, password } = this.state;
 
-    console.log (`state before  `, this.state)
+    // console.log (`state before  `, this.state)
 
     login ( username , password ).then ( data => {
       console.log(`login data`, data)
+
       if (data.message) {
         this.setState({
           message: data.message,
           username: '',
           password: ''
         });
+
       } else {
         // successfully logged in
         // update the state for the parent component
+        console.log(`before the setUser`)
+        console.log(this.props)
         this.props.setUser(data);
+        console.log(`after the setUser`)
         this.props.history.push('/');
       }
     });

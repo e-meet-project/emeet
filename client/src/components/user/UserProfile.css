@@ -3,37 +3,56 @@ body {
     margin: 0;
     padding: 0 0 8px;
     color: rgba(0,0,0,.87);
+    
 }
 
-
+/* 
 .userProfile img{
   width: 25vw;
-}
+} */
 
 .profile-container-top {
   display: block;
-  position: relative;
+  /* position: relative; */
   min-height: 300px;
   padding-bottom: 1.25em;
   padding-top: 1.25em;
+  margin-left: 5vw;
+  /* display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-around;
+	align-items: baseline; */
+  /* align-content: stretch; */
+  
 
 }
 
 .profile-myEventList {
   border-top: 1px solid rgba(0,0,0,.12);
   padding-top: 8px;
+
+  
+  
+}
+.navbar-eventsLInks {
+  flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: center;
+  align-content: space-around;
+  padding: 20px 30px;
 }
 
 
-.navbar-eventsLInks{
+.navbar-eventsLInks ul{
   list-style: none;
   flex-direction: row;
    display: flex;
   } 
 
-.navbar-eventsLInks a {
+.navbar-eventsLInks ul ul {
   border: 1px solid #ccc;
-  width: 80%;
+  width: 30%;
   background-color: #fffae3;
   color: black;
   padding: 5px 10px;
@@ -45,6 +64,7 @@ body {
 
 .event-list-small{
   display: inline-block;
+  font-size: 12px;
   position: relative;
   vertical-align: top;
   width: 30%;
@@ -52,12 +72,24 @@ body {
   padding-top: 1px;
 }
 
-.event-figure {
+h4 {
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+.event-description {
   display: inline-block;
   position: relative;
   vertical-align: top;
-  width: 46%;
+  width: 60%;
   margin: 0 5px 0 0;
   border-bottom: 0;
   padding-top: 1px;
+}
+
+.btn-add-your-event {
+  background-color: #99e1d9;
+  text-decoration: none;
+  width: 80vw;
+  margin-left: 5vw;
+  padding: 5px 10px;
 }

@@ -46,6 +46,7 @@ router.post('/', (req, res) => {
     endTime,
     description,
     image,
+    maxCapacity,
     googleLink } = req.body;
     console.log(req.body, "this is from backend");
   // const owner = req.user._id;
@@ -57,11 +58,12 @@ router.post('/', (req, res) => {
     endTime,
     description,
     image,
-    googleLink
+    googleLink,
+    maxCapacity
   })
     .then(events => {
       User.findByIdAndUpdate (owner, {$push:{eventsCreated:events._id}}).then (user => {
-      console.log(event, "this is db")
+      console.log(events, "this is db")
       res.status(201).json(events);
       });
     })
@@ -72,25 +74,25 @@ router.post('/', (req, res) => {
 
 // update a project
 router.put('/:id', (req, res, next) => {
-  const { title,date, startTime,endTime, description, image, googleLink } = req.body;
+  const { title,date, startTime,endTime, description, image, googleLink, maxCapacity } = req.body;
   Event.findByIdAndUpdate(
     req.params.id,
-    { title,date, startTime, endTime, description, image, googleLink },
+    { title,date, startTime, endTime, description, image, googleLink, maxCapacity },
     // this ensures that we are getting the updated document as a return 
     { new: true }
   )
-    .then(events => {
+    .then(event => {
       console.log(events);
-      res.status(200).json(events);
+      res.status(200).json(event);
     })
     .catch(err => {
-
+      console.log(err)
     })
 });
 
 router.delete('/:id', (req, res, next) => {
   Event.findByIdAndDelete(req.params.id)
-    .then(events => {
+    .then(event => {
       res.status(200).json({ message: 'ok' })
     })
     .catch(err => {
