@@ -12,6 +12,7 @@ import UserProfile from './components/user/UserProfile';
 import Homepage from './components/Homepage';
 import EventDetail from './components/events/EventDetail';
 import Editevent from './components/events/Editevent';
+import Addevent from './components/events/Addevent';
 
 class App extends Component {
 
@@ -34,10 +35,7 @@ class App extends Component {
       <div>
         <Navbar user={this.state.user} setUser={this.setUser} />
 
-          <Switch>
-
-          <Route exact path = "/editevent" component = { Editevent }/>
-         
+          <Switch>         
           
             <Route exact path = "/" 
               render= { props => {
@@ -94,6 +92,21 @@ class App extends Component {
                 {...props} 
                 />}
             />
+
+            <Route exact path = "/editevent" component = { Editevent }/>
+
+            <Route exact path = "/addevent" 
+              // component = {Addevent} />
+              render= { props => {
+                  if (this.state.user) {
+                    return <Addevent 
+                      user = {this.state.user}
+                      {...props}
+                    />
+                  }
+                  else {return <Redirect to= '/login' /> }
+              }}
+            /> 
 
 
           </Switch>
