@@ -36,10 +36,20 @@ class App extends Component {
           <Switch>
 
             <Route exact path = "/" 
-              render = { props =>  
-              <Homepage 
-                />}
+              render= { props => {
+                  if (this.state.user) {
+                    return <Homepage 
+                      user = {this.state.user}
+                      {...props}
+                    />
+                  }
+                  else {
+                    return <Homepage /> 
+                    }
+                  // component = { UserProfile } /> // replaced by render
+                  }}
             />
+
 
 
             <Route exact path = "/signup" 
@@ -100,3 +110,17 @@ export default App;
 // <Route exact path = "/beers/:id" component = { BeerDetail } />
 // <Route exact path = "/random-beer" component = { Randombeer } />
 // <Route exact path = "/new-beer" component = { NewBeer } /> 
+
+
+            // <Route exact path = "/" 
+            //   render = { props =>  {
+            //     if (this.state.user) {
+            //       return <Homepage 
+            //         user = {this.state.user}
+            //           {...props}
+            //         />
+            //       }
+            //     } else {
+            //       return <Homepage /> 
+            //       }
+            //   }

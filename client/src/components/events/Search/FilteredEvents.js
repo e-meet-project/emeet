@@ -1,3 +1,60 @@
+import React, { Component } from 'react'
+import EventList from './EventList';
+import EventRow from './EventRow';
+import Searchbar from './Searchbar';
+
+export default class FilteredEvents extends Component {
+   
+  state = {
+    upcomingEvents: this.props.events,
+    filteredEvents: this.props.events, //tbd
+    search: '',
+  }
+  
+  // setSearch = search => {
+  //   // console.log('did it change?')
+  //   this.setState ( {
+  //       search: search
+  //   })
+  // }
+
+  filterEvents = event => {
+    this.setState ({ search:event.target.value}, () => {
+      const filtered = this.state.upcomingEvents.filter ( p => 
+        p.description.toLowerCase().includes(this.state.search.toLowerCase() ) 
+        || p.title.toLowerCase().includes(this.state.search.toLowerCase() ) 
+        //check data? 
+      );
+      this.setState({
+        filteredEvents: filtered
+      })
+    })
+    // console.log(`events from FE`, this.state.upcomingEvents)
+  }
+  
+  render() {
+    return (
+      <div>
+        <h2>FilteredEvents</h2>
+        <p>text text text</p>
+        <div>
+          <Searchbar 
+            filter = {this.filterEvents}
+            search = {this.state.search}
+          />
+        </div>
+
+        <p>
+          <EventList 
+            eventList = {this.state.filteredEvents}
+          />
+        </p>
+      </div>
+    )
+  }
+}
+
+
 // import React, { Component } from 'react'
 // import { events } from '../../../../models/User'
 // import EventDetail from '../EventDetail'
