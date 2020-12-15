@@ -1,33 +1,23 @@
 import React, { Component } from 'react'
-import axios from 'axios'
+
 
 export default class Editevent extends Component {
-  state = {
-    title: '',
-    date:'',
-    startTime: '',
-    endTime: '',
-    maxCapacity:'',
-    // attendees: '',
-    // owner: '',
-    description: '',
-    image:'',
-    googleLink:'',
-  }
+  
 
   render() {
     return (
       
 <div>
           <div> 
-            <form onSubmit={this.handleSubmit}>
+            <h2> Edit your event </h2>
+            <form onSubmit={this.props.handleSubmit}>
                 <label htmlFor="title"> Event title: </label>
                 <input 
                 type="text" 
                 name="title" 
                 id="title" 
                 
-                 value={this.state.title} 
+                value={this.props.title} 
                 onChange={this.props.handleChange}/>
                 <br/>
                 <label htmlFor="date">Event date:</label>
@@ -35,7 +25,7 @@ export default class Editevent extends Component {
                 type="date" 
                 name="date" 
                 id="date" 
-                value={this.state.date}
+                value={this.props.date}
                 onChange={this.props.handleChange}/>
                 <br/>
                 <label htmlFor="startTime "> Start time: </label>
@@ -43,7 +33,7 @@ export default class Editevent extends Component {
                 type= "time" 
                 name="startTime" 
                 id="startTime" 
-                value={this.state.startTime}  
+                value={this.props.startTime}  
                 onChange={this.props.handleChange}/>
                 <br/>
                 <label htmlFor="endTime" > End time: </label>
@@ -51,7 +41,7 @@ export default class Editevent extends Component {
                 type="time"
                 name="endTime"
                 id="endTime"
-                value={this.state.endTime}
+                value={this.props.endTime}
                 onChange={this.props.handleChange}/>
                 <br/>
                 <label htmlFor="maxCapacity"> Maximum capacity: </label>
@@ -59,23 +49,15 @@ export default class Editevent extends Component {
                 type="number"
                 name="maxCapacity" 
                 id="maxCapacity"
-                value={this.state.maxCapacity}
+                value={this.props.maxCapacity}
                 onChange={this.props.handleChange}/>
                 <br/>
-                {/* <label htmlFor="owner">Hosted by:  </label>
-                <input 
-                type="text" 
-                name="owner" 
-                id="owner"
-                value={this.state.owner}
-                onChange={this.handleChange}/>
-                <br/> */}
                 <label htmlFor="description">Description: </label>
                 <input 
                 type="text"
                 name="description"
                 id="description"
-                value={this.state.description}
+                value={this.props.description}
                 onChange={this.props.handleChange}
                  />
                 <br/>
@@ -84,7 +66,7 @@ export default class Editevent extends Component {
                 type="link"
                 name="googleLink"
                 id="googleLink"
-                value={this.state.googleLink}
+                value={this.props.googleLink}
                 onChange={this.props.handleChange} />
                 <br/>
                 <label hmtlFor="image" >Upload an image: </label>

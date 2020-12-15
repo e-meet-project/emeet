@@ -74,16 +74,16 @@ router.post('/', (req, res) => {
 
 // update a project
 router.put('/:id', (req, res, next) => {
-  const { title,date, startTime,endTime, description, image, googleLink,maxCapacity } = req.body;
+  const { title,date, startTime,endTime, description, image, googleLink, maxCapacity } = req.body;
   Event.findByIdAndUpdate(
     req.params.id,
     { title,date, startTime, endTime, description, image, googleLink, maxCapacity },
     // this ensures that we are getting the updated document as a return 
     { new: true }
   )
-    .then(events => {
+    .then(event => {
       console.log(events);
-      res.status(200).json(events);
+      res.status(200).json(event);
     })
     .catch(err => {
 
@@ -92,7 +92,7 @@ router.put('/:id', (req, res, next) => {
 
 router.delete('/:id', (req, res, next) => {
   Event.findByIdAndDelete(req.params.id)
-    .then(events => {
+    .then(event => {
       res.status(200).json({ message: 'ok' })
     })
     .catch(err => {
