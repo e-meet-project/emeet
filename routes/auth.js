@@ -28,8 +28,8 @@ router.post('/signup', (req, res) => {
       const salt = bcrypt.genSaltSync();
       const hash = bcrypt.hashSync(password, salt);
 
-      return User.create({ username: username, password: hash }).then(
-        dbUser => {
+      return User.create({ username: username, password: hash })
+      .then( dbUser => {
 
           req.login(dbUser, err => {
             if (err) {
@@ -49,7 +49,7 @@ router.post('/signup', (req, res) => {
 
 router.post('/login', (req, res) => {
   passport.authenticate('local', (err, user) => {
-    console.log(`server auth.js`, user)
+    // console.log(`server auth.js`, user)
     if (err) {
       return res.status(500).json({ message: 'Error while authenticating' });
     }
@@ -75,7 +75,12 @@ router.delete('/logout', (req, res) => {
 
 // returns the logged in user
 router.get('/loggedin', (req, res) => {
-  res.json(req.user);
+  // this is better practice, but currently it will break the client, 
+  // as the client will throw an exception if user is not logged in.
+  // if (!req.user) {
+  //   return res.status(401).json({message: "User not logged in."});
+  // }
+  return res.json(req.user);
 });
 
 module.exports = router;

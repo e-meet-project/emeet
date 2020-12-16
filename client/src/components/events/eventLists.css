@@ -1,0 +1,54 @@
+Events.js 
+
+.createEvent {
+  border: 1px solid red;
+  padding: 5vh;
+}
+
+ /* .eventList {
+  display: flex;
+  justify-content: space-evenly;
+  align-content: center;
+  border: 1px solid red;
+  background: #99E1D9;
+}  */
+
+/* .eventList:hover{
+  box-shadow: 5px 10px #5D576B; 
+  background: #5D576B;
+} */
+
+/* .eventListText {
+  border: 1px solid purple;
+   align-content: center; 
+   align-items: center;
+  padding: 2vh;
+  position: relative;
+  width: 75vw;
+   height: 20vh; 
+   background: white; 
+  margin: 1vh; 
+   
+ }   */
+
+ /* .eventListLink {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid green;
+   float: right; 
+   align-content: center; 
+   text-align: center;
+  height: 20vh; 
+   background: #99E1D9; 
+ }   */
+
+ /* .eventListItemHeight {
+  height: 20vh;
+  margin: 1vh;
+
+}  */
+
+ /* .seeMoreInfoButton {
+  background: #5D576B;
+} */
