@@ -73,11 +73,10 @@ router.post('/', (req, res) => {
     googleLink,
     maxCapacity
   })
-  .then( events => {
+    .then(events => {
       User.findByIdAndUpdate (owner, {$push:{eventsCreated:events._id}}).then (user => {
-      console.log(events, "this is db")
-      res.status(201).json(events);
-      // return res.status(400).json({ message: 'yay event created!' });
+      console.log(event, "this is db")
+      return res.status(201).json(event);
       });
     })
     .catch(err => {
@@ -99,7 +98,6 @@ router.put('/:id', (req, res, next) => {
       return res.status(200).json(event);
     })
     .catch(err => {
-      console.log(err)
       return res.status(500).json(err);
     })
 });

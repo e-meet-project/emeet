@@ -100,7 +100,7 @@ class App extends Component {
             <Route exact path = "/events/:id" 
               render = { props => 
                 <EventDetail
-                user = {this.state.user} 
+               user={this.state.user} 
                 {...props} 
                 />}
             />
@@ -115,6 +115,7 @@ class App extends Component {
                       user = {this.state.user}
                       {...props}
                     />
+                  
                   }
                   else {return <Redirect to= '/login' /> }
               }}
@@ -133,29 +134,4 @@ export default App;
 
 
 
-        {/* // <Route?
-        //   exact
-        //   path='/projects/:id'
-        //   render={ props => 
-        //     <ProjectDetails user={this.state.user} {...props} />}
-        // /> */}
-{/* 
-// <Route exact path = "/beers" component = { Beers } />
-// <Route exact path = "/beers/:id" component = { BeerDetail } />
-// <Route exact path = "/random-beer" component = { Randombeer } />
-// <Route exact path = "/new-beer" component = { NewBeer } /> 
- */}
-
-            {/* // <Route exact path = "/"  */}
-            //   render = { props =>  {
-            //     if (this.state.user) {
-            //       return <Homepage 
-            //         user = {this.state.user}
-            //           {...props}
-            //         />
-            //       }
-            //     } else {
-            //       return <Homepage /> 
-            //       }
-            //   }
   

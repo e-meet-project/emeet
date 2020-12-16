@@ -185,22 +185,8 @@ export default class EventDetail extends Component {
         <p>Start {this.state.event.startTime+'0'}  End {this.state.event.endTime+'0'}</p>
         <p>Date: {this.state.event.date}</p>
         <p>{this.state.event.attendees}</p>
-       
-       {/* old version
-        <p><button><a href="/editEvent">Edit this event</a></button></p>
-
-        <AttendEvent
-          user = {this.props.user}
-          // attendees = {this.state.event.attendees}
-         />
-        <button variant='danger' onClick={()=>{this.deleteEvent()}}>Delete event</button>
-        <button onClick={this.toggleEditForm}>Show Edit Form</button>
-        end current */}
-
-        {/* agustina's version */}
         {this.props.user._id === this.state.event.owner && <button variant='danger' onClick={()=>{this.deleteEvent()}}>Delete event</button>}
         {this.props.user._id === this.state.event.owner && <button onClick={this.toggleEditForm}>Show Edit Form</button>}
-        {/* end incoming */}
         {this.state.editForm && (
           <Editevent
             {...this.state}
