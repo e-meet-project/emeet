@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import Addevent from './Addevent';
-import AttendEvent from './AttendEvent';
 import Editevent from './Editevent';
 
 export default class EventDetail extends Component {
@@ -19,8 +18,8 @@ export default class EventDetail extends Component {
     date: '',
     startTime: "",
     endTime: "",
-    maxCapacity:""
-    
+    maxCapacity:"",
+    attending: false,
   };
 
   //user attend functionality start =============
@@ -74,6 +73,7 @@ export default class EventDetail extends Component {
               startTime: response.data.startTime,
               endTime: response.data.endTime,
               maxCapacity: response.data.maxCapacity,
+              attending: response.data.attendees.includes(this.props.user._id)
             })
           })
           .catch(err => {
@@ -166,12 +166,26 @@ export default class EventDetail extends Component {
       })
   }
 
+  joinEvent = () => {
+    const id = this.props.match.params.id;
+    axios.put(`/api/events/join/${id}`)
+    .then(response => {
+      console.log(response, "response");
+      this.setState({
+        attending: true
+      })
+    }).catch(err => console.log(err))
+  }
+
+
   render() {
     console.log( `render` , this.state.attending)
+    console.log("attending", this.state.attending)
     // console.log( `user?`, this.props.user._id)
   //   if (this.state.error) return <h1>{this.state.error}</h1>
      if (this.state.error) return <h1>{this.state.error}</h1>
     if (!this.state.event) return <h1>Loading...</h1>
+    
     // console.log(`event details!`)
     // this.getEventDetails();
     // console.log(`render's this.state`, this.state)
@@ -184,9 +198,12 @@ export default class EventDetail extends Component {
         <p>{this.state.event.description}</p>
         <p>Start {this.state.event.startTime+'0'}  End {this.state.event.endTime+'0'}</p>
         <p>Date: {this.state.event.date}</p>
-        <p>{this.state.event.attendees}</p>
+        <p> googleLink: {this.state.event.googleLink}</p>
+        {/* <p>{this.state.event.attendees}</p> */}
         {this.props.user._id === this.state.event.owner && <button variant='danger' onClick={()=>{this.deleteEvent()}}>Delete event</button>}
         {this.props.user._id === this.state.event.owner && <button onClick={this.toggleEditForm}>Show Edit Form</button>}
+        {this.props.user && (this.state.attending ? <p>You are attending this event! </p> : <button onClick={this.joinEvent}> Join event</button>)}
+        
         {this.state.editForm && (
           <Editevent
             {...this.state}
