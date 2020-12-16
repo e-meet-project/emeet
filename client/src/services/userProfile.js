@@ -1,5 +1,5 @@
 //userprofile example - added dec 11 EOD
-import axios from 'axios';
+// import axios from 'axios';
 
 
 // const userProfileData = (event ) => {
@@ -23,6 +23,6 @@ const userProfileData = (event ) => {
     });
 };
 
-export { userProfileData };
+// export { userProfileData };
 
 //on the component - import { userProfileData } from '../../services/userProfile' 

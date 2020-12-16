@@ -45,7 +45,7 @@ class App extends Component {
           <Route exact path = "/profile" component = { UserProfile } /> */} 
           {/* <Route exact path = "/events" component = { Events } /> */}
           {/* <Route exact path = "/profile" component = { UserProfile } /> */}
-          <Route exact path = "/editevent" component = { Editevent }/>
+          {/* <Route exact path = "/editevent" component = { Editevent }/> */}
           {/* <Route exact path = "/Addevent" component = {Addevent} /> */}
          
           

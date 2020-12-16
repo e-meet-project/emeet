@@ -1,3 +1,5 @@
+//iriels START-----------------------------------------------------------------------------------------
+
 import React, { Component } from 'react';
 import './UserProfile.css';
 import axios from 'axios';
@@ -11,6 +13,7 @@ export default class UserProfile extends Component {
     errorMessage: null,
   };
 
+
   getFullUserProfile() {
     axios.get(`/api/user/${this.props.user._id}`)
     .then(response => {
@@ -20,6 +23,7 @@ export default class UserProfile extends Component {
       this.setState({ errorMessage: err.message });
     });
   }  
+
 
   componentDidMount() {
     this.getFullUserProfile();

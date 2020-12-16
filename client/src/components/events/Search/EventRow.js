@@ -7,7 +7,8 @@ export default class EventRow extends Component {
     // console.log(this.props.)
     const {event} = this.props;
       console.log( "this is the event", event)
-    return (
+    
+      return (
 
       <div className="card col-md-4 col-sm-3">
         {event.image && <img src={event.image} className="card-img-top" alt={event.title}/>}

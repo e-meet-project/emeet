@@ -8,11 +8,10 @@ export default class EventList extends Component {
       <div className="container">
         <div className="row">
           {this.props.eventList.map(event => 
-          <EventRow 
-            key={event._id} 
-            event={event} 
-
-            />
+            <EventRow 
+              key={event._id} 
+              event={event} 
+              />
             )}
         </div>
       </div>
@@ -20,7 +19,7 @@ export default class EventList extends Component {
   }
 
 
-  
+  // version below does not allow for the card display of bootstrap
   // displayRows = () => {
   //   return (
   //       this.props.eventList.map(event => {
