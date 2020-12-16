@@ -14,6 +14,17 @@ export default class UserProfile extends Component {
   };
 
 
+  getFullUserProfile() {
+    axios.get(`/api/user/${this.props.user._id}`)
+    .then(response => {
+      this.setState({ fullUserProfile: response.data });
+    })
+    .catch(err => {
+      this.setState({ errorMessage: err.message });
+    });
+  }  
+
+
   componentDidMount() {
     this.getFullUserProfile();
   }
