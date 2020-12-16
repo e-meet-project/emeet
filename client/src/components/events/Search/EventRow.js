@@ -9,31 +9,7 @@ export default class EventRow extends Component {
     return (
       <div>
       {/* this is a row! */}
-      {/* kara's event rows */}
-      
-        <p 
-          key= {this.props.idKey} 
-          class="eventList"
-        >
-            <div class="eventListText eventListItemHeight">
-            <h1>Kara's</h1>
-              <h3>
-                Event Title : {this.props.title}
-              </h3>
-              <b>What it's about :</b> {this.props.description}
-              <br />
-              Date: {this.props.date}
-              
-            </div>
-            {/* {this.props.category} */}
-            <Link 
-              to = {`/events/${this.props.id}`}  
-              class="eventListLink eventListItemHeight"  
-            > 
-              See More Information 
-            </Link>
-                
-        </p>
+
       {/* //  iriel's event rows ============================================== */}
 
         <div className="card col-md-4 col-sm-3">
@@ -61,3 +37,30 @@ export default class EventRow extends Component {
 
 
 // will need to see which displays correctly after merge conflicts resolved.
+
+//kara's version
+    //   {/* kara's event rows */}
+      
+    //   <p 
+    //   key= {this.props.idKey} 
+    //   class="eventList"
+    // >
+    //     <div class="eventListText eventListItemHeight">
+    //     <h1>Kara's</h1>
+    //       <h3>
+    //         Event Title : {this.props.title}
+    //       </h3>
+    //       <b>What it's about :</b> {this.props.description}
+    //       <br />
+    //       Date: {this.props.date}
+          
+    //     </div>
+    //     {/* {this.props.category} */}
+    //     <Link 
+    //       to = {`/events/${this.props.id}`}  
+    //       class="eventListLink eventListItemHeight"  
+    //     > 
+    //       See More Information 
+    //     </Link>
+            
+    // </p>
