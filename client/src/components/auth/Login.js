@@ -1,7 +1,10 @@
+// import { Alert } from 'bootstrap';
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { login } from '../../services/auth';
 import './auth.css';
+import 'bootstrap/dist/css/bootstrap.css';
+import { Form, Button, Alert, Container } from 'react-bootstrap';
 
 
 export default class Login extends Component {
@@ -49,43 +52,56 @@ export default class Login extends Component {
   };
 
 
-  render() {
+  render (){
     return (
-      <div>
-        {/* <button>LOGIN </button> */}
+      <div class="centerAuth">
 
-        <h1>Please log in</h1>
-        <p className="error">
-          {this.state.message}
-        </p>
-
-        <form onSubmit={this.handleSubmit}>
-          <p>
-            <label htmlFor="username">Username </label>
-                <input 
-                    type = "text"
-                    name = "username"
-                    id = "username"
-                    value = {this.state.username}
-                    onChange = {this.handleChange}
-                />
-          </p>
-
-            <p>
-          <label htmlFor="password">Password </label>
-              <input 
-                  type = "password"
-                  name = "password"
-                  id = "password"
-                  value = {this.state.password}
+        <Container>
+          <div class="boxOn">
+            <div>
+              <h1>
+                Please log in
+              </h1>
+      
+          
+              <p className="error">
+                {this.state.message}
+              </p>
+            </div>
+    
+            <Form onSubmit={this.handleSubmit}>
+              <Form.Group>
+                <Form.Label htmlFor='username'>Username: </Form.Label>
+                <Form.Control 
+                  size="lg"
+                  type = "text"
+                  name = "username"
+                  id = "username"
+                  value = {this.state.username}
                   onChange = {this.handleChange}
-              />  
-          </p>
-          <button type='submit'>Login</button>
-        </form>
-        <p>
-          Need to create an account ?  <Link to = "/signup">Sign up</Link>
-        </p>
+                />
+              </Form.Group>
+    
+              <Form.Group>
+                <Form.Label htmlFor="password">Password </Form.Label>
+                    <Form.Control 
+                        size="lg"
+                        type = "password"
+                        name = "password"
+                        id = "password"
+                        value = {this.state.password}
+                        onChange = {this.handleChange}
+                    />  
+                </Form.Group>
+    
+                <Button variant="primary" type='submit'>Login</Button>
+    
+            </Form>
+            <div className="signupLoginSwitch">
+              Need to create an account?  <Link to = "/signup">Sign up</Link>
+            </div>
+            </div>
+        </Container>
     
       </div>
     )
