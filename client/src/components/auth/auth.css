@@ -15,9 +15,10 @@
   align-items: stretch;
   justify-content: center;
   text-align: center;
-  height: 100vh;
+  height: 100%;
   /* width: 100vw; */
   padding-top: 8vh;
+  padding-bottom: 8vh;
 }
 
 .boxOn {

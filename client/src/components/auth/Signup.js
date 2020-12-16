@@ -91,39 +91,6 @@ export default class Signup extends Component {
                 </Form.Group>
     
                 <Form.Group>
-{/* 
-                    <Form.File 
-                        id="custom-file"
-                        type="file"
-                        class="custom-file-input"
-                        label
-                        value = {this.state.profileImage}
-                        onChange = {this.handleChange}
-                    />  
-
-                <Form.Label  
-                  htmlFor="profileImage"
-                  for="custom-file" 
-                  class="custom-file-label"
-                  >
-                    Profile Picture 2 
-                  </Form.Label> */}
-                {/* <Form.Label  for="custom-file" class="custom-file-label">
-
-                </Form.Label> */}
-
-                  {/* <Form> */}
-                    {/* <Form.File
-                      id="custom-file"
-                      type="file"
-                      class="custom-file-input"
-                      lablel="Upload a profile picture"
-                      custom
-                    />
-                    <label for="custom-file" class="custom-file-label">
-
-                    </label> */}
-                  {/* </Form> */}
                   <br />
                 <div className="profileImageUpload">
                   <Form.Label  htmlFor="profileImage">Uplodad a Profile Picture? </Form.Label>
