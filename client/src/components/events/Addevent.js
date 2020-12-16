@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from "axios";
-import { userProfileData } from '../../services/userProfile';
+// import { userProfileData } from '../../services/userProfile';
 
 
 // userProfileData
