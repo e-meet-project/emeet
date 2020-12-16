@@ -4,6 +4,7 @@ import axios from 'axios'
 import EventDetail from './EventDetail'
 import './eventLists.css'
 
+// I don't know what this is below. Probably can delete, esp. as it was commented out.
 // export default function Events(props) {
 //   return (
 //     <div>
@@ -26,6 +27,7 @@ import './eventLists.css'
 // }
 
 
+import EventList from './Search/EventList'
 
 
 export default class Events extends Component {
@@ -50,7 +52,7 @@ export default class Events extends Component {
     return (
        
       <div>
-
+      <h1>Kara's</h1>
 
         <div class="createEvent">
               <Link  to = "/addevent"> Would you like to host your own event?  Click here!</Link>
@@ -97,8 +99,17 @@ export default class Events extends Component {
         </div>
 
 
+      {/* iriels ================================================== */}
         <button><a href="/signup">sign up</a></button>
         {/* <Link to = "/createEvent">Create an event? </Link> */}
+      <div className="container">
+      <h1>
+        Iriels
+      </h1>
+        <EventList eventList={this.state.events} />
+        <Link className="btn btn-primary" to="/Addevent">Create your own event!  YESS</Link>
+        <Link className="btn btn-default" to="/signup">sign up</Link>
+      </div>
       </div>
     )
   }

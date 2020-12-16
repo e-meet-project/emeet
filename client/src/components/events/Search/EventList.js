@@ -27,4 +27,25 @@ export default class EventList extends Component {
       </div>
     )
   }
-}
+} 
+
+// Kara's version was selected as the eventRow uses the var passed in the function.
+
+// in Kara's, she has the display row function called in the render section
+// in Iriels, she has the map directly in the render:
+
+// render() {
+//   return (
+//     <div className="container">
+//       <div className="row">
+//         {this.props.eventList.map(event => 
+//           <EventRow 
+//             key={event._id} 
+//             event={event} 
+//           />)}
+
+//       </div>
+//     </div>
+//   )
+// }
+// }
