@@ -13,28 +13,28 @@ export default class Editevent extends Component {
             <form onSubmit={this.props.handleSubmit}>
                 <label htmlFor="title"> Event title: </label>
                 <input 
-                type="text" 
-                name="title" 
-                id="title" 
-                
-                value={this.props.title} 
-                onChange={this.props.handleChange}/>
+                  type="text" 
+                  name="title" 
+                  id="title" 
+                  
+                  value={this.props.title} 
+                  onChange={this.props.handleChange}/>
                 <br/>
                 <label htmlFor="date">Event date:</label>
                 <input 
-                type="date" 
-                name="date" 
-                id="date" 
-                value={this.props.date}
-                onChange={this.props.handleChange}/>
+                  type="date" 
+                  name="date" 
+                  id="date" 
+                  value={this.props.date}
+                  onChange={this.props.handleChange}/>
                 <br/>
                 <label htmlFor="startTime "> Start time: </label>
                 <input 
-                type= "time" 
-                name="startTime" 
-                id="startTime" 
-                value={this.props.startTime}  
-                onChange={this.props.handleChange}/>
+                  type= "time" 
+                  name="startTime" 
+                  id="startTime" 
+                  value={this.props.startTime}  
+                  onChange={this.props.handleChange}/>
                 <br/>
                 <label htmlFor="endTime" > End time: </label>
                 <input 
