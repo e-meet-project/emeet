@@ -12,11 +12,8 @@ import UserProfile from './components/user/UserProfile';
 import Homepage from './components/Homepage';
 import EventDetail from './components/events/EventDetail';
 import Editevent from './components/events/Editevent';
-<<<<<<< HEAD
 import Addevent from './components/events/Addevent';
-=======
 import 'bootstrap/dist/css/bootstrap.css';
->>>>>>> f417a9b05ad25ad449966140b30a7b2224052cd9
 
 class App extends Component {
 
@@ -39,9 +36,6 @@ class App extends Component {
       <div>
         <Navbar user={this.state.user} setUser={this.setUser} />
 
-<<<<<<< HEAD
-          <Switch>         
-=======
           <Switch>
 
           {/* <Route exact path = "/" component = {Homepage } />
@@ -51,10 +45,9 @@ class App extends Component {
           <Route exact path = "/profile" component = { UserProfile } /> */} 
           {/* <Route exact path = "/events" component = { Events } /> */}
           {/* <Route exact path = "/profile" component = { UserProfile } /> */}
-          <Route exact path = "/editevent" component = { Editevent }/>
+          {/* <Route exact path = "/editevent" component = { Editevent }/> */}
           {/* <Route exact path = "/Addevent" component = {Addevent} /> */}
          
->>>>>>> f417a9b05ad25ad449966140b30a7b2224052cd9
           
             <Route exact path = "/" 
               render= { props => {
@@ -140,21 +133,20 @@ export default App;
 
 
 
-<<<<<<< HEAD
-        // <Route?
+        {/* // <Route?
         //   exact
         //   path='/projects/:id'
         //   render={ props => 
         //     <ProjectDetails user={this.state.user} {...props} />}
-        // />
-
+        // /> */}
+{/* 
 // <Route exact path = "/beers" component = { Beers } />
 // <Route exact path = "/beers/:id" component = { BeerDetail } />
 // <Route exact path = "/random-beer" component = { Randombeer } />
 // <Route exact path = "/new-beer" component = { NewBeer } /> 
+ */}
 
-
-            // <Route exact path = "/" 
+            {/* // <Route exact path = "/"  */}
             //   render = { props =>  {
             //     if (this.state.user) {
             //       return <Homepage 
@@ -166,6 +158,4 @@ export default App;
             //       return <Homepage /> 
             //       }
             //   }
-=======
->>>>>>> f417a9b05ad25ad449966140b30a7b2224052cd9
   

@@ -37,13 +37,22 @@ export default class EventRow extends Component {
       {/* //  iriel's event rows ============================================== */}
 
         <div className="card col-md-4 col-sm-3">
-        <h1>Iriel's</h1>
-          {event.image && <img src={event.image} className="card-img-top" alt={event.title}/>}
+          <h1
+            >Iriel's
+          </h1>
+          {this.props.image && <img src={this.props.image} className="card-img-top" alt={this.props.title}/>}
+         
           <div className="card-body">
-            <h5 className="card-title">{event.title}</h5>
-            <p className="card-text">{event.description}</p>
-            <Link to={`/events/${this.props._id}`} className="btn btn-primary">More Information</Link>
-          </div>
+            <h5 className="card-title">
+              {this.props.title}
+            </h5>
+            <p className="card-text">
+              {this.props.description}
+            </p>
+            <Link to={`/events/${this.props.id}`} className="btn btn-primary">
+              More Information
+            </Link>
+          </div> 
       </div>
     </div>
     )

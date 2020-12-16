@@ -13,6 +13,7 @@ export default class EventList extends Component {
                     description = {event.description}
                     id = {event._id}
                     date = {event.date}
+                    image = {event.image}
                 />
               )
           })
