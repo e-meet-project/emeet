@@ -9,12 +9,12 @@ router.get('/', (req, res, next) => {
 
   Event.find()
   
-  .then( event => {
-      console.log(event)
-      res.status(200).json(event);
+  .then( events => {
+      console.log(events);
+      return res.status(200).json(events);
     })
     .catch(err => {
-      res.json(err);
+      return res.status(500).json(err);
     })
 
 });
@@ -26,13 +26,13 @@ router.get('/:id', (req, res, next) => {
     .then( event => {
       if ( !event ) {
         console.log('no project');
-        res.status(404).json(event);
+        return res.status(404).json(event);
       } else {
-        res.status(200).json(event);
+        return res.status(200).json(event);
       }
     })
     .catch(err => {
-      res.json(err);
+      return res.status(500).json(err);
     })
 });
 
@@ -73,15 +73,14 @@ router.post('/', (req, res) => {
     googleLink,
     maxCapacity
   })
-  .then( events => {
+    .then(events => {
       User.findByIdAndUpdate (owner, {$push:{eventsCreated:events._id}}).then (user => {
-      console.log(events, "this is db")
-      res.status(201).json(events);
-      // return res.status(400).json({ message: 'yay event created!' });
+      console.log(event, "this is db")
+      return res.status(201).json(event);
       });
     })
     .catch(err => {
-      res.json(err);
+      return res.status(500).json(err);
     })
 })
 
@@ -96,10 +95,10 @@ router.put('/:id', (req, res, next) => {
   )
     .then(event => {
       console.log(events);
-      res.status(200).json(event);
+      return res.status(200).json(event);
     })
     .catch(err => {
-      console.log(err)
+      return res.status(500).json(err);
     })
 });
 

@@ -75,7 +75,12 @@ router.delete('/logout', (req, res) => {
 
 // returns the logged in user
 router.get('/loggedin', (req, res) => {
-  res.json(req.user);
+  // this is better practice, but currently it will break the client, 
+  // as the client will throw an exception if user is not logged in.
+  // if (!req.user) {
+  //   return res.status(401).json({message: "User not logged in."});
+  // }
+  return res.json(req.user);
 });
 
 module.exports = router;
