@@ -84,6 +84,32 @@ router.post('/', (req, res) => {
     })
 })
 
+router.put('/join/:id', (req, res, next) => {
+  console.log(req.user);
+   Event.findByIdAndUpdate(
+     req.params.id,
+     { $push:{attendees:req.user._id}},
+     // this ensures that we are getting the updated document as a return 
+     { new: true }
+   )
+     .then(event => {
+       User.findByIdAndUpdate(
+         req.user._id,
+         { $push:{eventsAttended:event._id}},
+         // this ensures that we are getting the updated document as a return 
+         { new: true }
+       ).then (user=>{
+         console.log(event);
+       return res.status(200).json(event);
+       })
+     })
+     .catch(err => {
+       console.log(err);
+       return res.status(500).json(err);
+     })
+ 
+   })
+
 // update a project
 router.put('/:id', (req, res, next) => {
   const { title,date, startTime,endTime, description, image, googleLink, maxCapacity } = req.body;
@@ -94,13 +120,15 @@ router.put('/:id', (req, res, next) => {
     { new: true }
   )
     .then(event => {
-      console.log(events);
+      console.log(event);
       return res.status(200).json(event);
     })
     .catch(err => {
+      console.log(err);
       return res.status(500).json(err);
     })
 });
+
 
 router.delete('/:id', (req, res, next) => {
   Event.findByIdAndDelete(req.params.id)
