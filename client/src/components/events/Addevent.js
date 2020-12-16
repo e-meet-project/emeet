@@ -35,6 +35,8 @@ export default class Addevent extends Component {
       
     const { title, date, startTime,endTime, description, image, googleLink} = this.state;
     
+    this.props.history.push("/events");
+
     console.log(this.state)
   
     // userProfileData(event).then (data => {
