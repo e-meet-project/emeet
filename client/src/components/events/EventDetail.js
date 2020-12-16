@@ -184,8 +184,8 @@ export default class EventDetail extends Component {
         <p>{this.state.event.description}</p>
         <p>Start {this.state.event.startTime+'0'}  End {this.state.event.endTime+'0'}</p>
         <p>Date: {this.state.event.date}</p>
-        <p>{this.state.event.attendees}</p>
-        <p><button><a href="/editEvent">Edit this event</a></button></p>
+        {/* <p>{this.state.event.attendees}</p> */}
+        {/* <p><button><a href="/editEvent">Edit this event</a></button></p> */}
 
         <AttendEvent
           user = {this.props.user}

@@ -12,6 +12,7 @@ import UserProfile from './components/user/UserProfile';
 import Homepage from './components/Homepage';
 import EventDetail from './components/events/EventDetail';
 import Editevent from './components/events/Editevent';
+import Addevent from './components/events/Addevent';
 import 'bootstrap/dist/css/bootstrap.css';
 
 class App extends Component {
@@ -114,6 +115,7 @@ class App extends Component {
                       user = {this.state.user}
                       {...props}
                     />
+                  
                   }
                   else {return <Redirect to= '/login' /> }
               }}
