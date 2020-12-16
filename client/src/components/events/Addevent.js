@@ -165,7 +165,7 @@ export default class Addevent extends Component {
                 <br/>
                 <label htmlFor="googleLink">Add Google link: </label>
                 <input 
-                type="link"
+                type="url"
                 name="googleLink"
                 id="googleLink"
                 value={this.state.googleLink}
