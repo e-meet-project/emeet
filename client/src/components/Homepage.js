@@ -121,5 +121,5 @@ export default class Homepage extends React.Component {
 //     )})}
 // </p>
 
-{/* <button><a href="/signup"> Signup</a></button> <button><a href="/login"> Login</a></button> */}
+// <button><a href="/signup"> Signup</a></button> <button><a href="/login"> Login</a></button> 
 // </p>
