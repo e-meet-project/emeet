@@ -13,6 +13,7 @@ import Homepage from './components/Homepage';
 import EventDetail from './components/events/EventDetail';
 import Editevent from './components/events/Editevent';
 import Addevent from './components/events/Addevent';
+import 'bootstrap/dist/css/bootstrap.css';
 
 class App extends Component {
 
@@ -35,7 +36,18 @@ class App extends Component {
       <div>
         <Navbar user={this.state.user} setUser={this.setUser} />
 
-          <Switch>         
+          <Switch>
+
+          {/* <Route exact path = "/" component = {Homepage } />
+          {/* <Route exact path = "/signup" component = { Signup } /> */}
+          {/* <Route exact path = "/login" component = { Login } /> */}
+          {/* <Route exact path = "/events" component = { Events } />
+          <Route exact path = "/profile" component = { UserProfile } /> */} 
+          {/* <Route exact path = "/events" component = { Events } /> */}
+          {/* <Route exact path = "/profile" component = { UserProfile } /> */}
+          {/* <Route exact path = "/editevent" component = { Editevent }/> */}
+          {/* <Route exact path = "/Addevent" component = {Addevent} /> */}
+         
           
             <Route exact path = "/" 
               render= { props => {
@@ -88,7 +100,7 @@ class App extends Component {
             <Route exact path = "/events/:id" 
               render = { props => 
                 <EventDetail
-                user = {this.state.user} 
+               user={this.state.user} 
                 {...props} 
                 />}
             />
@@ -103,6 +115,7 @@ class App extends Component {
                       user = {this.state.user}
                       {...props}
                     />
+                  
                   }
                   else {return <Redirect to= '/login' /> }
               }}
@@ -121,29 +134,4 @@ export default App;
 
 
 
-        // <Route?
-        //   exact
-        //   path='/projects/:id'
-        //   render={ props => 
-        //     <ProjectDetails user={this.state.user} {...props} />}
-        // />
-
-// <Route exact path = "/beers" component = { Beers } />
-// <Route exact path = "/beers/:id" component = { BeerDetail } />
-// <Route exact path = "/random-beer" component = { Randombeer } />
-// <Route exact path = "/new-beer" component = { NewBeer } /> 
-
-
-            // <Route exact path = "/" 
-            //   render = { props =>  {
-            //     if (this.state.user) {
-            //       return <Homepage 
-            //         user = {this.state.user}
-            //           {...props}
-            //         />
-            //       }
-            //     } else {
-            //       return <Homepage /> 
-            //       }
-            //   }
   
