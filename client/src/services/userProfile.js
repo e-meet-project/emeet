@@ -12,16 +12,16 @@
 //       return err.response.data;
 //     });
 // };
-const userProfileData = (event ) => {
-  return axios
-    .get('/api/user', { event } )
-    .then(response => {
-      return response.data;
-    })
-    .catch(err => {
-      return err.response.data;
-    });
-};
+// const userProfileData = (event ) => {
+//   return axios
+//     .get('/api/user', { event } )
+//     .then(response => {
+//       return response.data;
+//     })
+//     .catch(err => {
+//       return err.response.data;
+//     });
+// };
 
 // export { userProfileData };
 
