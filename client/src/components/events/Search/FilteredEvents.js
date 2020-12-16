@@ -4,6 +4,7 @@ import EventRow from './EventRow';
 import Searchbar from './Searchbar';
 import axios from 'axios'
 import '../../events/Search/search.css'
+import '../eventLists.css'
 
 export default class FilteredEvents extends Component {
    

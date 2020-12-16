@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
+import '../eventLists.css'
 
 export default class EventRow extends Component {
   render() {

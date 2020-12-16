@@ -38,6 +38,7 @@ router.get('/:id', (req, res, next) => {
 
 // create a project
 router.post('/', (req, res) => {
+  
   const {    
     title,
     date,
@@ -47,9 +48,20 @@ router.post('/', (req, res) => {
     description,
     image,
     maxCapacity,
-    googleLink } = req.body;
+    googleLink
+  
+  } = req.body;
+
+  // if ( title.length < 5 ) {
+  //   console.log(`title too short`)
+  //   return res
+  //     .status(400)
+  //     .json({ message: 'lol, your title must be longer' });
+  // }
+
     console.log(req.body, "this is from backend");
   // const owner = req.user._id;
+
   Event.create({
     title,
     date,
@@ -61,8 +73,8 @@ router.post('/', (req, res) => {
     googleLink,
     maxCapacity
   })
-    .then(event => {
-      User.findByIdAndUpdate (owner, {$push:{eventsCreated:event._id}}).then (user => {
+    .then(events => {
+      User.findByIdAndUpdate (owner, {$push:{eventsCreated:events._id}}).then (user => {
       console.log(event, "this is db")
       return res.status(201).json(event);
       });

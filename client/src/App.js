@@ -99,10 +99,25 @@ class App extends Component {
             <Route exact path = "/events/:id" 
               render = { props => 
                 <EventDetail
-                // user={this.state.user} 
+                user = {this.state.user} 
                 {...props} 
                 />}
             />
+
+            <Route exact path = "/editevent" component = { Editevent }/>
+
+            <Route exact path = "/addevent" 
+              // component = {Addevent} />
+              render= { props => {
+                  if (this.state.user) {
+                    return <Addevent 
+                      user = {this.state.user}
+                      {...props}
+                    />
+                  }
+                  else {return <Redirect to= '/login' /> }
+              }}
+            /> 
 
 
           </Switch>

@@ -8,7 +8,7 @@
 
 .searchFullContainer {
   border: 1px solid green;
-  background: #99E1D9;
+  /* background: #99E1D9; */
 }
 
 /* FilteredEvents.js */
@@ -18,8 +18,8 @@
 }
 
 .searchResults {
-  border: 2px solid red;
-  background: purple;
+  /* border: 2px solid red; */
+  /* background: purple; */
 }
 
 /* Searchbar.js */
