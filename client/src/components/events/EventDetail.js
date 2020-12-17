@@ -54,7 +54,7 @@ export default class EventDetail extends Component {
             } else {
               console.log('fail', this.props.user._id)
               // console.log(response.data.attendees)
-              console.log.log( `props`, this.props.user._id)
+              // console.log.log( `props`, this.props.user._id)
             }
           
 

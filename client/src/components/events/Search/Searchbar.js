@@ -10,7 +10,7 @@ export default class Searchbar extends Component {
             type ="text" 
             name ="search" 
             id= "search" 
-            placeholder= "Search for an event.." 
+            placeholder= "Find your next emeet.." 
             value= {this.props.search}
             onChange= {this.props.filter} //{this.handleChange}  //onChange={this.props.filter}
             class="searchBar"
