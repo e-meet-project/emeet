@@ -194,8 +194,12 @@ export default class EventDetail extends Component {
       <div>
       
         <h1>{this.state.event.title}</h1>
+        <img className="EventPhoto" alt="" 
+              style={{maxWidth:" 200px", borderRadius: "10%"}} 
+                  src={this.state.event.image}></img>
         <p>{this.state.event.description}</p>
         <p>Start {this.state.event.startTime}  End {this.state.event.endTime}</p>
+        
         {/* <p>Date: {this.state.event.date}</p> */}
 
         {this.state.date 
@@ -203,7 +207,7 @@ export default class EventDetail extends Component {
           : <p>  Date : TBD  </p> 
         }
 
-        <p> googleLink: {this.state.event.googleLink}</p>
+        {/* <p> googleLink: {this.state.event.googleLink}</p> */}
         <ul> Meet you fellow Event attendees: 
         {this.state.event.attendees.map((attendee, index) => {
           return (<div>

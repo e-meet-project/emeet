@@ -7,6 +7,7 @@ const eventSchema = new Schema({
     description: String,
     owner: { type: Schema.Types.ObjectId, ref: 'User'},
     image: String,
+    imagePublicID: String,
     googleLink: String,
     attendees: [{ type: Schema.Types.ObjectId, ref: 'User' }],
     date: Date,

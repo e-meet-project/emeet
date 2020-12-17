@@ -14,6 +14,7 @@ import EventDetail from './components/events/EventDetail';
 import Editevent from './components/events/Editevent';
 import Addevent from './components/events/Addevent';
 import 'bootstrap/dist/css/bootstrap.css';
+import {Image} from 'cloudinary-react';
 
 class App extends Component {
 
