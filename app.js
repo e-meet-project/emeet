@@ -17,7 +17,7 @@ require ('./configs/passport')
 //===============================================
 
 mongoose
-  .connect('mongodb://localhost/emeet', {useNewUrlParser: true})
+  .connect(process.env.MONGODB_URI || 'mongodb://localhost/emeet', {useNewUrlParser: true})
   .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
   })
