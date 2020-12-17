@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom'
 import axios from 'axios'
 import Addevent from './Addevent';
 import Editevent from './Editevent';
+import './eventLists.css'
+
+import { Form, Button, Alert, Container, Dropdown } from 'react-bootstrap';
 
 export default class EventDetail extends Component {
 
@@ -20,40 +23,7 @@ export default class EventDetail extends Component {
     endTime: "",
     maxCapacity:"",
     attending: false,
-  };
-
-  //user attend functionality start =============
-  // eventAttendHandleChange = event => {
-  //   console.log('button clicked')
-  //   const name = event.target.name;
-  //   const value = event.target.value;
-  //   this.setState({
-  //     [name]: value,
-  //     attending: !this.state.attending
-  //   });
-  // };
-
-  // eventAttendHandleSubmit = event => {
-  //   event.preventDefault();
-  //   console.log(`handlesubmit state,`, this.state); //doesn't display
-  //   console.log('button clicked, handlesubmit')
-
-  //   axios.post('/api/events', {
-  //     attendees: this.event.attendees.push(this.props.user._id)
-  //   })
-  //     .then(() => {
-  //       // set the form to it's initial state (empty input fields)
-  //       this.setState({
-  //         attending: !this.state.attending
-  //       })
-  //       // update the parent components state (in Projects) by calling getData()
-  //       this.props.getData();
-  //     })
-  //     .catch(err => console.log(err))
-
-  // }
-
-  // user attend functions end ================
+  }
 
   getEventDetails = () => {
     // console.log(`getEventDetails:`, this.props)
@@ -73,8 +43,21 @@ export default class EventDetail extends Component {
               startTime: response.data.startTime,
               endTime: response.data.endTime,
               maxCapacity: response.data.maxCapacity,
-              attending: response.data.attendees.includes(this.props.user._id)
+              // attending: response.data.attendees.includes(this.props.user._id)
             })
+
+            if (response.data.attendees.includes(this.props.user._id) ) {
+              console.log('success')
+              this.setState({
+                attending: true
+              })
+            } else {
+              console.log('fail', this.props.user._id)
+              // console.log(response.data.attendees)
+              // console.log.log( `props`, this.props.user._id)
+            }
+          
+
           })
           .catch(err => {
             console.log(err.response)
@@ -111,17 +94,12 @@ export default class EventDetail extends Component {
   
     }
 
-
-
   handleChange = event => {
     const { name, value } = event.target;
     this.setState({
       [name]: value
     })
   }
-
-
-
 
   componentDidUpdate(prevProps) {
   //   console.log('current props:', this.props.match.params.id)
@@ -172,85 +150,210 @@ export default class EventDetail extends Component {
     .then(response => {
       console.log(response, "response");
       this.setState({
-        attending: true
+        attending: !this.state.attending
       })
     }).catch(err => console.log(err))
   }
 
 
   render() {
-    console.log( `render` , this.state.attending)
-    console.log("attending", this.state.attending)
+    // console.log( `render user` , this.state.attending)
+    // console.log(this.state.event.attendees._id)
+    console.log(`renderid`, this.props.user._id)
+
+    // console.log("attending", this.state.attending)
     // console.log( `user?`, this.props.user._id)
   //   if (this.state.error) return <h1>{this.state.error}</h1>
      if (this.state.error) return <h1>{this.state.error}</h1>
-    if (!this.state.event) return <h1>Loading...</h1>
+    if (!this.state.event) return <h1 class="detailsHeader">Loading...</h1>
+   
+   
     
     // console.log(`event details!`)
     // this.getEventDetails();
     // console.log(`render's this.state`, this.state)
 
     return (
-      <div>
+      <div className="detailsBody">
+      <div className="imageFlex">
       
-        <h1>{this.state.event.title}</h1>
-        <img className="EventPhoto" alt="" 
-              style={{maxWidth:" 200px", borderRadius: "10%"}} 
-                  src={this.state.event.image}></img>
-        <p>{this.state.event.description}</p>
-        <p>Start {this.state.event.startTime}  End {this.state.event.endTime}</p>
         
-        {/* <p>Date: {this.state.event.date}</p> */}
+          <div className ="detailsHeader">
 
-        {this.state.date 
-          ? <p>Date: {this.state.event.date.slice(0,10)}</p> 
-          : <p>  Date : TBD  </p> 
-        }
+            <div className="detailsTitle">
+             
+              <h1>{this.state.event.title}</h1>
+            </div>
+  
+            
+    
+            {/* <p>Start {this.state.event.startTime}  End {this.state.event.endTime}</p> */}
+    
+            <div className="detailsDateTime">
+            	{this.state.event.startTime 
+            	  ? <div>
+                  <p><b>Start Time: </b>{this.state.event.startTime} 
+                  <br/><b>End Time : </b> {this.state.event.endTime} </p>
+                </div>
+                : <p> <b>Start & End Time:</b> TBD </p>
+            	}
+              
+            	{/* <p>Date: {this.state.event.date}</p> */}
+              
+            	{this.state.date 
+            	  ? <p><b>Date:</b> {this.state.event.date.slice(0,10)}</p> 
+            	  : <p>  <b>Date :</b> TBD  </p> 
+            	}
+            </div>
+          </div>
+          
+      </div>
+           
+          <div className="detailsJoin">
+          <h3>Want to join this event?</h3>
+            {/* {this.props.user && (this.state.attending 
+              ? <p>You are attending this event! </p> 
+              : <button onClick={this.joinEvent}> Join event</button>)} */}
 
+            {this.state.attending 
+              ? <p>You are attending this event!  
+                  <p>
+                    <a href={this.state.event.googleLink}>
+                       Click here to go to your event
+                    </a> 
+                  </p>
+                </p> 
+              : <Button onClick={this.joinEvent}> Join event</Button>
+            } 
+          </div>
+        <div className="detailsDescription">
+          <p><b>What you'll do during this event:</b> </p>
+            <p>
+            <br />
+            	{this.state.event.description}
+            </p>
+
+              <img src={this.state.event.image} alt=""/>
+        </div>
+        
+        
         {/* <p> googleLink: {this.state.event.googleLink}</p> */}
-        <ul> Meet you fellow Event attendees: 
-        {this.state.event.attendees.map((attendee, index) => {
-          return (<div>
-            <li>{attendee.username}</li>
-            <img className="ProfilePhoto" alt="" 
-              style={{maxWidth:" 120px", borderRadius: "50%"}} 
-                  src={attendee.profileImage}></img>
-          </div>)
-        })}
-        </ul>
+       
+          
+          <hr />
+          <div className="detailsAttendeesHeader">
+          	<h3>
+          	  Meet your fellow Event attendees: 
+          	</h3>
+          </div>
+        <div className="detailsAttendees">
+     
+          {this.state.event.attendees.map((attendee, index) => {
+            return (
+              <div>
+
+                <div className="detailsBox">
+                  <p>
+                    {attendee.username}
+                  </p>
+  
+                  <img className="ProfilePhoto" alt={attendee.username} 
+                    style= { { borderRadius: "50%"} } 
+                    // maxWidth:" 120px",
+                    src={attendee.profileImage}>
+                  </img>
+                </div>
+                
+
+              </div>
+            )
+          })}
+
+        </div>
+
+        <div className="detailsEventOwner">
+          {this.props.user._id === this.state.event.owner && this.props.user._id
+            ? <div className="row">
+              
+
+                <div className="detailsEventOwnerColLeft">
+                    <h3>
+                      You are the host of this event!
+                    </h3>
+                    <br />  
+                    <h4>
+                      Need to change something? 
+                    </h4>
+                    <p>
+                      Click here to display the edit form:  
+                    </p>  
+                    <Button onClick={this.toggleEditForm}>
+                      Show Edit Form
+                    </Button>
+
+                <div className="detailsEventOwnerDelete">
+                  <Alert variant={'danger'}>
+                  <h4>Can't host the event any more? </h4>
+                    
+                    <Dropdown >
+                      <Dropdown.Toggle variant="danger" id="dropdown-basic">
+                        Yes I'm sure I want to delete this event
+                      </Dropdown.Toggle>
+                        <Dropdown.Menu>
+                         <Dropdown.Item onClick={()=>{this.deleteEvent()}} >
+                          <h1>
+                            Delete 
+                          </h1>
+                          <p>
+                            Please note that this action CANNOT be undone! Please only click delete if you're 100% certain!
+                          </p>
+                         </Dropdown.Item> 
+                        </Dropdown.Menu>
+                    </Dropdown>
         
-        {this.props.user._id === this.state.event.owner && <button variant='danger' onClick={()=>{this.deleteEvent()}}>Delete event</button>}
-        {this.props.user._id === this.state.event.owner && <button onClick={this.toggleEditForm}>Show Edit Form</button>}
-        {/* {this.props.user && (this.state.attending ? <p>You are attending this event! </p> : <button onClick={this.joinEvent}> Join event</button>)} */}
-        {this.props.user && (this.state.attending 
-          ? <p>You are attending this event! <a href={this.state.event.googleLink}>Click here to go to your event</a> </p> 
-          : <button onClick={this.joinEvent}> Join event</button>)
-        } 
-        
-        {this.state.editForm && (
-          <Editevent
-            {...this.state}
-            handleChange={this.handleChange}
-            handleSubmit={this.handleSubmit}
-          />
-        )}
+                  </Alert>
+                 </div>
+
+                </div>
+              <div className="detailsEventOwnerEditAll">
+                    <div className="detailsEventOwnerEditForm, detailsEventOwnerColRight">
+                      {this.state.editForm && (
+                        <Editevent
+                          {...this.state}
+                          handleChange={this.handleChange}
+                          handleSubmit={this.handleSubmit}
+                        />
+                      )}
+                    </div>
+                  </div>
+            </div>
+          : <p></p>
+          }
+
+            {/* {this.state.editForm && (
+              <Editevent
+                {...this.state}
+                handleChange={this.handleChange}
+                handleSubmit={this.handleSubmit}
+              />
+            )} */}
+        </div> 
+
       </div>
     )
   }
 }
 
-//.slice(0,10) = will only work if there is a date set. 
-//If there's no date set then the state is "null" and you can't slice null
-
-//moved to new component dec 15, delete if working
-{/* <p>Interested? </p>
- <form  onSubmit={this.handleSubmit}>
- <label htmlFor="attend">in attending the event?</label>
-  <input 
-      type='button'
-      id='title'
-      name='title'
-      value= 'Click here to register for the event!'
-      onClick={this.eventAttendHandleChange}
-    />
-</form> */}
+//original version of owner buttons
+{/* <h1>Original Version!</h1>
+{this.props.user._id === this.state.event.owner 
+  && <button variant='danger' onClick={()=>{this.deleteEvent()}}>
+    Delete event
+  </button>}
+}
+  
+{/* {this.props.user && (this.state.attending ? <p>You are attending this event! </p> : <button onClick={this.joinEvent}> Join event</button>)} */}
+// {this.props.user && (this.state.attending 
+//   ? <p>You are attending this event! <a href={this.state.event.googleLink}>Click here to go to your event</a> </p> 
+//   : <button onClick={this.joinEvent}> Join event</button>)
+// } 
