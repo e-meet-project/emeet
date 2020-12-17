@@ -4,7 +4,7 @@ import { signup } from '../../services/auth'
 import './auth.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import { Form, Button, Alert, Container } from 'react-bootstrap';
-
+import service from "../../services/upload";
 
 // client/src/services/auth.js <--- relative path
 
@@ -15,7 +15,10 @@ export default class Signup extends Component {
     username: '',
     password: '',
     profileImage: '',
-    message: ''
+    // imagePublicID: "",
+    message: '',
+    // submitted: false,
+    // imageSelected: false,
   };
 
   handleChange = event => {
@@ -26,19 +29,50 @@ export default class Signup extends Component {
     });
   };
 
+  // handleFileUpload = e => {
+  //   console.log("The file to be uploaded is: ", e.target.files[0]);
+  //   this.setState({
+  //     imageSelected: true
+  //   });
+  //   const uploadData = new FormData();
+  //   uploadData.append("image", e.target.files[0]);
+  //   console.log("THIS IS THE UPLOAD DATA", uploadData)
+  //   service.handleUpload(uploadData)
+  //     .then(response => {
+  //       console.log(response)
+  //       const image = response.secure_url;
+  //       const publicID = response.public_id;
+  //       console.log('res from handleupload: ', response.secure_url);
+  //       this.setState({ profileImage: image, imagePublicID: publicID });
+  //       console.log('new state: ', this.state.image);
+  //       // check if the form already got submitted and only waits for the image upload
+  //       if (this.state.submitted === true) {
+  //         this.handleSubmit();
+  //       }
+  //     })
+  //     .catch(err => {
+  //       this.setState({
+  //         imageSelected: false
+  //       });
+  //       console.log("Error while uploading the file: ", err);
+  //     });
+  // }
+
   handleSubmit = event => {
     event.preventDefault();
 
-    const { username, password, profileImage } = this.state;
+    const { username, password} = this.state;
 
-    signup(username, password, profileImage).then ( data => {
+    signup(username, password).then ( data => {
       // console.log(`data`, data)
-      if (data.message) {
+      if (data.message ) {
+          // && (this.state.image || !this.state.imageSelected)
         this.setState({
           message: data.message,
           username: '',
           password: '',
-          profileImage: ''
+          // profileImage: image,
+          // imagePublicID: publicID,
         });
       } else {
         this.props.setUser(data);
@@ -101,8 +135,8 @@ export default class Signup extends Component {
                             name = "profileImage"
                             id = "profileImage"
                             value = {this.state.profileImage}
-                            onChange = {this.handleChange}
-                            class="profileImageUpload"
+                            onChange={this.handleFileUpload}
+                            // class="profileImageUpload"
                         />  
                       </div>
                 </div>

@@ -5,6 +5,7 @@ const userSchema = new Schema({
   username: String,
   password: String,
   profileImage: String,
+  imagePublicID: String,
   aboutMe: String,
   eventsAttended: [ { type: Schema.Types.ObjectId, ref: 'Event'  } ],
   eventsCreated: [{ type: Schema.Types.ObjectId, ref: 'Event'  }],

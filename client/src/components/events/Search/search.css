@@ -47,7 +47,6 @@
   text-align: center;
   width: 30%;
   padding: 2vh 0;
-  text-align: left;
 }
 
 /* .searchFullContainer {
@@ -99,8 +98,8 @@ h2 {
 .carousel {
   
 
-  max-width:  100vh;
-  max-width: 100vh;
+  max-width:  70vh;
+  max-width: 70vh;
   height: auto;
   display: block;
 	/* flex-direction: row; */

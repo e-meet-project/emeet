@@ -1,6 +1,7 @@
 //authentication - added dec 11 @ 11
 import axios from 'axios';
 
+
 const signup = (username, password, profileImage) => {
   return axios
     .post('/api/auth/signup', { username, password, profileImage })
