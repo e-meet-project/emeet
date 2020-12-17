@@ -40,7 +40,9 @@ export default class FilteredEvents extends Component {
       // console.log (`does it work?`) 
       return (
           <> 
-           <div class="searchBar">
+           <div className="searchBar">
+
+           <h2>Find your next Emeet Event</h2>
               <Searchbar 
                 filter = {this.filterEvents}
                 search = {this.state.search}
@@ -60,7 +62,8 @@ export default class FilteredEvents extends Component {
         return (
           <div>
           
-            <div class="searchBar">
+            <div className="searchBar">
+            <h2>Find your next Emeet Event</h2>
               <Searchbar 
                 filter = {this.filterEvents}
                 search = {this.state.search}

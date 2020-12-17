@@ -4,7 +4,7 @@ import '../../events/Search/search.css'
 export default class Searchbar extends Component {
   render() {
     return (
-      <div class="searchbar">
+      <div className="searchbar">
         <label htmlFor="search">
         <input 
             type ="text" 

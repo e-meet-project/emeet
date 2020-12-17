@@ -185,22 +185,33 @@ export default class EventDetail extends Component {
   //   if (this.state.error) return <h1>{this.state.error}</h1>
      if (this.state.error) return <h1>{this.state.error}</h1>
     if (!this.state.event) return <h1>Loading...</h1>
+    
     // console.log(`event details!`)
     // this.getEventDetails();
     // console.log(`render's this.state`, this.state)
 
     return (
       <div>
-      test!
-      test!
+      
         <h1>{this.state.event.title}</h1>
         <p>{this.state.event.description}</p>
         <p>Start {this.state.event.startTime+'0'}  End {this.state.event.endTime+'0'}</p>
-        <p>Date: {this.state.event.date}</p>
-        {/* <p>{this.state.event.attendees}</p> */}
+        <p>Date: {this.state.event.date.slice(0,10)}</p>
+        <p> googleLink: {this.state.event.googleLink}</p>
+        <ul> Meet you fellow Event attendees: 
+        {this.state.event.attendees.map((attendee, index) => {
+          return (<div>
+            <li>{attendee.username}</li>
+            <img className="ProfilePhoto" alt="" 
+              style={{maxWidth:" 120px", borderRadius: "50%"}} 
+                  src={attendee.profileImage}></img>
+          </div>)
+        })}
+        </ul>
         {this.props.user._id === this.state.event.owner && <button variant='danger' onClick={()=>{this.deleteEvent()}}>Delete event</button>}
         {this.props.user._id === this.state.event.owner && <button onClick={this.toggleEditForm}>Show Edit Form</button>}
         {this.props.user && (this.state.attending ? <p>You are attending this event! </p> : <button onClick={this.joinEvent}> Join event</button>)}
+        
         {this.state.editForm && (
           <Editevent
             {...this.state}

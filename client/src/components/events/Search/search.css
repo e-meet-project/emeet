@@ -1,40 +1,121 @@
 /* homepage.js */
+/* body {
+  /* padding: 0 5vw 2vh 5vw; */
+  /* background: #99E1D9; 
+} */
+
 .homepage {
-  margin: 2vw;
+  margin: 5vw 10px;
   /* background: #99E1D9; */
-  border: 2px black solid;
-  color: #18191a;
+  /* border: 2px black solid; */
+  display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+  padding-left: 50px;
+  padding-bottom: 50px;
+  margin: 2rem 5rem;
+
+
+
+
 }
 
 .searchFullContainer {
-  border: 1px solid green;
-  /* background: #99E1D9; */
+  /* padding:  10px 100px 0 10px; */
+    max-width: 85%;
+    margin: 1rem auto;
+    /* background-color: #5d576b; */
+
 }
+
+.welcome {
+  text-align: center;
+ width: 30%;
+}
+
+/* .searchFullContainer {
+  border: 1px solid green;
+   background: #99E1D9;
+ } */
+
 
 /* FilteredEvents.js */
 .searchBar {
-  /* backgrounrgb(0, 0, 0)een; */
+  /* background:#99e1d9; */
+  align-content: center;
   height: 20vh;
-}
+  padding-top: 0.5rem;
+  padding-bottom: 1rem;
+  width: 100%;
 
+}
+h2 {
+  color: #5d576b;
+  text-align: center;
+}
 /* .searchResults { */
   /* border: 2px solid red; */
   /* background: purple; */
 /* } */
 
 /* Searchbar.js */
-.searchbar {
+.searchbar{
   display: flex;
   flex-direction: row;
-  /* justify-content: center; */
+  justify-content: center;
   width: 100%;
-  /* background: blue; */
+  /* background: #fffae3; */
   height: 50%;
 }
 
 .searchbar input {
   margin: 1vw;
-  height: 30px;
-  width: 92vw;
+  height: 40px;
+  width: 60vw;
+  background: #fffae3;
+}
+
+.carousel {
+  
+  max-width:  70vh;
+  max-width: 70vh;
+  height: auto;
+  display: block;
+	/* flex-direction: row; */
+	flex-wrap: nowrap;
+	justify-content: center;
+  align-items: center;
+	/* align-content: center; */
+
+
+} 
+.carousel slide {
+  max-width: 80vw;
+}
+
+
+
+.carousel-inner {
+  max-width:  100vh;
+  max-width: 100vh;
+  margin: 0;
+} 
+
+.active carousel-item {
+  max-height:70vh;
+}
+.carousel-item {
+  max-height: 70vh;
+} 
+/* .carousel-indicators {
+text-align: left;
+} */
+
+.inner-img {
+  max-width:  100vw;
+  max-height: 100vh;
 }
 
