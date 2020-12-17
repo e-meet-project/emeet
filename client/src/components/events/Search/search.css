@@ -17,6 +17,9 @@
   padding-left: 50px;
   padding-bottom: 50px;
   margin: 2rem 5rem;
+  font-family: 'Anton', sans-serif;
+  
+  
 
 
 
@@ -80,14 +83,17 @@ h2 {
 
 .carousel {
   
-  max-width:  70vh;
-  max-width: 70vh;
+
+  max-width:  100vh;
+  max-width: 100vh;
   height: auto;
   display: block;
 	/* flex-direction: row; */
 	flex-wrap: nowrap;
 	justify-content: center;
   align-items: center;
+  font-family: 'Roboto', sans-serif;
+
 	/* align-content: center; */
 
 

@@ -51,7 +51,7 @@ export default class Homepage extends React.Component {
       <div className="homepage"> 
 
       <h2 className="welcome">
-         Welcome  {user && this.state.user.username} to Emeet
+         Welcome to Emeet {user && this.state.user.username} !
         </h2>
 
         <div className="carousel">
@@ -85,7 +85,7 @@ export default class Homepage extends React.Component {
               alt="comp8"
             />
             <Carousel.Caption>
-              <h3>at home or at the park</h3>
+              <h3>At home or at the park</h3>
               <p>With Emeet you can have fun with new & old friends online</p>
             </Carousel.Caption>
           </Carousel.Item>

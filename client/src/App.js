@@ -15,6 +15,7 @@ import Editevent from './components/events/Editevent';
 import Addevent from './components/events/Addevent';
 import 'bootstrap/dist/css/bootstrap.css';
 
+
 class App extends Component {
 
   //auth added dec 11@11AM
@@ -103,6 +104,9 @@ class App extends Component {
                 {...props} 
                 />}
             />
+
+              
+
 
             <Route exact path = "/editevent" component = { Editevent }/>
 
