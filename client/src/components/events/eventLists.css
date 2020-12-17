@@ -11,7 +11,7 @@ Events.js
 } */
 
 .detailsHeader {
-  padding: 10vh 4vw 4vh 4vw;
+  padding: 10vh 0 4vh 4vw;
   /* background: red; */
   display: flex; 
   /* justify-content: space-around; */
@@ -110,3 +110,14 @@ Events.js
   padding-top: 5vh;
   /* border: 2px solid black; */
 }
+
+.imageFlex {
+  display:flex;
+  /* border: 2px solid green; */
+}
+
+.imageFlex >img {
+    width: 45vw;
+    padding-right:10vw;
+    padding-top:5vh;
+  }
