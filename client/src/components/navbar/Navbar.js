@@ -27,7 +27,7 @@ export default function Navbar(props) {
         </img>
       </Link>
 
-      <Link className="navbar-link" to = "/">Go to homepage</Link>
+      {/* <Link className="navbar-link" to = "/">Go to homepage</Link> */}
 
         <div>
           <Link className="navbar-link" to = "/events">All Events</Link>
