@@ -22,38 +22,7 @@ export default class EventDetail extends Component {
     attending: false,
   };
 
-  //user attend functionality start =============
-  // eventAttendHandleChange = event => {
-  //   console.log('button clicked')
-  //   const name = event.target.name;
-  //   const value = event.target.value;
-  //   this.setState({
-  //     [name]: value,
-  //     attending: !this.state.attending
-  //   });
-  // };
 
-  // eventAttendHandleSubmit = event => {
-  //   event.preventDefault();
-  //   console.log(`handlesubmit state,`, this.state); //doesn't display
-  //   console.log('button clicked, handlesubmit')
-
-  //   axios.post('/api/events', {
-  //     attendees: this.event.attendees.push(this.props.user._id)
-  //   })
-  //     .then(() => {
-  //       // set the form to it's initial state (empty input fields)
-  //       this.setState({
-  //         attending: !this.state.attending
-  //       })
-  //       // update the parent components state (in Projects) by calling getData()
-  //       this.props.getData();
-  //     })
-  //     .catch(err => console.log(err))
-
-  // }
-
-  // user attend functions end ================
 
   getEventDetails = () => {
     // console.log(`getEventDetails:`, this.props)
@@ -185,6 +154,8 @@ export default class EventDetail extends Component {
   //   if (this.state.error) return <h1>{this.state.error}</h1>
      if (this.state.error) return <h1>{this.state.error}</h1>
     if (!this.state.event) return <h1>Loading...</h1>
+   
+   
     
     // console.log(`event details!`)
     // this.getEventDetails();
@@ -192,17 +163,16 @@ export default class EventDetail extends Component {
 
     return (
       <div>
-      test!
-      test!
+     
         <h1>{this.state.event.title}</h1>
         <p>{this.state.event.description}</p>
         <p>Start {this.state.event.startTime+'0'}  End {this.state.event.endTime+'0'}</p>
         <p>Date: {this.state.event.date}</p>
-        <p> googleLink: {this.state.event.googleLink}</p>
+        <p> {this.state.event.image} </p>
         {/* <p>{this.state.event.attendees}</p> */}
         {this.props.user._id === this.state.event.owner && <button variant='danger' onClick={()=>{this.deleteEvent()}}>Delete event</button>}
         {this.props.user._id === this.state.event.owner && <button onClick={this.toggleEditForm}>Show Edit Form</button>}
-        {this.props.user && (this.state.attending ? <p>You are attending this event! </p> : <button onClick={this.joinEvent}> Join event</button>)}
+        {this.props.user && (this.state.attending ? <p>You are attending this event! <a href={this.state.event.googleLink}>Click here to go to your event</a> </p> : <button onClick={this.joinEvent}> Join event</button>)}
         
         {this.state.editForm && (
           <Editevent
@@ -216,15 +186,3 @@ export default class EventDetail extends Component {
   }
 }
 
-//moved to new component dec 15, delete if working
-{/* <p>Interested? </p>
- <form  onSubmit={this.handleSubmit}>
- <label htmlFor="attend">in attending the event?</label>
-  <input 
-      type='button'
-      id='title'
-      name='title'
-      value= 'Click here to register for the event!'
-      onClick={this.eventAttendHandleChange}
-    />
-</form> */}
