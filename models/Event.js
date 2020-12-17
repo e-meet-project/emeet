@@ -8,7 +8,7 @@ const eventSchema = new Schema({
     owner: { type: Schema.Types.ObjectId, ref: 'User'},
     image: String,
     googleLink: String,
-    attendees: [{ type: Schema.Types.ObjectId, ref: 'Event' }],
+    attendees: [{ type: Schema.Types.ObjectId, ref: 'User' }],
     date: Date,
     startTime: "",
     endTime: "",

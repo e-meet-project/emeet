@@ -47,11 +47,11 @@ export default class EventDetail extends Component {
           })
           .catch(err => {
             console.log(err.response)
-            if (err.response.status === 404) {
-              this.setState({
-                error: 'Sorry - Project Not found 🤷‍♀️ 🤷‍♂️'
-              })
-            }
+            // if (err.response.status === 404) {
+            //   this.setState({
+            //     error: 'Sorry - Project Not found 🤷‍♀️ 🤷‍♂️'
+              // })
+            // }
            
           })
          
@@ -166,13 +166,33 @@ export default class EventDetail extends Component {
      
         <h1>{this.state.event.title}</h1>
         <p>{this.state.event.description}</p>
-        <p>Start {this.state.event.startTime+'0'}  End {this.state.event.endTime+'0'}</p>
-        <p>Date: {this.state.event.date}</p>
-        <p> {this.state.event.image} </p>
-        {/* <p>{this.state.event.attendees}</p> */}
+        <p>Start {this.state.event.startTime}  End {this.state.event.endTime}</p>
+        {/* <p>Date: {this.state.event.date}</p> */}
+
+        {this.state.date 
+          ? <p>Date: {this.state.event.date.slice(0,10)}</p> 
+          : <p>  Date : TBD  </p> 
+        }
+
+        <p> googleLink: {this.state.event.googleLink}</p>
+        <ul> Meet you fellow Event attendees: 
+        {this.state.event.attendees.map((attendee, index) => {
+          return (<div>
+            <li>{attendee.username}</li>
+            <img className="ProfilePhoto" alt="" 
+              style={{maxWidth:" 120px", borderRadius: "50%"}} 
+                  src={attendee.profileImage}></img>
+          </div>)
+        })}
+        </ul>
+        
         {this.props.user._id === this.state.event.owner && <button variant='danger' onClick={()=>{this.deleteEvent()}}>Delete event</button>}
         {this.props.user._id === this.state.event.owner && <button onClick={this.toggleEditForm}>Show Edit Form</button>}
-        {this.props.user && (this.state.attending ? <p>You are attending this event! <a href={this.state.event.googleLink}>Click here to go to your event</a> </p> : <button onClick={this.joinEvent}> Join event</button>)}
+        {/* {this.props.user && (this.state.attending ? <p>You are attending this event! </p> : <button onClick={this.joinEvent}> Join event</button>)} */}
+        {this.props.user && (this.state.attending 
+          ? <p>You are attending this event! <a href={this.state.event.googleLink}>Click here to go to your event</a> </p> 
+          : <button onClick={this.joinEvent}> Join event</button>)
+        } 
         
         {this.state.editForm && (
           <Editevent
