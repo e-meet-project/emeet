@@ -68,7 +68,7 @@ export default class EventDetail extends Component {
     axios.delete(`/api/events/${id}`)
       .then(() => {
         // this is how you do a redirect with react router dom
-        this.props.history.push('/events');
+        this.props.history.push('/profile');
       })
   }
 
