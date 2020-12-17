@@ -175,40 +175,46 @@ export default class EventDetail extends Component {
 
     return (
       <div className="detailsBody">
-      <div className="imageFlex">
-      
-        
-          <div className ="detailsHeader">
-
-            <div className="detailsTitle">
-             
-              <h1>{this.state.event.title}</h1>
-            </div>
-  
-            
-    
-            {/* <p>Start {this.state.event.startTime}  End {this.state.event.endTime}</p> */}
-    
-            <div className="detailsDateTime">
-            	{this.state.event.startTime 
-            	  ? <div>
-                  <p><b>Start Time: </b>{this.state.event.startTime} 
-                  <br/><b>End Time : </b> {this.state.event.endTime} </p>
-                </div>
-                : <p> <b>Start & End Time:</b> TBD </p>
-            	}
-              
-            	{/* <p>Date: {this.state.event.date}</p> */}
-              
-            	{this.state.date 
-            	  ? <p><b>Date:</b> {this.state.event.date.slice(0,10)}</p> 
-            	  : <p>  <b>Date :</b> TBD  </p> 
-            	}
-            </div>
+     
+        <div className ="detailsHeader">
+          <div className="detailsTitle">
+            <h1>{this.state.event.title}</h1>
           </div>
+
           
-      </div>
-           
+  
+          {/* <p>Start {this.state.event.startTime}  End {this.state.event.endTime}</p> */}
+  
+          <div className="detailsDateTime">
+          	{this.state.event.startTime 
+          	  ? <div>
+                <p><b>Start Time: </b>{this.state.event.startTime} 
+                <br/><b>End Time : </b> {this.state.event.endTime} </p>
+              </div>
+              : <p> <b>Start & End Time:</b> TBD </p>
+          	}
+            
+          	{/* <p>Date: {this.state.event.date}</p> */}
+            
+          	{this.state.date 
+          	  ? <p><b>Date:</b> {this.state.event.date.slice(0,10)}</p> 
+          	  : <p>  <b>Date :</b> TBD  </p> 
+          	}
+          </div>
+        </div>
+        
+        
+        <div className="detailsDescription">
+          <p><b>What you'll do during this event:</b> </p>
+            <p>
+            <br />
+            	{this.state.event.description}
+            </p>
+        </div>
+        
+        
+        {/* <p> googleLink: {this.state.event.googleLink}</p> */}
+          
           <div className="detailsJoin">
           <h3>Want to join this event?</h3>
             {/* {this.props.user && (this.state.attending 
@@ -216,29 +222,14 @@ export default class EventDetail extends Component {
               : <button onClick={this.joinEvent}> Join event</button>)} */}
 
             {this.state.attending 
-              ? <p>You are attending this event!  
-                  <p>
-                    <a href={this.state.event.googleLink}>
-                       Click here to go to your event
-                    </a> 
-                  </p>
+              ? <p>You are attending this event! 
+                  <a href={this.state.event.googleLink}>
+                   Click here to go to your event
+                  </a> 
                 </p> 
               : <Button onClick={this.joinEvent}> Join event</Button>
             } 
           </div>
-        <div className="detailsDescription">
-          <p><b>What you'll do during this event:</b> </p>
-            <p>
-            <br />
-            	{this.state.event.description}
-            </p>
-
-              <img src={this.state.event.image} alt=""/>
-        </div>
-        
-        
-        {/* <p> googleLink: {this.state.event.googleLink}</p> */}
-       
           
           <hr />
           <div className="detailsAttendeesHeader">
@@ -350,7 +341,9 @@ export default class EventDetail extends Component {
   && <button variant='danger' onClick={()=>{this.deleteEvent()}}>
     Delete event
   </button>}
+
 }
+
   
 {/* {this.props.user && (this.state.attending ? <p>You are attending this event! </p> : <button onClick={this.joinEvent}> Join event</button>)} */}
 // {this.props.user && (this.state.attending 
