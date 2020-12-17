@@ -23,7 +23,7 @@ export default class EventDetail extends Component {
     endTime: "",
     maxCapacity:"",
     attending: false,
-  };
+  }
 
   getEventDetails = () => {
     // console.log(`getEventDetails:`, this.props)
@@ -43,8 +43,21 @@ export default class EventDetail extends Component {
               startTime: response.data.startTime,
               endTime: response.data.endTime,
               maxCapacity: response.data.maxCapacity,
-              attending: response.data.attendees.includes(this.props.user._id)
+              // attending: response.data.attendees.includes(this.props.user._id)
             })
+
+            if (response.data.attendees.includes(this.props.user._id) ) {
+              console.log('success')
+              this.setState({
+                attending: true
+              })
+            } else {
+              console.log('fail', this.props.user._id)
+              // console.log(response.data.attendees)
+              console.log.log( `props`, this.props.user._id)
+            }
+          
+
           })
           .catch(err => {
             console.log(err.response)
@@ -137,15 +150,18 @@ export default class EventDetail extends Component {
     .then(response => {
       console.log(response, "response");
       this.setState({
-        attending: true
+        attending: !this.state.attending
       })
     }).catch(err => console.log(err))
   }
 
 
   render() {
-    console.log( `render` , this.state.attending)
-    console.log("attending", this.state.attending)
+    // console.log( `render user` , this.state.attending)
+    // console.log(this.state.event.attendees._id)
+    console.log(`renderid`, this.props.user._id)
+
+    // console.log("attending", this.state.attending)
     // console.log( `user?`, this.props.user._id)
   //   if (this.state.error) return <h1>{this.state.error}</h1>
      if (this.state.error) return <h1>{this.state.error}</h1>
@@ -204,9 +220,14 @@ export default class EventDetail extends Component {
             {/* {this.props.user && (this.state.attending 
               ? <p>You are attending this event! </p> 
               : <button onClick={this.joinEvent}> Join event</button>)} */}
-            {this.props.user && (this.state.attending 
-              ? <p>You are attending this event! <a href={this.state.event.googleLink}>Click here to go to your event</a> </p> 
-              : <Button onClick={this.joinEvent}> Join event</Button>)
+
+            {this.state.attending 
+              ? <p>You are attending this event! 
+                  <a href={this.state.event.googleLink}>
+                   Click here to go to your event
+                  </a> 
+                </p> 
+              : <Button onClick={this.joinEvent}> Join event</Button>
             } 
           </div>
           
