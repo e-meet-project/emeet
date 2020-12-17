@@ -198,7 +198,16 @@ export default class EventDetail extends Component {
         <p>Start {this.state.event.startTime+'0'}  End {this.state.event.endTime+'0'}</p>
         <p>Date: {this.state.event.date.slice(0,10)}</p>
         <p> googleLink: {this.state.event.googleLink}</p>
-        {/* <p>{this.state.event.attendees}</p> */}
+        <ul> Meet you fellow Event attendees: 
+        {this.state.event.attendees.map((attendee, index) => {
+          return (<div>
+            <li>{attendee.username}</li>
+            <img className="ProfilePhoto" alt="" 
+              style={{maxWidth:" 120px", borderRadius: "50%"}} 
+                  src={attendee.profileImage}></img>
+          </div>)
+        })}
+        </ul>
         {this.props.user._id === this.state.event.owner && <button variant='danger' onClick={()=>{this.deleteEvent()}}>Delete event</button>}
         {this.props.user._id === this.state.event.owner && <button onClick={this.toggleEditForm}>Show Edit Form</button>}
         {this.props.user && (this.state.attending ? <p>You are attending this event! </p> : <button onClick={this.joinEvent}> Join event</button>)}
