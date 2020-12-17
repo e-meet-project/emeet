@@ -22,38 +22,7 @@ export default class EventDetail extends Component {
     attending: false,
   };
 
-  //user attend functionality start =============
-  // eventAttendHandleChange = event => {
-  //   console.log('button clicked')
-  //   const name = event.target.name;
-  //   const value = event.target.value;
-  //   this.setState({
-  //     [name]: value,
-  //     attending: !this.state.attending
-  //   });
-  // };
 
-  // eventAttendHandleSubmit = event => {
-  //   event.preventDefault();
-  //   console.log(`handlesubmit state,`, this.state); //doesn't display
-  //   console.log('button clicked, handlesubmit')
-
-  //   axios.post('/api/events', {
-  //     attendees: this.event.attendees.push(this.props.user._id)
-  //   })
-  //     .then(() => {
-  //       // set the form to it's initial state (empty input fields)
-  //       this.setState({
-  //         attending: !this.state.attending
-  //       })
-  //       // update the parent components state (in Projects) by calling getData()
-  //       this.props.getData();
-  //     })
-  //     .catch(err => console.log(err))
-
-  // }
-
-  // user attend functions end ================
 
   getEventDetails = () => {
     // console.log(`getEventDetails:`, this.props)
@@ -99,7 +68,7 @@ export default class EventDetail extends Component {
     axios.delete(`/api/events/${id}`)
       .then(() => {
         // this is how you do a redirect with react router dom
-        this.props.history.push('/events');
+        this.props.history.push('/profile');
       })
   }
 
@@ -185,6 +154,8 @@ export default class EventDetail extends Component {
   //   if (this.state.error) return <h1>{this.state.error}</h1>
      if (this.state.error) return <h1>{this.state.error}</h1>
     if (!this.state.event) return <h1>Loading...</h1>
+   
+   
     
     // console.log(`event details!`)
     // this.getEventDetails();
@@ -192,7 +163,7 @@ export default class EventDetail extends Component {
 
     return (
       <div>
-      
+     
         <h1>{this.state.event.title}</h1>
         <p>{this.state.event.description}</p>
         <p>Start {this.state.event.startTime}  End {this.state.event.endTime}</p>
@@ -235,18 +206,3 @@ export default class EventDetail extends Component {
   }
 }
 
-//.slice(0,10) = will only work if there is a date set. 
-//If there's no date set then the state is "null" and you can't slice null
-
-//moved to new component dec 15, delete if working
-{/* <p>Interested? </p>
- <form  onSubmit={this.handleSubmit}>
- <label htmlFor="attend">in attending the event?</label>
-  <input 
-      type='button'
-      id='title'
-      name='title'
-      value= 'Click here to register for the event!'
-      onClick={this.eventAttendHandleChange}
-    />
-</form> */}
