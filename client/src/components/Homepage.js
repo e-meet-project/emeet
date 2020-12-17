@@ -82,6 +82,8 @@ export default class Homepage extends React.Component {
           <h1>search implementation</h1>
           <div class="searchResults">
 
+
+          <h1>TEST PLZ DELETE</h1>
             <FilteredEvents
               events = {this.state.events}
             />
