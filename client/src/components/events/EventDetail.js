@@ -192,12 +192,11 @@ export default class EventDetail extends Component {
 
     return (
       <div>
-      test!
-      test!
+      
         <h1>{this.state.event.title}</h1>
         <p>{this.state.event.description}</p>
         <p>Start {this.state.event.startTime+'0'}  End {this.state.event.endTime+'0'}</p>
-        <p>Date: {this.state.event.date}</p>
+        <p>Date: {this.state.event.date.slice(0,10)}</p>
         <p> googleLink: {this.state.event.googleLink}</p>
         {/* <p>{this.state.event.attendees}</p> */}
         {this.props.user._id === this.state.event.owner && <button variant='danger' onClick={()=>{this.deleteEvent()}}>Delete event</button>}
