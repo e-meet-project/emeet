@@ -174,7 +174,7 @@ export default class EventDetail extends Component {
           : <p>  Date : TBD  </p> 
         }
 
-        <p> googleLink: {this.state.event.googleLink}</p>
+        {/* <p> googleLink: {this.state.event.googleLink}</p> */}
         <ul> Meet you fellow Event attendees: 
         {this.state.event.attendees.map((attendee, index) => {
           return (<div>
