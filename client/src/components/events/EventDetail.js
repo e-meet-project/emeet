@@ -195,7 +195,13 @@ export default class EventDetail extends Component {
       
         <h1>{this.state.event.title}</h1>
         <p>{this.state.event.description}</p>
-        <p>Start {this.state.event.startTime}  End {this.state.event.endTime}</p>
+        {/* <p>Start {this.state.event.startTime}  End {this.state.event.endTime}</p> */}
+
+        {this.state.event.startTime 
+          ? <p>  Start Time: {this.state.event.startTime} End Time {this.state.event.endTime} </p>
+          : <p> Start Time: TBD   End Time : TBD </p>
+        }
+
         {/* <p>Date: {this.state.event.date}</p> */}
 
         {this.state.date 
@@ -214,7 +220,7 @@ export default class EventDetail extends Component {
           </div>)
         })}
         </ul>
-        
+
         {this.props.user._id === this.state.event.owner && <button variant='danger' onClick={()=>{this.deleteEvent()}}>Delete event</button>}
         {this.props.user._id === this.state.event.owner && <button onClick={this.toggleEditForm}>Show Edit Form</button>}
         {/* {this.props.user && (this.state.attending ? <p>You are attending this event! </p> : <button onClick={this.joinEvent}> Join event</button>)} */}
