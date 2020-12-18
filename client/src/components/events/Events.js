@@ -2,6 +2,10 @@ import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
 import axios from 'axios'
 import EventList from './Search/EventList'
+import Searchbar from './Search/Searchbar';
+import FilteredEvents from './Search/FilteredEvents'
+import './Search/search.css'
+
 
 
 export default class Events extends Component {
@@ -25,65 +29,50 @@ export default class Events extends Component {
     // console.log(response)
     return (
        
-      <div className="container">
-        <EventList eventList={this.state.events} />
-        <Link className="btn btn-primary" to="/Addevent">Create your own event!  YESS</Link>
-        <Link className="btn btn-default" to="/signup">sign up</Link>
+      <div className="filteredResults">
+
+      <div className="eventHeader">
+        <h2>Find your next Emeet </h2>
+             {/* <div className="searchBar"> */}
+  
+             {/* <h2>Find your next Emeet Event</h2> */}
+           
+          <div className="allEvents"> 
+            <div>
+              <Link className="allEventsButton" 
+                // style={ { color: "#18191a", backgroundColor: "#99e1d9"} } 
+                // margin: "0.5rem", color:"#5d576b"
+                to="/Addevent">
+               Or create your own!
+              </Link>
+            </div>
+  
+          </div>
+      </div>
+
+        {/* <EventList eventList={this.state.events} /> */}
+
+        <div className="container">
+          <FilteredEvents
+                events = {this.state.events}
+          />
+        </div>
+        
+
+
+
       </div>
 
 
-       //<div class="createEvent">
-      //        <Link  to = "/addevent"> Would you like to host your own event?  Click here!</Link>
-       // </div>
-
-
-    //     {this.state.events.map ( (event, index) => {
-    //       return ( 
-    //         // <div 
-    //         //   key= {event._id}
-    //         //   class="eventList"
-    //         //   >
-
-    //         //     <div class="eventListText eventListItemHeight">
-    //         //         <h4>
-    //         //           {event.title}
-    //         //         </h4>
-    //         //         <br />
-    //         //         Date :{event.date}
-    //         //         <br />
-    //         //         Starts at {event.startTime+'0'}
-    //         //     </div>
-
-    //         //     <Link to = {`/events/${event._id}`}  class="eventListLink eventListItemHeight"  > See More Information </Link>
-                
-    //         // {/* <EventDetail / */}
-    //         // {/* <Link to exact path = "/event/:id" component = { EventDetail } */}
-    //         // </div>
-    //       )
-      
-    //   } )
-    //  } 
-
-        //  EVENT LIST
-
-        // <ul>
-        //   <li>Event 1</li>
-        //   <li>Event 2</li>
-        //   <li>Event 3</li>
-        // </ul> 
-
-        // <div>
-        //   <p>Not finding an event that peaks your interest? Why not host you're own?</p>
-        //   <Link  to = "/addevent">Click here to create your own event!</Link>
-        // </div>
-
-      //     <div>
-      //   <button><a href="/signup">sign up</a></button>
-      //   {/* <Link to = "/createEvent">Create an event? </Link> */}
-      // </div>
+     
     )
   }
 
 }
        
-     
+// {/* <Searchbar 
+//       filter = {this.filterEvents}
+//       search = {this.state.search}
+//     />
+//   </div>
+//      */}

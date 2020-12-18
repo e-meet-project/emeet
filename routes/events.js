@@ -22,8 +22,11 @@ router.get('/', (req, res, next) => {
 // get a specfic project
 // to check if id is a valid mongo object id: mongoose.Types.ObjectId.isValid(_id)
 router.get('/:id', (req, res, next) => {
-  Event.findById(req.params.id)
+
+  Event.findById(req.params.id).populate('attendees')
+
     .then( event => {
+      console.log(event)
       if ( !event ) {
         console.log('no project');
         return res.status(404).json(event);
@@ -74,7 +77,7 @@ router.post('/', (req, res) => {
     maxCapacity
   })
     .then(events => {
-      User.findByIdAndUpdate (owner, {$push:{eventsCreated:events._id}}).then (user => {
+      User.findByIdAndUpdate (owner, {$push:{eventsCreated:events._id}}).then (event => {
       console.log(event, "this is db")
       return res.status(201).json(event);
       });

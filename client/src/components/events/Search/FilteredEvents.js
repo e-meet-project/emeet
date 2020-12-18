@@ -40,7 +40,9 @@ export default class FilteredEvents extends Component {
       // console.log (`does it work?`) 
       return (
           <> 
-           <div class="searchBar">
+           <div className="searchBar">
+
+           {/* <h2>Find your next Emeet Event</h2> */}
               <Searchbar 
                 filter = {this.filterEvents}
                 search = {this.state.search}
@@ -60,7 +62,8 @@ export default class FilteredEvents extends Component {
         return (
           <div>
           
-            <div class="searchBar">
+            <div className="searchBar">
+            {/* <h2>Find your next Emeet Event</h2> */}
               <Searchbar 
                 filter = {this.filterEvents}
                 search = {this.state.search}
@@ -72,11 +75,11 @@ export default class FilteredEvents extends Component {
               <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugiat, culpa debitis officiis dignissimos commodi assumenda exercitationem totam! Accusamus repellat sed animi, deserunt veniam est cum, voluptas sint ex a dolorem.</p>
             </div> */}
 
-            <p>
+            <div>
               <EventList 
                 eventList = {this.state.filteredEvents} 
               />
-            </p>
+            </div>
           </div>
         )
     } //else statements 

@@ -4,6 +4,8 @@ import React, { Component } from 'react';
 import './UserProfile.css';
 import axios from 'axios';
 import EventList from "../events/Search/EventList";
+import '../events/Search/search.css'
+import {Link} from 'react-router-dom'
 
 
 export default class UserProfile extends Component {
@@ -52,9 +54,18 @@ export default class UserProfile extends Component {
                   src={user.profileImage}></img>
 		
 	        </div>
-            <button className="btn-add-your-event" 
-          >
-          <a href="/Addevent">Add your own event</a></button>
+                    {/* <div className="allEvents"> */}
+            <Link className="allEventsButton allEvents" 
+                to="/Addevent">
+                Add your own event!
+              </Link>
+              <br/><br/>
+          {/* </div> */}
+            {/* <button className="btn-add-your-event">
+              <a href="/Addevent">Add your own event</a>
+          </button> */}
+          
+
           
           <div className="container profile-myEventList">
 

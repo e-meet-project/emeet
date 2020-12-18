@@ -4,13 +4,13 @@ import '../../events/Search/search.css'
 export default class Searchbar extends Component {
   render() {
     return (
-      <div class="searchbar">
+      <div className="searchbar">
         <label htmlFor="search">
         <input 
             type ="text" 
             name ="search" 
             id= "search" 
-            placeholder= "Search for an event.." 
+            placeholder= "Find your next emeet.." 
             value= {this.props.search}
             onChange= {this.props.filter} //{this.handleChange}  //onChange={this.props.filter}
             class="searchBar"

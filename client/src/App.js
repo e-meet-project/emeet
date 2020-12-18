@@ -14,6 +14,8 @@ import EventDetail from './components/events/EventDetail';
 import Editevent from './components/events/Editevent';
 import Addevent from './components/events/Addevent';
 import 'bootstrap/dist/css/bootstrap.css';
+import {Image} from 'cloudinary-react';
+
 
 class App extends Component {
 
@@ -65,7 +67,6 @@ class App extends Component {
             />
             
 
-
             <Route exact path = "/signup" 
               render = { props => 
                <Signup setUser={this.setUser} {...props} />}
@@ -104,6 +105,9 @@ class App extends Component {
                 {...props} 
                 />}
             />
+
+              
+
 
             <Route exact path = "/editevent" component = { Editevent }/>
 
