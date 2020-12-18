@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import '../../components/auth/auth.css'
 import { Form, Button, Alert, Container, Row, Col } from 'react-bootstrap';
+// import service from "../../services/upload";
 
 export default class Editevent extends Component {
   
@@ -121,11 +122,11 @@ export default class Editevent extends Component {
                       <Form.Label hmtlFor="image" >Upload an image: </Form.Label>
                         <div class="profileImageUploadContainer">
                             <Form.Control 
-                              type= "file"
+                              type="file"
                               name="image"
                               id="image"
-                              accept="image/*"
-                              class="profileImageUpload"
+                              onChange={this.handleFileUpload}
+                                // class="profileImageUpload"
                             />
                           </div>
                   </Form.Group>      

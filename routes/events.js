@@ -77,7 +77,7 @@ router.post('/', (req, res) => {
     maxCapacity
   })
     .then(events => {
-      User.findByIdAndUpdate (owner, {$push:{eventsCreated:events._id}}).then (user => {
+      User.findByIdAndUpdate (owner, {$push:{eventsCreated:events._id}}).then (event => {
       console.log(event, "this is db")
       return res.status(201).json(event);
       });

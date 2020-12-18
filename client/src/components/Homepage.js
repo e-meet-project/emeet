@@ -26,7 +26,7 @@ export default class Homepage extends React.Component {
     axios.get('/api/events') 
       .then( response => {
         const event = response.data;
-        console.log( `api call`, response)
+        // console.log( `api call`, response)
         this.setState({
           events : event,
           //below is from an outdated version of search, can be ignored
